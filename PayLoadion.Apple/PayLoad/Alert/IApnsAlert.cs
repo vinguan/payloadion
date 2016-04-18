@@ -2,7 +2,7 @@
 
 namespace PayLoadion.Apple.PayLoad.Alert
 {
-    public interface IAlert 
+    public interface IApnsAlert 
     {
         string Title { get; }
 

@@ -22,7 +22,7 @@ namespace PayLoadion.Apple.PayLoad
             }
         }
 
-        public IAlert Alert { get; set; }
+        public IApnsAlert Alert { get; set; }
 
         public string AlertMessage { get; set; }
 
@@ -38,7 +38,7 @@ namespace PayLoadion.Apple.PayLoad
         [JsonProperty(PropertyName = "category", NullValueHandling = NullValueHandling.Ignore)]
         public string Category { get; set; }
 
-        public Dictionary<string, object> InternalCustomData
+        internal Dictionary<string, object> InternalCustomData
         {
             get { return _internalCustomData ?? (_internalCustomData = new Dictionary<string, object>()); }
         }
@@ -48,12 +48,12 @@ namespace PayLoadion.Apple.PayLoad
             get { return _internalCustomData; }
         }
 
-        public ApnsPayLoadImplementation()
+        internal ApnsPayLoadImplementation()
         {
 
         }
 
-        public ApnsPayLoadImplementation(IApnsPayLoad apnsPayLoad)
+        internal ApnsPayLoadImplementation(IApnsPayLoad apnsPayLoad)
         {
             Alert = apnsPayLoad.Alert;
 

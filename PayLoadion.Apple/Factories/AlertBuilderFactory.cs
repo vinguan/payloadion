@@ -5,14 +5,14 @@ namespace PayLoadion.Apple.Factories
 {
     public class AlertBuilderFactory
     {
-        public static IAlertBuilder CreateAlertBuilder()
+        public static IApnsAlertBuilder CreateAlertBuilder()
         {
-            return new AlertBuilderImplementation();
+            return new ApnsAlertBuilderImplementation();
         }
 
-        public static IAlertBuilder CreateAlertBuilder(IAlert alert)
+        public static IApnsAlertBuilder CreateAlertBuilder(IApnsAlert apnsAlert)
         {
-            return new AlertBuilderImplementation(alert);
+            return new ApnsAlertBuilderImplementation(apnsAlert);
         }
     }
 }

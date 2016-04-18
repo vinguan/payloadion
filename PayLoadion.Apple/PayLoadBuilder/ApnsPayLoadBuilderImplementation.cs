@@ -1,15 +1,11 @@
 ﻿using System;
 using System.Reflection;
-using System.Text;
 using System.Threading.Tasks;
-using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
-using Newtonsoft.Json.Serialization;
 using PayLoadion.Apple.Exceptions;
-using PayLoadion.Apple.Exceptions.Alert;
 using PayLoadion.Apple.PayLoad;
 using PayLoadion.Apple.PayLoad.Alert;
-using PayLoadion.Apple.PayLoad.Alert.Builder;
+using PayLoadion.PayLoadBuilder;
 
 namespace PayLoadion.Apple.PayLoadBuilder
 {
@@ -22,12 +18,12 @@ namespace PayLoadion.Apple.PayLoadBuilder
             get { return _apnsPayLoadImplementation; }
         }
 
-        public ApnsPayLoadBuilderImplementation()
+        internal ApnsPayLoadBuilderImplementation()
         {
             _apnsPayLoadImplementation = new ApnsPayLoadImplementation();
         }
 
-        public ApnsPayLoadBuilderImplementation(IApnsPayLoad apnsPayLoad)
+        internal ApnsPayLoadBuilderImplementation(IApnsPayLoad apnsPayLoad)
         {
             _apnsPayLoadImplementation = new ApnsPayLoadImplementation(apnsPayLoad);
         }
@@ -39,9 +35,9 @@ namespace PayLoadion.Apple.PayLoadBuilder
             return this;
         }
 
-        public IApnsPayLoadBuilder Alert(IAlert alert)
+        public IApnsPayLoadBuilder Alert(IApnsAlert apnsAlert)
         {
-            _apnsPayLoadImplementation.Alert = alert;
+            _apnsPayLoadImplementation.Alert = apnsAlert;
 
             return this;
         }
@@ -53,9 +49,9 @@ namespace PayLoadion.Apple.PayLoadBuilder
             return this;
         }
 
-        public IApnsPayLoadBuilder Badge(int badge)
+        public IApnsPayLoadBuilder BadgeCount(int badgeCount)
         {
-            _apnsPayLoadImplementation.Badge = badge;
+            _apnsPayLoadImplementation.Badge = badgeCount;
 
             return this;
         }
@@ -67,14 +63,14 @@ namespace PayLoadion.Apple.PayLoadBuilder
             return this;
         }
 
-        public IApnsPayLoadBuilder CategoryName(string categoryName)
+        public IApnsPayLoadBuilder CategoryIdentifier(string categoryIdentifier)
         {
-            _apnsPayLoadImplementation.Category = categoryName;
+            _apnsPayLoadImplementation.Category = categoryIdentifier;
 
             return this;
         }
 
-        public IApnsPayLoadBuilder AddCustomData(string customDataKey, object customDataValue)
+        public IPayLoadBuilder<IApnsPayLoad> AddCustomData(string customDataKey, object customDataValue)
         {
             if (string.IsNullOrEmpty(customDataKey))
                 throw new ArgumentNullException(nameof(customDataKey));
@@ -87,21 +83,11 @@ namespace PayLoadion.Apple.PayLoadBuilder
             return this;
         }
 
-        public static IApnsPayLoadBuilder Create()
-        {
-            return new ApnsPayLoadBuilderImplementation();
-        }
-
-        public static IApnsPayLoadBuilder Create(IApnsPayLoad apnsPayLoad)
-        {
-            return new ApnsPayLoadBuilderImplementation(apnsPayLoad);
-        }
-
         public string Build()
         {
             if (_apnsPayLoadImplementation.AlertMessage != null && _apnsPayLoadImplementation.Alert != null)
             {
-                throw new ApnsPayloadBuilderException("Alert Message and IAlert from IApnsPayLoad are not null, choose to use one of them");
+                throw new ApnsPayloadBuilderException("apnsAlert Message and IAlert from IApnsPayLoad are not null, choose to use one of them");
             }
 
             try
@@ -142,7 +128,7 @@ namespace PayLoadion.Apple.PayLoadBuilder
             }
             catch (Exception ex)
             {
-                throw new ApnsPayloadBuilderException("An error occured while building ApnsPayload, Please check InnerException", ex);
+                throw new ApnsPayloadBuilderException("An unexpected error ocurred while building ApnsPayLoad, please check inner exception", ex);
             }             
         }
 

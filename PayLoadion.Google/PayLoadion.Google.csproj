@@ -5,11 +5,11 @@
     <MinimumVisualStudioVersion>10.0</MinimumVisualStudioVersion>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{475B3427-FEAB-48B3-B86B-773DB2690614}</ProjectGuid>
+    <ProjectGuid>{EA392F12-6B71-40F4-9EF8-6333A28D010D}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>PayLoadion.Apple</RootNamespace>
-    <AssemblyName>PayLoadion.Apple</AssemblyName>
+    <RootNamespace>PayLoadion.Google</RootNamespace>
+    <AssemblyName>PayLoadion.Google</AssemblyName>
     <DefaultLanguage>en-US</DefaultLanguage>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{786C830F-07A1-408B-BD7F-6EE04809D6DB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
@@ -36,25 +36,27 @@
   <ItemGroup>
     <!-- A reference to the entire .NET Framework is automatically included -->
     <ProjectReference Include="..\PayLoadion\PayLoadion.csproj">
-      <Project>{9d5b284e-bc51-4e59-b4f0-ac979386fc06}</Project>
+      <Project>{9D5B284E-BC51-4E59-B4F0-AC979386FC06}</Project>
       <Name>PayLoadion</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Exceptions\Alert\ApnsAlertBuilderException.cs" />
-    <Compile Include="Exceptions\ApnsPayloadBuilderException.cs" />
-    <Compile Include="Factories\AlertBuilderFactory.cs" />
-    <Compile Include="Factories\ApnsPayLoadBuilderFactory.cs" />
-    <Compile Include="PayLoadBuilder\ApnsPayLoadBuilderImplementation.cs" />
-    <Compile Include="PayLoadBuilder\IApnsPayLoadBuilder.cs" />
-    <Compile Include="PayLoad\Alert\ApnsAlertImplementation.cs" />
-    <Compile Include="PayLoad\Alert\Builder\ApnsAlertBuilderImplementation.cs" />
-    <Compile Include="PayLoad\Alert\Builder\IApnsAlertBuilder.cs" />
-    <Compile Include="PayLoad\Alert\IApnsAlert.cs" />
-    <Compile Include="PayLoad\ApnsPayLoadImplementation.cs" />
-    <Compile Include="PayLoad\IApnsPayLoad.cs" />
+    <Compile Include="Exceptions\GcmNotificationBuilderException.cs" />
+    <Compile Include="Exceptions\GcmPayLoadBuilderException.cs" />
+    <Compile Include="Factories\GcmPayLoadBuilderFactory.cs" />
+    <Compile Include="Factories\GcmNotificationBuilderFactory.cs" />
+    <Compile Include="PayLoadBuilder\GcmPayLoadBuilderImplementation.cs" />
+    <Compile Include="PayLoadBuilder\IGcmPayLoadBuilder.cs" />
+    <Compile Include="PayLoad\Enums\GcmPriorityEnum.cs" />
+    <Compile Include="PayLoad\GcmPayLoadImplementation.cs" />
+    <Compile Include="PayLoad\IGcmPayLoad.cs" />
+    <Compile Include="PayLoad\Notification\Builder\GcmNotificationBuilderImplementation.cs" />
+    <Compile Include="PayLoad\Notification\Builder\IGcmNotificationBuilder.cs" />
+    <Compile Include="PayLoad\Notification\GcmNotificationImplementation.cs" />
+    <Compile Include="PayLoad\Notification\IGcmNotification.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Reference Include="Newtonsoft.Json, Version=8.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\Newtonsoft.Json.8.0.3\lib\portable-net40+sl5+wp80+win8+wpa81\Newtonsoft.Json.dll</HintPath>
@@ -64,7 +66,6 @@
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

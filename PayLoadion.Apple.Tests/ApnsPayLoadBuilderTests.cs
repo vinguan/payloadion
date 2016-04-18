@@ -1,11 +1,9 @@
 ﻿using System;
-using System.Diagnostics;
 using System.Threading.Tasks;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using PayLoadion.Apple.Factories;
 using PayLoadion.Apple.PayLoadBuilder;
 using PayLoadion.Apple.Tests.Models;
-using PayLoadion.Builder;
 
 namespace PayLoadion.Apple.Tests
 {
@@ -20,7 +18,7 @@ namespace PayLoadion.Apple.Tests
 
                 IApnsPayLoadBuilder apnsPayLoad = ApnsPayLoadBuilderFactory.CreateApnsPayLoadBuilder()
                                                   .AlertMessage("Hello Payloadion")
-                                                  .Badge(1);
+                                                  .BadgeCount(1);
 
                 var apnsPayLoadString = apnsPayLoad.Build();
 
@@ -43,7 +41,7 @@ namespace PayLoadion.Apple.Tests
 
                 IApnsPayLoadBuilder apnsPayLoad = ApnsPayLoadBuilderFactory.CreateApnsPayLoadBuilder()
                                                   .AlertMessage("Hello Payloadion")
-                                                  .Badge(1);
+                                                  .BadgeCount(1);
 
                 var apnsPayLoadString = await apnsPayLoad.BuildAsync();
 
@@ -64,9 +62,9 @@ namespace PayLoadion.Apple.Tests
             try
             {
 
-                IApnsPayLoadBuilder apnsPayLoad = ApnsPayLoadBuilderFactory.CreateApnsPayLoadBuilder()
+                var apnsPayLoad = ApnsPayLoadBuilderFactory.CreateApnsPayLoadBuilder()
                                                   .AlertMessage("Hello Payloadion")
-                                                  .Badge(1)
+                                                  .BadgeCount(1)
                                                   .AddCustomData("id", "123")
                                                   .AddCustomData("id2", 12)
                                                   .AddCustomData("customDataObject", new CustomDataObject() { Id = "12" })
@@ -91,9 +89,9 @@ namespace PayLoadion.Apple.Tests
             try
             {
 
-                IApnsPayLoadBuilder apnsPayLoad = ApnsPayLoadBuilderFactory.CreateApnsPayLoadBuilder()
+                var apnsPayLoad = ApnsPayLoadBuilderFactory.CreateApnsPayLoadBuilder()
                                                   .AlertMessage("Hello Payloadion")
-                                                  .Badge(1)
+                                                  .BadgeCount(1)
                                                   .AddCustomData("id", "123")
                                                   .AddCustomData("id2", 12)
                                                   .AddCustomData("customDataObject", new CustomDataObject() { Id = "12" })
@@ -121,15 +119,15 @@ namespace PayLoadion.Apple.Tests
                 var alertBuilder = AlertBuilderFactory.CreateAlertBuilder()
                                   .Title("Simple Custom Alert Message")
                                   .Body("Teste")
-                                  .LaunchImageFileName("123");
+                                  .LaunchImageFileName("sampleimage");
 
                 var alert = alertBuilder.Build();
 
-                IApnsPayLoadBuilder apnsPayLoad = ApnsPayLoadBuilderFactory.CreateApnsPayLoadBuilder()
+                var apnsPayLoad = ApnsPayLoadBuilderFactory.CreateApnsPayLoadBuilder()
                                                   .Alert(alert)
-                                                  .Badge(1)
+                                                  .BadgeCount(1)
                                                   .SoundName("aperture.caf")
-                                                  .CategoryName("Test")
+                                                  .CategoryIdentifier("Test")
                                                   .IsContentAvailable(true)
                                                   .AddCustomData("Id", "123")
                                                   .AddCustomData("Id2", 12)
@@ -137,6 +135,43 @@ namespace PayLoadion.Apple.Tests
                                                   .AddCustomData("Load", new { valuex = 1 });
 
                 var apnsPayLoadString = apnsPayLoad.Build();
+
+                Console.WriteLine(apnsPayLoadString);
+
+                Assert.IsNotNull(apnsPayLoadString);
+            }
+            catch (Exception ex)
+            {
+                Assert.Fail(ex.Message);
+            }
+
+        }
+
+        [TestMethod]
+        public async Task ShouldBuildApnsPayLoadWithCustomAlertAsync()
+        {
+            try
+            {
+
+                var alertBuilder = AlertBuilderFactory.CreateAlertBuilder()
+                                  .Title("Simple Custom Alert Message")
+                                  .Body("Teste")
+                                  .LaunchImageFileName("sampleimage");
+
+                var alert = await alertBuilder.BuildAsync();
+
+                var apnsPayLoad = ApnsPayLoadBuilderFactory.CreateApnsPayLoadBuilder()
+                                                  .Alert(alert)
+                                                  .BadgeCount(1)
+                                                  .SoundName("aperture.caf")
+                                                  .CategoryIdentifier("Test")
+                                                  .IsContentAvailable(true)
+                                                  .AddCustomData("Id", "123")
+                                                  .AddCustomData("Id2", 12)
+                                                  .AddCustomData("CustomDataObject", new CustomDataObject() { Id = "12" })
+                                                  .AddCustomData("Load", new { valuex = 1 });
+
+                var apnsPayLoadString = await apnsPayLoad.BuildAsync();
 
                 Console.WriteLine(apnsPayLoadString);
 
@@ -165,20 +200,20 @@ namespace PayLoadion.Apple.Tests
                                   .LocalizableKey("LocKeyTest")
                                   .AddLocalizableArgument("LocKeyTestarg1")
                                   .AddLocalizableArgument("LocKeyTestarg2")
-                                  .LaunchImageFileName("123");
+                                  .LaunchImageFileName("sampleimage");
 
                 var alert = alertBuilder.Build();
 
-                IApnsPayLoadBuilder apnsPayLoad = ApnsPayLoadBuilderFactory.CreateApnsPayLoadBuilder()
-                                                  .Alert(alert)
-                                                  .Badge(1)
-                                                  .SoundName("aperture.caf")
-                                                  .IsContentAvailable(true)
-                                                  .CategoryName("Test")
-                                                  .AddCustomData("Id", "123")
-                                                  .AddCustomData("Id2", 12)
-                                                  .AddCustomData("CustomDataObject", new CustomDataObject() { Id = "12" })
-                                                  .AddCustomData("Load", new { valuex = 1 });
+                var apnsPayLoad = ApnsPayLoadBuilderFactory.CreateApnsPayLoadBuilder()
+                                                          .Alert(alert)
+                                                          .BadgeCount(1)
+                                                          .SoundName("aperture.caf")
+                                                          .IsContentAvailable(true)
+                                                          .CategoryIdentifier("Test")
+                                                          .AddCustomData("Id", "123")
+                                                          .AddCustomData("Id2", 12)
+                                                          .AddCustomData("CustomDataObject", new CustomDataObject() { Id = "12" })
+                                                          .AddCustomData("Load", new { valuex = 1 });
 
                 var apnsPayLoadString = apnsPayLoad.Build();
 

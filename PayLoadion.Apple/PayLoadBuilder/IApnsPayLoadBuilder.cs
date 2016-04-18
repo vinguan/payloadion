@@ -8,11 +8,10 @@ namespace PayLoadion.Apple.PayLoadBuilder
     public interface IApnsPayLoadBuilder : IPayLoadBuilder<IApnsPayLoad>, IDisposable
     {
         IApnsPayLoadBuilder AlertMessage(string alertMessage);
-        IApnsPayLoadBuilder Alert(IAlert alert);
+        IApnsPayLoadBuilder Alert(IApnsAlert apnsAlert);
         IApnsPayLoadBuilder SoundName(string soundName);
-        IApnsPayLoadBuilder Badge(int badge);
+        IApnsPayLoadBuilder BadgeCount(int badgeCount);
         IApnsPayLoadBuilder IsContentAvailable(bool isContentAvailable);
-        IApnsPayLoadBuilder CategoryName(string categoryName);
-        IApnsPayLoadBuilder AddCustomData(string customDataKey, object customDataValue);
+        IApnsPayLoadBuilder CategoryIdentifier(string categoryIdentifier);
     }
 }

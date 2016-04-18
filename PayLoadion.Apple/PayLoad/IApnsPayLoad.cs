@@ -1,13 +1,11 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using PayLoadion.Apple.PayLoad.Alert;
+﻿using PayLoadion.Apple.PayLoad.Alert;
 using PayLoadion.PayLoad;
 
 namespace PayLoadion.Apple.PayLoad
 {
     public interface IApnsPayLoad : IPayLoad
     {
-        IAlert Alert { get; }
+        IApnsAlert Alert { get; }
 
         string AlertMessage { get; }
 

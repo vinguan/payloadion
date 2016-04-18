@@ -4,7 +4,7 @@ using Newtonsoft.Json;
 namespace PayLoadion.Apple.PayLoad.Alert
 {
     [JsonObject(MemberSerialization.OptIn)]
-    internal class AlertImplementation : IAlert
+    internal class ApnsAlertImplementation : IApnsAlert
     {
         private List<string> _internalTitleLocArgs;
 
@@ -19,7 +19,7 @@ namespace PayLoadion.Apple.PayLoad.Alert
         [JsonProperty(PropertyName = "title-loc-key", NullValueHandling = NullValueHandling.Ignore)]
         public string TitleLocKey { get; set; }
 
-        public List<string> InternalTitleLocArgs
+        internal List<string> InternalTitleLocArgs
         {
             get { return _internalTitleLocArgs ?? (_internalTitleLocArgs = new List<string>()); }
         }
@@ -36,7 +36,7 @@ namespace PayLoadion.Apple.PayLoad.Alert
         [JsonProperty(PropertyName = "loc-key", NullValueHandling = NullValueHandling.Ignore)]
         public string LocKey { get; set; }
 
-        public List<string> InternalLocArgs
+        internal List<string> InternalLocArgs
         {
             get { return _internalLocArgs ?? (_internalLocArgs = new List<string>()); }
         }
@@ -50,28 +50,28 @@ namespace PayLoadion.Apple.PayLoad.Alert
         [JsonProperty(PropertyName = "launch-image", NullValueHandling = NullValueHandling.Ignore)]
         public string LaunchImage { get; set; }
 
-        public AlertImplementation()
+        internal ApnsAlertImplementation()
         {
               
         }
 
-        public AlertImplementation(IAlert alert)
+        internal ApnsAlertImplementation(IApnsAlert apnsAlert)
         {
-            Title = alert.Title;
+            Title = apnsAlert.Title;
 
-            Body = alert.Body;
+            Body = apnsAlert.Body;
 
-            TitleLocKey = alert.TitleLocKey;
+            TitleLocKey = apnsAlert.TitleLocKey;
 
-            _internalTitleLocArgs = new List<string>(alert.TitleLocArgs);
+            _internalTitleLocArgs = new List<string>(apnsAlert.TitleLocArgs);
 
-            ActionLocKey = alert.ActionLocKey;
+            ActionLocKey = apnsAlert.ActionLocKey;
 
-            LocKey = alert.LocKey;
+            LocKey = apnsAlert.LocKey;
 
-            _internalLocArgs = new List<string>(alert.LocArgs);
+            _internalLocArgs = new List<string>(apnsAlert.LocArgs);
 
-            LaunchImage = alert.LaunchImage;
+            LaunchImage = apnsAlert.LaunchImage;
         }
     }
 }
