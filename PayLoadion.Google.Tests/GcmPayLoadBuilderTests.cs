@@ -16,7 +16,12 @@ namespace PayLoadion.Google.Tests
                 var gcmPayLoadBuilder = GcmPayLoadBuilderFactory.CreateGcmPayLoadBuilder()
                                        .ToDevice("idtest")
                                        .Priority(GcmPriorityEnum.Normal)
-                                       .AddCustomData("testeData", "123");
+                                       //.AddCustomData("testeData", "123");
+                                       .Notification(GcmNotificationBuilderFactory.CreateGcmNotificationBuilder()
+                                                     .Title("")
+                                                     .Body("")
+                                                     .IconFileName("")
+                                                     .Build());
 
                 var gcmPayLoadString = gcmPayLoadBuilder.Build();
 
