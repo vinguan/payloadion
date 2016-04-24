@@ -1,5 +1,5 @@
 ﻿using System;
-using PayLoadion.Google.PayLoad.Notification;
+using PayLoadion.Google.PayLoad.GcmNotification;
 
 namespace PayLoadion.Google.Exceptions
 {

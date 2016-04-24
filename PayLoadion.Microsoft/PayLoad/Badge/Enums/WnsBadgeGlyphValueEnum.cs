@@ -1,6 +1,6 @@
 namespace PayLoadion.Microsoft.PayLoad.Badge.Enums
 {
-    public enum WnsBadgeValueEnum
+    public enum WnsBadgeGlyphValueEnum
     {
         None,
         Activity,

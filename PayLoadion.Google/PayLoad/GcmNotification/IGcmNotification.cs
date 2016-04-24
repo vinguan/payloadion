@@ -1,8 +1,9 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
-namespace PayLoadion.Google.PayLoad.Notification
+namespace PayLoadion.Google.PayLoad.GcmNotification
 {
-    public interface IGcmNotification
+    public interface IGcmNotification : IDisposable
     {
         string Title { get; }
 

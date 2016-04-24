@@ -1,6 +1,6 @@
 ﻿using System.Runtime.Serialization;
 
-namespace PayLoadion.Google.PayLoad.Enums
+namespace PayLoadion.Google.GcmDownStreamHttpJsonMessage.Message.Enums
 {
     public enum GcmPriorityEnum
     {

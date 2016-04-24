@@ -1,7 +1,7 @@
 ﻿using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using PayLoadion.Google.Factories;
-using PayLoadion.Google.PayLoad.Enums;
+using PayLoadion.Google.GcmDownStreamHttpJsonMessage.Message.Enums;
 
 namespace PayLoadion.Google.Tests
 {
@@ -13,17 +13,17 @@ namespace PayLoadion.Google.Tests
         {
             try
             {
-                var gcmPayLoadBuilder = GcmPayLoadBuilderFactory.CreateGcmPayLoadBuilder()
-                                       .ToDevice("idtest")
-                                       .Priority(GcmPriorityEnum.Normal)
-                                       //.AddCustomData("testeData", "123");
-                                       .Notification(GcmNotificationBuilderFactory.CreateGcmNotificationBuilder()
-                                                     .Title("")
-                                                     .Body("")
-                                                     .IconFileName("")
-                                                     .Build());
-
-                var gcmPayLoadString = gcmPayLoadBuilder.Build();
+                var gcmPayLoadString = GcmPayLoadBuilderFactory.Create().Notification()
+                                       .Title("Message")
+                                       .Icon("defaulticon")
+                                       .Body("124")
+                                       .BodyLocalizableKey("123")
+                                       .AddBodyLocalizableArgument("124")
+                                       .TitleLocalizableKey("123")
+                                       .AddTitleLocalizableArgument("123")
+                                       .AddCustomData("123","123")
+                                       .BuildPayLoadToString(true);
+                                 
 
                 Console.WriteLine(gcmPayLoadString);
 
@@ -33,8 +33,37 @@ namespace PayLoadion.Google.Tests
             {
                 Console.WriteLine(ex.Message);
 
-                Assert.IsNotNull(ex.Message);
+                Assert.Fail(ex.Message);
             }
         }
+
+        [TestMethod]
+        public void ShouldBuildSimpleGcmDownStremMessage()
+        {
+            try
+            {
+                var gcmmessage = GcmDownStreamHttpJsonMessageBuilderFactory.Create()
+                                .ToDevice("123")
+                                .Priority(GcmPriorityEnum.Normal)
+                                .TimeToLiveUntil(DateTimeOffset.Now.AddMonths(1))
+                                .IsDryRun(true)
+                                .PayLoad()
+                                .Notification()
+                                .Title("Message")
+                                .Icon("defaulticon")
+                                .AddCustomData("123", "123");
+
+
+                Console.WriteLine(gcmmessage.BuildDownStreamJson());
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+
+                Assert.Fail(ex.Message);
+            }
+        }
+
+
     }
 }

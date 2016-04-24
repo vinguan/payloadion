@@ -43,13 +43,10 @@
   <ItemGroup>
     <Compile Include="Exceptions\Alert\ApnsAlertBuilderException.cs" />
     <Compile Include="Exceptions\ApnsPayloadBuilderException.cs" />
-    <Compile Include="Factories\AlertBuilderFactory.cs" />
     <Compile Include="Factories\ApnsPayLoadBuilderFactory.cs" />
     <Compile Include="PayLoadBuilder\ApnsPayLoadBuilderImplementation.cs" />
     <Compile Include="PayLoadBuilder\IApnsPayLoadBuilder.cs" />
     <Compile Include="PayLoad\Alert\ApnsAlertImplementation.cs" />
-    <Compile Include="PayLoad\Alert\Builder\ApnsAlertBuilderImplementation.cs" />
-    <Compile Include="PayLoad\Alert\Builder\IApnsAlertBuilder.cs" />
     <Compile Include="PayLoad\Alert\IApnsAlert.cs" />
     <Compile Include="PayLoad\ApnsPayLoadImplementation.cs" />
     <Compile Include="PayLoad\IApnsPayLoad.cs" />

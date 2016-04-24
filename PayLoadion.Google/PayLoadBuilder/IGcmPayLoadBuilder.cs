@@ -1,23 +1,55 @@
-﻿using System;
-using PayLoadion.Google.PayLoad;
-using PayLoadion.Google.PayLoad.Enums;
-using PayLoadion.Google.PayLoad.Notification;
+using System;
 using PayLoadion.PayLoadBuilder;
+using PayLoadion.Google.PayLoad;
 
 namespace PayLoadion.Google.PayLoadBuilder
 {
     public interface IGcmPayLoadBuilder : IPayLoadBuilder<IGcmPayLoad>, IDisposable
     {
-        IGcmPayLoadBuilder ToDevice(string stringDeviceId);
-        IGcmPayLoadBuilder AddDeviceId(string stringDeviceId);
-        IGcmPayLoadBuilder CollapseKey(string collapseKey);
-        IGcmPayLoadBuilder Priority(GcmPriorityEnum priority);
-        IGcmPayLoadBuilder IsContentAvailable(bool isContentAvailable);
-        IGcmPayLoadBuilder DelayWhileIdle(bool delayWhileIdle);
-        IGcmPayLoadBuilder TimeToLiveInSeconds(int seconds);
-        IGcmPayLoadBuilder TimeToLiveUntil(DateTimeOffset limitDate);
-        IGcmPayLoadBuilder RestrictedPackageName(string restrictedPackageName);
-        IGcmPayLoadBuilder IsDryRun(bool isDryRun);
-        IGcmPayLoadBuilder Notification(IGcmNotification gcmNotification);
+       
+    }
+
+    public interface IGcmPayLoadBuilderNotification : IGcmPayLoadBuilder
+    {
+        IGcmPayLoadBuilderNotificationTitle Notification();
+    }
+
+    public interface IGcmPayLoadBuilderNotificationTitle 
+    {
+        IGcmPayLoadBuilderNotificationIcon Title(string title);
+    }
+
+    public interface IGcmPayLoadBuilderNotificationIcon
+    {
+        IGcmPayLoadBuilderNotificationOptions Icon(string iconFileName);
+    }
+
+    public interface IGcmPayLoadBuilderNotificationOptions : IGcmPayLoadBuilder
+    {
+        IGcmPayLoadBuilderNotificationOptions Body(string body);
+
+        IGcmPayLoadBuilderNotificationOptions SoundFileName(string soundFileName);
+
+        IGcmPayLoadBuilderNotificationOptions BadgeCount(string badgeCount);
+
+        IGcmPayLoadBuilderNotificationOptions Tag(string tag);
+
+        IGcmPayLoadBuilderNotificationOptions Color(string color);
+
+        IGcmPayLoadBuilderNotificationOptions ClickAction(string clickAction);
+
+        IGcmPayLoadBuilderNotificationBodyLocalizableArgs BodyLocalizableKey(string bodyLocalizableKey);
+    }
+
+    public interface IGcmPayLoadBuilderNotificationBodyLocalizableArgs : IGcmPayLoadBuilder
+    {
+        IGcmPayLoadBuilderNotificationBodyLocalizableArgs AddBodyLocalizableArgument(string bodyLocArgument);
+
+        IGcmPayLoadBuilderNotificationTitleLocalizableArgs TitleLocalizableKey(string titleLocalizableKey);
+    }
+
+    public interface IGcmPayLoadBuilderNotificationTitleLocalizableArgs : IGcmPayLoadBuilder
+    {
+        IGcmPayLoadBuilderNotificationTitleLocalizableArgs AddTitleLocalizableArgument(string titleLocArgument);
     }
 }

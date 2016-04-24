@@ -5,12 +5,12 @@ namespace PayLoadion.Google.Factories
 {
     public static class GcmPayLoadBuilderFactory
     {
-        public static IGcmPayLoadBuilder CreateGcmPayLoadBuilder()
+        public static IGcmPayLoadBuilderNotification Create()
         {
             return new GcmPayLoadBuilderImplementation();
         }
 
-        public static IGcmPayLoadBuilder CreateGcmPayLoadBuilder(IGcmPayLoad gcmPayLoad)
+        public static IGcmPayLoadBuilderNotification Create(IGcmPayLoad gcmPayLoad)
         {
             return new GcmPayLoadBuilderImplementation(gcmPayLoad);
         }

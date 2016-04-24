@@ -43,17 +43,19 @@
   <ItemGroup>
     <Compile Include="Exceptions\GcmNotificationBuilderException.cs" />
     <Compile Include="Exceptions\GcmPayLoadBuilderException.cs" />
+    <Compile Include="Factories\GcmDownStreamHttpJsonMessageBuilderFactory.cs" />
     <Compile Include="Factories\GcmPayLoadBuilderFactory.cs" />
-    <Compile Include="Factories\GcmNotificationBuilderFactory.cs" />
-    <Compile Include="PayLoadBuilder\GcmPayLoadBuilderImplementation.cs" />
+    <Compile Include="GcmDownStreamHttpJsonMessage\Builder\GcmDownStreamHttpJsonMessageBuilderImplementation.cs" />
+    <Compile Include="GcmDownStreamHttpJsonMessage\Builder\IGcmDownStreamHttpJsonMessageBuilder.cs" />
+    <Compile Include="GcmDownStreamHttpJsonMessage\Message\Enums\GcmPriorityEnum.cs" />
+    <Compile Include="GcmDownStreamHttpJsonMessage\Message\GcmDownStreamHttpJsonMessageImplementation.cs" />
+    <Compile Include="GcmDownStreamHttpJsonMessage\Message\IGcmDownStreamHttpJsonMessage.cs" />
+    <Compile Include="PayLoadBuilder\GcmPayLoadBuilderNotificationImplementation.cs" />
     <Compile Include="PayLoadBuilder\IGcmPayLoadBuilder.cs" />
-    <Compile Include="PayLoad\Enums\GcmPriorityEnum.cs" />
+    <Compile Include="PayLoad\GcmNotification\GcmNotificationImplementation.cs" />
+    <Compile Include="PayLoad\GcmNotification\IGcmNotification.cs" />
     <Compile Include="PayLoad\GcmPayLoadImplementation.cs" />
     <Compile Include="PayLoad\IGcmPayLoad.cs" />
-    <Compile Include="PayLoad\Notification\Builder\GcmNotificationBuilderImplementation.cs" />
-    <Compile Include="PayLoad\Notification\Builder\IGcmNotificationBuilder.cs" />
-    <Compile Include="PayLoad\Notification\GcmNotificationImplementation.cs" />
-    <Compile Include="PayLoad\Notification\IGcmNotification.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup />

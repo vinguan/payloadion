@@ -1,5 +1,5 @@
 using PayLoadion.Apple.PayLoad.Alert;
-using PayLoadion.Apple.PayLoad.Alert.Builder;
+using PayLoadion.Apple.PayLoadBuilder.Alert;
 
 namespace PayLoadion.Apple.Factories
 {

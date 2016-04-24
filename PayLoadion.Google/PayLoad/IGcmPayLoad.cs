@@ -1,30 +1,11 @@
-﻿using System.Collections.Generic;
-using PayLoadion.Google.PayLoad.Enums;
-using PayLoadion.Google.PayLoad.Notification;
+﻿using System;
+using PayLoadion.Google.PayLoad.GcmNotification;
 using PayLoadion.PayLoad;
 
 namespace PayLoadion.Google.PayLoad
 {
-    public interface IGcmPayLoad : IPayLoad
+    public interface IGcmPayLoad : IPayLoad, IDisposable
     {
-        string To { get; }
-
-        IReadOnlyList<string> RegistrationIds { get; }
-
-        string CollapseKey { get; }
-
-        GcmPriorityEnum Priority { get; }
-
-        bool? ContentAvailable { get; }
-
-        bool? DelayWhileIdle { get; }
-
-        int? TimeToLive { get; }
-
-        string RestrictedPackageName { get; }
-
-        bool? DryRun { get; }
-
         IGcmNotification Notification { get; }
     }
 }

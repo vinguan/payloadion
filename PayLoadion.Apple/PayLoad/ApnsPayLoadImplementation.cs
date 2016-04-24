@@ -22,7 +22,12 @@ namespace PayLoadion.Apple.PayLoad
             }
         }
 
-        public IApnsAlert Alert { get; set; }
+        public IApnsAlert Alert
+        {
+            get { return AlertImplementation; }
+        }
+
+        internal ApnsAlertImplementation AlertImplementation { get; set; }
 
         public string AlertMessage { get; set; }
 
@@ -50,12 +55,14 @@ namespace PayLoadion.Apple.PayLoad
 
         internal ApnsPayLoadImplementation()
         {
-
+            AlertMessage = null;
         }
 
         internal ApnsPayLoadImplementation(IApnsPayLoad apnsPayLoad)
         {
-            Alert = apnsPayLoad.Alert;
+            AlertImplementation = new ApnsAlertImplementation(apnsPayLoad.Alert);
+
+            AlertMessage = apnsPayLoad.AlertMessage;
 
             Badge = apnsPayLoad.Badge;
 

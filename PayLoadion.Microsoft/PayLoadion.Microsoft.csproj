@@ -41,18 +41,27 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="PayLoadBuilder\WnsPayLoadBuilder.cs" />
     <Compile Include="PayLoad\Audiable\IWnsAudiablePayLoad.cs" />
     <Compile Include="PayLoad\Badge\IWnsBadgePayLoad.cs" />
     <Compile Include="PayLoad\IWnsPayLoad.cs" />
     <Compile Include="PayLoad\Tile\IWnsTilePayLoad.cs" />
     <Compile Include="PayLoad\Toast\IWnsToastPayLoad.cs" />
-    <Compile Include="PayLoad\Badge\Enums\WnsBadgeValueEnum.cs" />
+    <Compile Include="PayLoad\Badge\Enums\WnsBadgeGlyphValueEnum.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Exceptions\" />
     <Folder Include="Factories\" />
-    <Folder Include="PayLoadBuilder\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="NotificationsExtensions.Win10.Portable, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\NotificationsExtensions.Win10.14295.0.1\lib\portable-net45+sl50+win+wpa81+wp80\NotificationsExtensions.Win10.Portable.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

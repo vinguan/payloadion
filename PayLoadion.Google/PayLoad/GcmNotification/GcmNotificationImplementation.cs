@@ -1,9 +1,9 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using Newtonsoft.Json;
 
-namespace PayLoadion.Google.PayLoad.Notification
+namespace PayLoadion.Google.PayLoad.GcmNotification
 {
-    [JsonObject(MemberSerialization.OptIn)]
     internal class GcmNotificationImplementation : IGcmNotification
     {
         private List<string> _internalBodyLocArgs;
@@ -64,7 +64,7 @@ namespace PayLoadion.Google.PayLoad.Notification
 
         internal GcmNotificationImplementation()
         {
-                
+
         }
 
         internal GcmNotificationImplementation(IGcmNotification gcmNotification)
@@ -87,11 +87,22 @@ namespace PayLoadion.Google.PayLoad.Notification
 
             BodyLocKey = gcmNotification.BodyLocKey;
 
-            _internalTitleLocArgs = new List<string>(gcmNotification.BodyLocArgs);
+            _internalBodyLocArgs = new List<string>(gcmNotification.BodyLocArgs);
 
             TitleLocKey = gcmNotification.TitleLocKey;
 
             _internalTitleLocArgs = new List<string>(gcmNotification.TitleLocArgs);
         }
+
+        #region Implementation of IDisposable
+
+        public void Dispose()
+        {
+            _internalBodyLocArgs = null;
+
+            _internalBodyLocArgs = null;
+        }
+
+        #endregion
     }
 }

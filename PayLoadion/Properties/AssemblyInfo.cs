@@ -5,9 +5,9 @@ using System.Reflection;
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
 [assembly: AssemblyTitle("PayLoadion")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyDescription("Core fluent interfaces for building Payloads")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("")]
+[assembly: AssemblyCompany("Vinicius Gualberto - @vinguan")]
 [assembly: AssemblyProduct("PayLoadion")]
 [assembly: AssemblyCopyright("Copyright ©  2016")]
 [assembly: AssemblyTrademark("")]

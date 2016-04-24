@@ -1,8 +1,9 @@
 ﻿using System;
 using System.Threading.Tasks;
 using PayLoadion.Apple.Exceptions.Alert;
+using PayLoadion.Apple.PayLoad.Alert;
 
-namespace PayLoadion.Apple.PayLoad.Alert.Builder
+namespace PayLoadion.Apple.PayLoadBuilder.Alert
 {
     internal class ApnsAlertBuilderImplementation : IApnsAlertBuilder
     {
