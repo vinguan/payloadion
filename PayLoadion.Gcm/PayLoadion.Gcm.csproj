@@ -5,11 +5,11 @@
     <MinimumVisualStudioVersion>10.0</MinimumVisualStudioVersion>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{9D5B284E-BC51-4E59-B4F0-AC979386FC06}</ProjectGuid>
+    <ProjectGuid>{EA392F12-6B71-40F4-9EF8-6333A28D010D}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>PayLoadion</RootNamespace>
-    <AssemblyName>PayLoadion</AssemblyName>
+    <RootNamespace>PayLoadion.Gcm</RootNamespace>
+    <AssemblyName>PayLoadion.Gcm</AssemblyName>
     <DefaultLanguage>en-US</DefaultLanguage>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{786C830F-07A1-408B-BD7F-6EE04809D6DB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
@@ -24,7 +24,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <DocumentationFile>bin\Debug\PayLoadion.XML</DocumentationFile>
+    <DocumentationFile>bin\Debug\PayLoadion.Gcm.XML</DocumentationFile>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -33,15 +33,42 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <DocumentationFile>bin\Release\PayLoadion.XML</DocumentationFile>
+    <DocumentationFile>bin\Release\PayLoadion.Gcm.XML</DocumentationFile>
   </PropertyGroup>
   <ItemGroup>
     <!-- A reference to the entire .NET Framework is automatically included -->
+    <ProjectReference Include="..\PayLoadion\PayLoadion.csproj">
+      <Project>{9D5B284E-BC51-4E59-B4F0-AC979386FC06}</Project>
+      <Name>PayLoadion</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="PayLoad\IPayLoad.cs" />
-    <Compile Include="PayLoadBuilder\IPayLoadBuilder.cs" />
+    <Compile Include="Exceptions\GcmDownStreamHttpMessageBuilderException.cs" />
+    <Compile Include="Exceptions\GcmPayLoadBuilderException.cs" />
+    <Compile Include="Factories\GcmDownStreamHttpMessageBuilderFactory.cs" />
+    <Compile Include="Factories\GcmPayLoadBuilderFactory.cs" />
+    <Compile Include="GcmDownStreamHttpMessage\Builder\GcmDownStreamHttpMessageBuilderImplementation.cs" />
+    <Compile Include="GcmDownStreamHttpMessage\Builder\IGcmDownStreamHttpMessageBuilder.cs" />
+    <Compile Include="GcmDownStreamHttpMessage\Message\Enums\GcmPriorityEnum.cs" />
+    <Compile Include="GcmDownStreamHttpMessage\Message\GcmDownStreamHttpMessageImplementation.cs" />
+    <Compile Include="GcmDownStreamHttpMessage\Message\IGcmDownStreamHttpMessage.cs" />
+    <Compile Include="PayLoadBuilder\GcmPayLoadBuilderImplementation.cs" />
+    <Compile Include="PayLoadBuilder\IGcmPayLoadBuilder.cs" />
+    <Compile Include="PayLoad\GcmNotification\GcmNotificationImplementation.cs" />
+    <Compile Include="PayLoad\GcmNotification\IGcmNotification.cs" />
+    <Compile Include="PayLoad\GcmPayLoadImplementation.cs" />
+    <Compile Include="PayLoad\IGcmPayLoad.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <Reference Include="Newtonsoft.Json, Version=8.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.8.0.3\lib\portable-net40+sl5+wp80+win8+wpa81\Newtonsoft.Json.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
