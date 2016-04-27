@@ -5,7 +5,7 @@ using System.Reflection;
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
 [assembly: AssemblyTitle("PayLoadion")]
-[assembly: AssemblyDescription("Core fluent interfaces for building Payloads")]
+[assembly: AssemblyDescription("Core fluent interfaces of PayLoadion for building payloads")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Vinicius Gualberto - @vinguan")]
 [assembly: AssemblyProduct("PayLoadion")]

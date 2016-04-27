@@ -31,7 +31,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "2.3 - Microsoft", "2.3 - Mi
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "1.2 - Google", "1.2 - Google", "{B22D6434-5117-4AEB-AA6A-02DCBAC9B5F4}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "1.3 - PayLoadion.Microsoft", "1.3 - PayLoadion.Microsoft", "{5863C054-E057-4772-B2B1-6F90C541BA9D}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "1.3 - Microsoft", "1.3 - Microsoft", "{5863C054-E057-4772-B2B1-6F90C541BA9D}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "APNS - Apple Push Notification Service", "APNS - Apple Push Notification Service", "{D085AFAF-50DC-4719-8507-05BD76432F57}"
 EndProject
