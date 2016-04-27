@@ -4,10 +4,13 @@ using PayLoadion.Gcm.GcmDownStreamHttpMessage.Builder;
 namespace PayLoadion.Gcm.Exceptions
 {
     /// <summary>
-    /// Exception for <see cref="IGcmDownStreamHttpMessageBuilder"/>
+    /// Exception for <see cref="IGcmDownStreamHttpMessageFinalBuilder"/>
     /// </summary>
     public class GcmDownStreamHttpMessageBuilderException : Exception
     {
+        #region Constructors
+
+        #region Public Constructors
         /// <summary>
         /// Inits a new instance of <see cref="GcmDownStreamHttpMessageBuilderException"/>
         /// </summary>
@@ -17,5 +20,8 @@ namespace PayLoadion.Gcm.Exceptions
         {
 
         }
+        #endregion Public Constructors
+
+        #endregion Constructors
     }
 }

@@ -9,8 +9,17 @@ namespace PayLoadion.Gcm.PayLoad
     [JsonObject(MemberSerialization.OptIn)]
     internal class GcmPayLoadImplementation : IGcmPayLoad
     {
+        #region Fields
         private Dictionary<string, object> _internalCustomData;
+        #endregion Fields
 
+        #region Properties
+
+        #region Private Properties
+
+        #endregion Private Properties
+
+        #region Public Properties
         [JsonProperty(PropertyName = "notification", NullValueHandling = NullValueHandling.Ignore)]
         public IGcmNotification Notification
         {
@@ -23,13 +32,39 @@ namespace PayLoadion.Gcm.PayLoad
             get { return _internalCustomData; }
         }
 
+        
+        #endregion Public Properties
+
+        #region Protected Properties
+
+        #endregion Protected Properties
+
+        #region Internal Properties
         internal Dictionary<string, object> InternalCustomData
         {
             get { return _internalCustomData ?? (_internalCustomData = new Dictionary<string, object>()); }
         }
 
-        public GcmNotificationImplementation GcmNotificationImplementation { get; set; }
+        internal GcmNotificationImplementation GcmNotificationImplementation { get; set; }
+        #endregion Internal Properties
 
+        #endregion Properties
+
+        #region Constructors
+
+        #region Private Constructors
+
+        #endregion Private Constructors
+
+        #region Public Constructors
+
+        #endregion Public Constructors
+
+        #region Protected Constructors
+
+        #endregion Protected Constructors
+
+        #region Internal Constructors
         internal GcmPayLoadImplementation()
         {
             GcmNotificationImplementation = new GcmNotificationImplementation();
@@ -45,6 +80,19 @@ namespace PayLoadion.Gcm.PayLoad
 
             GcmNotificationImplementation = new GcmNotificationImplementation(gcmPayLoad.Notification);
         }
+        #endregion Internal Constructors
+
+        #endregion Constructors
+
+        #region Methods
+
+        #region Private Methods
+
+        #endregion Private Methods
+
+        #region Public Methods
+
+        #region Implementation of IDisposable
 
         public void Dispose()
         {
@@ -56,5 +104,19 @@ namespace PayLoadion.Gcm.PayLoad
 
             GC.SuppressFinalize(this);
         }
+
+        #endregion
+
+        #endregion Public Methods
+
+        #region Protected Methods
+
+        #endregion Protected Methods
+
+        #region Internal Methods
+
+        #endregion Internal Methods
+
+        #endregion Methods
     }
 }

@@ -10,7 +10,7 @@ namespace PayLoadion.Gcm.GcmDownStreamHttpMessage.Builder
     /// <summary>
     /// Represents the contracts for the builder of <see cref="IGcmDownStreamHttpMessage"/>
     /// </summary>
-    public interface IGcmDownStreamHttpMessageBuilder
+    public interface IGcmDownStreamHttpMessageFinalBuilder : IDisposable
     {
         /// <summary>
         /// Builds the <see cref="IGcmDownStreamHttpMessage"/> 
@@ -39,12 +39,13 @@ namespace PayLoadion.Gcm.GcmDownStreamHttpMessage.Builder
         /// <param name="cancellationToken">The cancellation token</param>
         /// <returns>The <see cref="IGcmDownStreamHttpMessage"/> as JSON</returns>
         Task<string> BuildGcmDownStreamHttpMessageToJsonAsync(bool indent = false,CancellationToken cancellationToken = default(CancellationToken));
+
     }
 
     /// <summary>
     /// Represents the contracts for the builder of <see cref="IGcmDownStreamHttpMessage"/>
     /// </summary>
-    public interface IGcmDownStreamHttpMessageBuilderTargets 
+    public interface IGcmDownStreamHttpMessageBuilder : IDisposable
     {
         /// <summary>
         /// Sets the TO. Use this if you want to send to only one device
@@ -58,21 +59,27 @@ namespace PayLoadion.Gcm.GcmDownStreamHttpMessage.Builder
         /// </summary>
         /// <param name="deviceRegistrationId">The device registration id on GCM</param>
         /// <returns>The builder</returns>
-        IGcmDownStreamHttpMessageBuilderOptions AddDeviceId(string deviceRegistrationId);
+        IGcmDownStreamHttpMessageBuilderMultipleTargets AddDeviceId(string deviceRegistrationId);
     }
 
     /// <summary>
     /// Represents the contracts for the builder of <see cref="IGcmDownStreamHttpMessage"/>
     /// </summary>
-    public interface IGcmDownStreamHttpMessageBuilderOptions : IGcmDownStreamHttpMessageBuilder
+    public interface IGcmDownStreamHttpMessageBuilderMultipleTargets : IGcmDownStreamHttpMessageBuilderOptions
     {
         /// <summary>
         /// Adds a device registration id to registration_ids
         /// </summary>
         /// <param name="deviceRegistrationId">The device registration id on GCM</param>
         /// <returns>The builder</returns>
-        IGcmDownStreamHttpMessageBuilderOptions AddDeviceId(string deviceRegistrationId);
+        IGcmDownStreamHttpMessageBuilderMultipleTargets AddDeviceId(string deviceRegistrationId);
+    }
 
+    /// <summary>
+    /// Represents the contracts for the builder of <see cref="IGcmDownStreamHttpMessage"/>
+    /// </summary>
+    public interface IGcmDownStreamHttpMessageBuilderOptions : IGcmDownStreamHttpMessageFinalBuilder
+    {
         /// <summary>
         /// Sets the collapse_key
         /// </summary>
@@ -151,7 +158,7 @@ namespace PayLoadion.Gcm.GcmDownStreamHttpMessage.Builder
         /// Add custom data to the <see cref="IGcmDownStreamHttpMessage"/>
         /// </summary>
         /// <returns>The builder</returns>
-        IGcmDownStreamHttpMessageBuilder AddCustomData(string customDataKey, object customDataValue);
+        IGcmDownStreamHttpMessageFinalBuilder AddCustomData(string customDataKey, object customDataValue);
     }
 
     /// <summary>
@@ -183,7 +190,7 @@ namespace PayLoadion.Gcm.GcmDownStreamHttpMessage.Builder
     /// <summary>
     /// Represents the contracts for the builder of <see cref="IGcmDownStreamHttpMessage"/>
     /// </summary>
-    public interface IGcmDownStreamHttpMessagePayLoadBuilderNotificationOptions : IGcmDownStreamHttpMessageBuilder
+    public interface IGcmDownStreamHttpMessagePayLoadBuilderNotificationOptions : IGcmDownStreamHttpMessageFinalBuilder
     {
         /// <summary>
         /// Sets the body of <see cref="IGcmNotification"/>
@@ -245,13 +252,13 @@ namespace PayLoadion.Gcm.GcmDownStreamHttpMessage.Builder
         /// Add custom data to the <see cref="IGcmDownStreamHttpMessage"/>
         /// </summary>
         /// <returns>The builder</returns>
-        IGcmDownStreamHttpMessageBuilder AddCustomData(string customDataKey, object customDataValue);
+        IGcmDownStreamHttpMessageFinalBuilder AddCustomData(string customDataKey, object customDataValue);
     }
 
     /// <summary>
     /// Represents the contracts for the builder of <see cref="IGcmDownStreamHttpMessage"/>
     /// </summary>
-    public interface IGcmDownStreamHttpMessagePayLoadBuilderNotificationOptionsBodyLocalizableArgs : IGcmDownStreamHttpMessageBuilder
+    public interface IGcmDownStreamHttpMessagePayLoadBuilderNotificationOptionsBodyLocalizableArgs : IGcmDownStreamHttpMessageFinalBuilder
     {
         /// <summary>
         /// Adds a argument to body-loc-argument
@@ -271,13 +278,13 @@ namespace PayLoadion.Gcm.GcmDownStreamHttpMessage.Builder
         /// Add custom data to the <see cref="IGcmDownStreamHttpMessage"/>
         /// </summary>
         /// <returns>The builder</returns>
-        IGcmDownStreamHttpMessageBuilder AddCustomData(string customDataKey, object customDataValue);
+        IGcmDownStreamHttpMessageFinalBuilder AddCustomData(string customDataKey, object customDataValue);
     }
 
     /// <summary>
     /// Represents the contracts for the builder of <see cref="IGcmDownStreamHttpMessage"/>
     /// </summary>
-    public interface IGcmDownStreamHttpMessagePayLoadBuilderNotificationOptionsTitleLocalizableArgs : IGcmDownStreamHttpMessageBuilder
+    public interface IGcmDownStreamHttpMessagePayLoadBuilderNotificationOptionsTitleLocalizableArgs : IGcmDownStreamHttpMessageFinalBuilder
     {
         /// <summary>
         /// Sets the title-loc-key of <see cref="IGcmNotification"/>
@@ -290,6 +297,6 @@ namespace PayLoadion.Gcm.GcmDownStreamHttpMessage.Builder
         /// Add custom data to the <see cref="IGcmDownStreamHttpMessage"/>
         /// </summary>
         /// <returns>The builder</returns>
-        IGcmDownStreamHttpMessageBuilder AddCustomData(string customDataKey, object customDataValue);
+        IGcmDownStreamHttpMessageFinalBuilder AddCustomData(string customDataKey, object customDataValue);
     }
 }

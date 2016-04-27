@@ -8,6 +8,9 @@ namespace PayLoadion.Gcm.Exceptions
     /// </summary>
     public class GcmPayLoadBuilderException : Exception
     {
+        #region Constructors
+
+        #region Public Constructors
         /// <summary>
         /// Inits a new instance of <see cref="GcmPayLoadBuilderException"/>
         /// </summary>
@@ -17,5 +20,8 @@ namespace PayLoadion.Gcm.Exceptions
         {
 
         }
+        #endregion Public Constructors
+
+        #endregion Constructors
     }
 }

@@ -4,27 +4,33 @@ using PayLoadion.Gcm.GcmDownStreamHttpMessage.Message;
 namespace PayLoadion.Gcm.Factories
 {
     /// <summary>
-    /// Represents the Factory for <see cref="IGcmDownStreamHttpMessageBuilder"/>
+    /// Represents the Factory for <see cref="IGcmDownStreamHttpMessageFinalBuilder"/>
     /// </summary>
     public static class GcmDownStreamHttpMessageBuilderFactory
     {
+        #region Methods
+
+        #region Public Methods
         /// <summary>
-        /// Creates the <see cref="IGcmDownStreamHttpMessageBuilder"/>
+        /// Creates the <see cref="IGcmDownStreamHttpMessageFinalBuilder"/>
         /// </summary>
         /// <returns><see cref="IGcmDownStreamHttpMessageBuilder"/></returns>
-        public static IGcmDownStreamHttpMessageBuilderTargets CreateGcmDownStreamHttpJsonMessageBuilder()
+        public static IGcmDownStreamHttpMessageBuilder CreateGcmDownStreamHttpMessageBuilder()
         {
             return new GcmDownStreamHttpMessageBuilderImplementation();
         }
 
         /// <summary>
-        ///  Creates the <see cref="IGcmDownStreamHttpMessageBuilder"/>
+        ///  Creates the <see cref="IGcmDownStreamHttpMessageFinalBuilder"/>
         /// </summary>
         /// <param name="gcmDownStreamHttpMessage">the other <see cref="IGcmDownStreamHttpMessage"/></param>
         /// <returns><see cref="IGcmDownStreamHttpMessageBuilder"/></returns>
-        public static IGcmDownStreamHttpMessageBuilderTargets CreateGcmDownStreamHttpJsonMessageBuilder(IGcmDownStreamHttpMessage gcmDownStreamHttpMessage)
+        public static IGcmDownStreamHttpMessageBuilder CreateGcmDownStreamHttpMessageBuilder(IGcmDownStreamHttpMessage gcmDownStreamHttpMessage)
         {
             return new GcmDownStreamHttpMessageBuilderImplementation(gcmDownStreamHttpMessage);
         }
+        #endregion Public Methods
+
+        #endregion Methods
     }
 }

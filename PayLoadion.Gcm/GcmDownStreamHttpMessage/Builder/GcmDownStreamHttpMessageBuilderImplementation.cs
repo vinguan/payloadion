@@ -12,8 +12,9 @@ using PayLoadion.Gcm.PayLoad.GcmNotification;
 namespace PayLoadion.Gcm.GcmDownStreamHttpMessage.Builder
 {
     internal class GcmDownStreamHttpMessageBuilderImplementation : 
+        IGcmDownStreamHttpMessageFinalBuilder,
         IGcmDownStreamHttpMessageBuilder,
-        IGcmDownStreamHttpMessageBuilderTargets,
+        IGcmDownStreamHttpMessageBuilderMultipleTargets,
         IGcmDownStreamHttpMessageBuilderOptions, 
         IGcmDownStreamHttpMessagePayLoadBuilder,
         IGcmDownStreamHttpMessagePayLoadBuilderNotificationTitle,
@@ -22,8 +23,46 @@ namespace PayLoadion.Gcm.GcmDownStreamHttpMessage.Builder
         IGcmDownStreamHttpMessagePayLoadBuilderNotificationOptionsBodyLocalizableArgs,
         IGcmDownStreamHttpMessagePayLoadBuilderNotificationOptionsTitleLocalizableArgs
     {
+       
+        #region Fields
         private GcmDownStreamHttpMessageImplementation _gcmDownStreamHttpMessageImplementation;
+        #endregion Fields
 
+        #region Properties
+
+        #region Private Properties
+
+        #endregion Private Properties
+
+        #region Public Properties
+
+        #endregion Public Properties
+
+        #region Protected Properties
+
+        #endregion Protected Properties
+
+        #region Internal Properties
+
+        #endregion Internal Properties
+
+        #endregion Properties
+
+        #region Constructors
+
+        #region Private Constructors
+
+        #endregion Private Constructors
+
+        #region Public Constructors
+
+        #endregion Public Constructors
+
+        #region Protected Constructors
+
+        #endregion Protected Constructors
+
+        #region Internal Constructors
         internal GcmDownStreamHttpMessageBuilderImplementation()
         {
             _gcmDownStreamHttpMessageImplementation = new GcmDownStreamHttpMessageImplementation();
@@ -33,32 +72,45 @@ namespace PayLoadion.Gcm.GcmDownStreamHttpMessage.Builder
         {
             _gcmDownStreamHttpMessageImplementation = new GcmDownStreamHttpMessageImplementation(gcmDownStreamHttpMessage);
         }
+        #endregion Internal Constructors
 
-        #region IGcmDownStreamHttpMessageBuilderTargets
-        IGcmDownStreamHttpMessageBuilderOptions IGcmDownStreamHttpMessageBuilderTargets.ToDevice(string deviceRegistrationId)
+        #endregion Constructors
+
+        #region Methods
+
+        #region Private Methods
+
+        #endregion Private Methods
+
+        #region Public Methods
+        #region IGcmDownStreamHttpMessageBuilder
+        IGcmDownStreamHttpMessageBuilderOptions IGcmDownStreamHttpMessageBuilder.ToDevice(string deviceRegistrationId)
         {
             _gcmDownStreamHttpMessageImplementation.To = deviceRegistrationId;
 
             return this;
         }
 
-        IGcmDownStreamHttpMessageBuilderOptions IGcmDownStreamHttpMessageBuilderTargets.AddDeviceId(string deviceRegistrationId)
+        IGcmDownStreamHttpMessageBuilderMultipleTargets IGcmDownStreamHttpMessageBuilder.AddDeviceId(string deviceRegistrationId)
         {
             _gcmDownStreamHttpMessageImplementation.InternalRegistrationIds.Add(deviceRegistrationId);
 
             return this;
         }
 
-        #endregion IGcmDownStreamHttpMessageBuilderTargets
+        #endregion IGcmDownStreamHttpMessageBuilder
+
+        #region IGcmDownStreamHttpMessageBuilderMultipleTargets
+
+        IGcmDownStreamHttpMessageBuilderMultipleTargets IGcmDownStreamHttpMessageBuilderMultipleTargets.AddDeviceId(string deviceRegistrationId)
+        {
+            _gcmDownStreamHttpMessageImplementation.InternalRegistrationIds.Add(deviceRegistrationId);
+
+            return this;
+        }
+        #endregion
 
         #region IGcmDownStreamHttpMessageBuilderOptions
-
-        IGcmDownStreamHttpMessageBuilderOptions IGcmDownStreamHttpMessageBuilderOptions.AddDeviceId(string deviceRegistrationId)
-        {
-            _gcmDownStreamHttpMessageImplementation.InternalRegistrationIds.Add(deviceRegistrationId);
-
-            return this;
-        }
 
         IGcmDownStreamHttpMessageBuilderOptions IGcmDownStreamHttpMessageBuilderOptions.CollapseKey(string collapseKey)
         {
@@ -118,7 +170,7 @@ namespace PayLoadion.Gcm.GcmDownStreamHttpMessage.Builder
 
         IGcmDownStreamHttpMessagePayLoadBuilder IGcmDownStreamHttpMessageBuilderOptions.PayLoad()
         {
-           _gcmDownStreamHttpMessageImplementation.GcmPayLoadImplementation = new GcmPayLoadImplementation();
+            _gcmDownStreamHttpMessageImplementation.GcmPayLoadImplementation = new GcmPayLoadImplementation();
 
             return this;
         }
@@ -142,7 +194,7 @@ namespace PayLoadion.Gcm.GcmDownStreamHttpMessage.Builder
             return this;
         }
 
-        IGcmDownStreamHttpMessageBuilder IGcmDownStreamHttpMessagePayLoadBuilder.AddCustomData(string customDataKey, object customDataValue)
+        IGcmDownStreamHttpMessageFinalBuilder IGcmDownStreamHttpMessagePayLoadBuilder.AddCustomData(string customDataKey, object customDataValue)
         {
             _gcmDownStreamHttpMessageImplementation.GcmPayLoadImplementation.InternalCustomData.Add(customDataKey, customDataValue);
 
@@ -218,7 +270,7 @@ namespace PayLoadion.Gcm.GcmDownStreamHttpMessage.Builder
             return this;
         }
 
-        IGcmDownStreamHttpMessageBuilder IGcmDownStreamHttpMessagePayLoadBuilderNotificationOptions.
+        IGcmDownStreamHttpMessageFinalBuilder IGcmDownStreamHttpMessagePayLoadBuilderNotificationOptions.
             AddCustomData(string customDataKey, object customDataValue)
         {
             _gcmDownStreamHttpMessageImplementation.GcmPayLoadImplementation.InternalCustomData.Add(customDataKey, customDataValue);
@@ -246,7 +298,7 @@ namespace PayLoadion.Gcm.GcmDownStreamHttpMessage.Builder
             return this;
         }
 
-        IGcmDownStreamHttpMessageBuilder IGcmDownStreamHttpMessagePayLoadBuilderNotificationOptionsBodyLocalizableArgs.AddCustomData(string customDataKey, object customDataValue)
+        IGcmDownStreamHttpMessageFinalBuilder IGcmDownStreamHttpMessagePayLoadBuilderNotificationOptionsBodyLocalizableArgs.AddCustomData(string customDataKey, object customDataValue)
         {
             _gcmDownStreamHttpMessageImplementation.GcmPayLoadImplementation.InternalCustomData.Add(customDataKey, customDataValue);
 
@@ -264,7 +316,7 @@ namespace PayLoadion.Gcm.GcmDownStreamHttpMessage.Builder
             return this;
         }
 
-        IGcmDownStreamHttpMessageBuilder IGcmDownStreamHttpMessagePayLoadBuilderNotificationOptionsTitleLocalizableArgs.AddCustomData(string customDataKey, object customDataValue)
+        IGcmDownStreamHttpMessageFinalBuilder IGcmDownStreamHttpMessagePayLoadBuilderNotificationOptionsTitleLocalizableArgs.AddCustomData(string customDataKey, object customDataValue)
         {
             _gcmDownStreamHttpMessageImplementation.GcmPayLoadImplementation.InternalCustomData.Add(customDataKey, customDataValue);
 
@@ -317,7 +369,7 @@ namespace PayLoadion.Gcm.GcmDownStreamHttpMessage.Builder
             }
         }
 
-        public async Task<string> BuildGcmDownStreamHttpMessageToJsonAsync(bool indent = false,CancellationToken cancellationToken = new CancellationToken())
+        public async Task<string> BuildGcmDownStreamHttpMessageToJsonAsync(bool indent = false, CancellationToken cancellationToken = new CancellationToken())
         {
             try
             {
@@ -339,6 +391,16 @@ namespace PayLoadion.Gcm.GcmDownStreamHttpMessage.Builder
 
             GC.SuppressFinalize(this);
         }
+        #endregion Public Methods
 
+        #region Protected Methods
+
+        #endregion Protected Methods
+
+        #region Internal Methods
+
+        #endregion Internal Methods
+
+        #endregion Methods
     }
 }

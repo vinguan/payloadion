@@ -8,23 +8,29 @@ namespace PayLoadion.Gcm.Factories
     /// </summary>
     public static class GcmPayLoadBuilderFactory
     {
+        #region Methods
+
+        #region Public Methods
         /// <summary>
-        /// Creates the <see cref="IGcmPayLoadBuilderNotification"/>
+        /// Creates the <see cref="IGcmPayLoadBuilder"/>
         /// </summary>
-        /// <returns><see cref="IGcmPayLoadBuilderNotification"/></returns>
-        public static IGcmPayLoadBuilderNotification Create()
+        /// <returns><see cref="IGcmPayLoadBuilder"/></returns>
+        public static IGcmPayLoadBuilder CreateGcmPayLoadBuilder()
         {
             return new GcmPayLoadBuilderImplementation();
         }
 
         /// <summary>
-        /// Creates the <see cref="IGcmPayLoadBuilderNotification"/>
+        /// Creates the <see cref="IGcmPayLoadBuilder"/>
         /// </summary>
         /// <param name="gcmPayLoad">The other <see cref="IGcmPayLoad"/></param>
-        /// <returns><see cref="IGcmPayLoadBuilderNotification"/></returns>
-        public static IGcmPayLoadBuilderNotification Create(IGcmPayLoad gcmPayLoad)
+        /// <returns><see cref="IGcmPayLoadBuilder"/></returns>
+        public static IGcmPayLoadBuilder CreateGcmPayLoadBuilder(IGcmPayLoad gcmPayLoad)
         {
             return new GcmPayLoadBuilderImplementation(gcmPayLoad);
         }
+        #endregion Public Methods
+
+        #endregion Methods
     }
 }

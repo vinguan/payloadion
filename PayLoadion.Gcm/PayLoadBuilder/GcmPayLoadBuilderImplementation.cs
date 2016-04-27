@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
@@ -11,15 +12,51 @@ namespace PayLoadion.Gcm.PayLoadBuilder
     internal class GcmPayLoadBuilderImplementation :
         IPayLoadBuilder<IGcmPayLoad>,
         IGcmPayLoadBuilder,
-        IGcmPayLoadBuilderNotification,
         IGcmPayLoadBuilderNotificationTitle,
         IGcmPayLoadBuilderNotificationIcon,
         IGcmPayLoadBuilderNotificationOptions,
         IGcmPayLoadBuilderNotificationBodyLocalizableArgs,
         IGcmPayLoadBuilderNotificationTitleLocalizableArgs
     {
+        #region Fields
         private GcmPayLoadImplementation _gcmPayLoadImplementation;
+        #endregion Fields
 
+        #region Properties
+
+        #region Private Properties
+
+        #endregion Private Properties
+
+        #region Public Properties
+
+        #endregion Public Properties
+
+        #region Protected Properties
+
+        #endregion Protected Properties
+
+        #region Internal Properties
+
+        #endregion Internal Properties
+
+        #endregion Properties
+
+        #region Constructors
+
+        #region Private Constructors
+
+        #endregion Private Constructors
+
+        #region Public Constructors
+
+        #endregion Public Constructors
+
+        #region Protected Constructors
+
+        #endregion Protected Constructors
+
+        #region Internal Constructors
         internal GcmPayLoadBuilderImplementation()
         {
             _gcmPayLoadImplementation = new GcmPayLoadImplementation();
@@ -29,31 +66,43 @@ namespace PayLoadion.Gcm.PayLoadBuilder
         {
             _gcmPayLoadImplementation = new GcmPayLoadImplementation(gcmPayLoad);
         }
+        #endregion Internal Constructors
 
+        #endregion Constructors
+
+        #region Methods
+
+        #region Private Methods
+
+        #endregion Private Methods
+
+        #region Public Methods
         #region IGcmPayLoadBuilder
 
-        IPayLoadBuilder<IGcmPayLoad> IPayLoadBuilder<IGcmPayLoad>.AddCustomData(string customDataKey, object customDataValue)
+        IGcmPayLoadBuilder IGcmPayLoadBuilder.AddCustomData(IDictionary<string, object> customDataDictionary)
         {
-            if (string.IsNullOrEmpty(customDataKey))
-                throw new ArgumentNullException(nameof(customDataKey));
+            foreach (var customData in customDataDictionary)
+            {
+                _gcmPayLoadImplementation.InternalCustomData.Add(customData.Key, customData.Value);
+            }
 
-            if (customDataValue == null)
-                throw new ArgumentNullException(nameof(customDataValue));
+            return this;
+        }
 
+        IGcmPayLoadBuilder IGcmPayLoadBuilder.AddCustomData(string customDataKey, object customDataValue)
+        {
             _gcmPayLoadImplementation.InternalCustomData.Add(customDataKey, customDataValue);
 
             return this;
         }
-        #endregion
 
-        #region IGcmPayLoadBuilderNotification
-        IGcmPayLoadBuilderNotificationTitle IGcmPayLoadBuilderNotification.Notification()
+        IGcmPayLoadBuilderNotificationTitle IGcmPayLoadBuilder.Notification()
         {
             _gcmPayLoadImplementation.GcmNotificationImplementation = new GcmNotificationImplementation();
 
             return this;
         }
-        #endregion IGcmPayLoadBuilderNotification
+        #endregion
 
         #region IGcmPayLoadBuilderTitle
 
@@ -173,8 +222,9 @@ namespace PayLoadion.Gcm.PayLoadBuilder
 
         #endregion IGcmPayLoadBuilderNotificationTitleLocalizableArgs
 
+        #region IPayLoadBuilder<IGcmPayLoad>
         public IGcmPayLoad BuildPayLoad()
-        { 
+        {
             return _gcmPayLoadImplementation;
         }
 
@@ -190,12 +240,13 @@ namespace PayLoadion.Gcm.PayLoadBuilder
             return JsonConvert.SerializeObject(_gcmPayLoadImplementation, indent ? Formatting.Indented : Formatting.None);
         }
 
-        public async Task<string> BuildPayLoadToStringAsync(bool indent = false,CancellationToken cancellationToken = new CancellationToken())
+        public async Task<string> BuildPayLoadToStringAsync(bool indent = false, CancellationToken cancellationToken = new CancellationToken())
         {
             cancellationToken.ThrowIfCancellationRequested();
 
             return await Task.Run(() => BuildPayLoadToString(indent), cancellationToken);
         }
+        #endregion IPayLoadBuilder<IGcmPayLoad>
 
         #region IDisposable
         public void Dispose()
@@ -207,5 +258,16 @@ namespace PayLoadion.Gcm.PayLoadBuilder
             GC.SuppressFinalize(this);
         }
         #endregion IDisposable
+        #endregion Public Methods
+
+        #region Protected Methods
+
+        #endregion Protected Methods
+
+        #region Internal Methods
+
+        #endregion Internal Methods
+
+        #endregion Methods
     }
 }

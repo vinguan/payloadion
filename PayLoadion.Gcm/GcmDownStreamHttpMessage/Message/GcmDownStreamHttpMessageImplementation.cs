@@ -10,19 +10,32 @@ namespace PayLoadion.Gcm.GcmDownStreamHttpMessage.Message
     [JsonObject(MemberSerialization = MemberSerialization.OptIn)]
     internal class GcmDownStreamHttpMessageImplementation : IGcmDownStreamHttpMessage
     {
+        #region Fields
         private List<string> _internalRegistrationsIds;
 
         private GcmPriorityEnum _internalPriority;
 
         private bool? _priorityWasSet;
+        #endregion Fields
 
+        #region Properties
+
+        #region Private Properties
+        private bool PriorityWasSet
+        {
+            get
+            {
+                if (_priorityWasSet.HasValue)
+                    return _priorityWasSet.Value;
+
+                return false;
+            }
+        }
+        #endregion Private Properties
+
+        #region Public Properties
         [JsonProperty(PropertyName = "to", NullValueHandling = NullValueHandling.Ignore)]
         public string To { get; set; }
-
-        internal List<string> InternalRegistrationIds
-        {
-            get { return _internalRegistrationsIds ?? (_internalRegistrationsIds = new List<string>()); }
-        }
 
         [JsonProperty(PropertyName = "registration_ids", NullValueHandling = NullValueHandling.Ignore)]
         public IReadOnlyList<string> RegistrationIds
@@ -32,16 +45,6 @@ namespace PayLoadion.Gcm.GcmDownStreamHttpMessage.Message
 
         [JsonProperty(PropertyName = "collapse_key", NullValueHandling = NullValueHandling.Ignore)]
         public string CollapseKey { get; set; }
-
-        private bool PriorityWasSet {
-            get
-            {
-                if (_priorityWasSet.HasValue)
-                    return _priorityWasSet.Value;
-
-                return false;
-            }
-        }
 
         [JsonProperty(PropertyName = "priority", NullValueHandling = NullValueHandling.Ignore)]
         [JsonConverter(typeof(StringEnumConverter))]
@@ -82,13 +85,42 @@ namespace PayLoadion.Gcm.GcmDownStreamHttpMessage.Message
         [JsonProperty(PropertyName = "dry_run", NullValueHandling = NullValueHandling.Ignore)]
         public bool? DryRun { get; set; }
 
-        internal GcmPayLoadImplementation GcmPayLoadImplementation { get; set; }
-
         public IGcmPayLoad GcmPayLoad
         {
             get { return GcmPayLoadImplementation; }
         }
+        #endregion Public Properties
 
+        #region Protected Properties
+
+        #endregion Protected Properties
+
+        #region Internal Properties
+        internal List<string> InternalRegistrationIds
+        {
+            get { return _internalRegistrationsIds ?? (_internalRegistrationsIds = new List<string>()); }
+        }
+
+        internal GcmPayLoadImplementation GcmPayLoadImplementation { get; set; }
+        #endregion Internal Properties
+
+        #endregion Properties
+
+        #region Constructors
+
+        #region Private Constructors
+
+        #endregion Private Constructors
+
+        #region Public Constructors
+
+        #endregion Public Constructors
+
+        #region Protected Constructors
+
+        #endregion Protected Constructors
+
+        #region Internal Constructors
         internal GcmDownStreamHttpMessageImplementation()
         {
 
@@ -117,7 +149,17 @@ namespace PayLoadion.Gcm.GcmDownStreamHttpMessage.Message
             GcmPayLoadImplementation = new GcmPayLoadImplementation(gcmDownStreamHttpMessage.GcmPayLoad);
 
         }
+        #endregion Internal Constructors
 
+        #endregion Constructors
+
+        #region Methods
+
+        #region Private Methods
+
+        #endregion Private Methods
+
+        #region Public Methods
         #region Implementation of IDisposable
 
         public void Dispose()
@@ -132,5 +174,16 @@ namespace PayLoadion.Gcm.GcmDownStreamHttpMessage.Message
         }
 
         #endregion
+        #endregion Public Methods
+
+        #region Protected Methods
+
+        #endregion Protected Methods
+
+        #region Internal Methods
+
+        #endregion Internal Methods
+
+        #endregion Methods
     }
 }

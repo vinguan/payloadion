@@ -10,6 +10,7 @@ namespace PayLoadion.Gcm.GcmDownStreamHttpMessage.Message
     /// </summary>
     public interface IGcmDownStreamHttpMessage : IDisposable 
     {
+        #region Properties
         /// <summary>
         /// Gets the to. Represents the device id target.
         /// </summary>
@@ -59,5 +60,6 @@ namespace PayLoadion.Gcm.GcmDownStreamHttpMessage.Message
         /// Gets the <see cref="IGcmPayLoad"/>
         /// </summary>
         IGcmPayLoad GcmPayLoad { get; }
+        #endregion Properties
     }
 }

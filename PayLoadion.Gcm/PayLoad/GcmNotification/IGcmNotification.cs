@@ -8,6 +8,7 @@ namespace PayLoadion.Gcm.PayLoad.GcmNotification
     /// </summary>
     public interface IGcmNotification : IDisposable
     {
+        #region Properties
         /// <summary>
         /// Gets the title
         /// </summary>
@@ -67,5 +68,6 @@ namespace PayLoadion.Gcm.PayLoad.GcmNotification
         /// Gets the title-loc-args
         /// </summary>
         IReadOnlyList<string> TitleLocArgs { get; }
+        #endregion Properties
     }
 }

@@ -1,0 +1,637 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>PayLoadion.Gcm</name>
+    </assembly>
+    <members>
+        <member name="T:PayLoadion.Gcm.Exceptions.GcmDownStreamHttpMessageBuilderException">
+            <summary>
+            Exception for <see cref="T:PayLoadion.Gcm.GcmDownStreamHttpMessage.Builder.IGcmDownStreamHttpMessageFinalBuilder"/>
+            </summary>
+        </member>
+        <member name="M:PayLoadion.Gcm.Exceptions.GcmDownStreamHttpMessageBuilderException.#ctor(System.String,System.Exception)">
+            <summary>
+            Inits a new instance of <see cref="T:PayLoadion.Gcm.Exceptions.GcmDownStreamHttpMessageBuilderException"/>
+            </summary>
+            <param name="message">The message</param>
+            <param name="innerException">The inner exception</param>
+        </member>
+        <member name="T:PayLoadion.Gcm.Exceptions.GcmPayLoadBuilderException">
+            <summary>
+            Exception for <see cref="T:PayLoadion.Gcm.PayLoadBuilder.IGcmPayLoadBuilder"/>
+            </summary>
+        </member>
+        <member name="M:PayLoadion.Gcm.Exceptions.GcmPayLoadBuilderException.#ctor(System.String,System.Exception)">
+            <summary>
+            Inits a new instance of <see cref="T:PayLoadion.Gcm.Exceptions.GcmPayLoadBuilderException"/>
+            </summary>
+            <param name="message">The message</param>
+            <param name="innerException">The inner exception</param>
+        </member>
+        <member name="T:PayLoadion.Gcm.Factories.GcmDownStreamHttpMessageBuilderFactory">
+            <summary>
+            Represents the Factory for <see cref="T:PayLoadion.Gcm.GcmDownStreamHttpMessage.Builder.IGcmDownStreamHttpMessageFinalBuilder"/>
+            </summary>
+        </member>
+        <member name="M:PayLoadion.Gcm.Factories.GcmDownStreamHttpMessageBuilderFactory.CreateGcmDownStreamHttpMessageBuilder">
+            <summary>
+            Creates the <see cref="T:PayLoadion.Gcm.GcmDownStreamHttpMessage.Builder.IGcmDownStreamHttpMessageFinalBuilder"/>
+            </summary>
+            <returns><see cref="T:PayLoadion.Gcm.GcmDownStreamHttpMessage.Builder.IGcmDownStreamHttpMessageBuilder"/></returns>
+        </member>
+        <member name="M:PayLoadion.Gcm.Factories.GcmDownStreamHttpMessageBuilderFactory.CreateGcmDownStreamHttpMessageBuilder(PayLoadion.Gcm.GcmDownStreamHttpMessage.Message.IGcmDownStreamHttpMessage)">
+            <summary>
+             Creates the <see cref="T:PayLoadion.Gcm.GcmDownStreamHttpMessage.Builder.IGcmDownStreamHttpMessageFinalBuilder"/>
+            </summary>
+            <param name="gcmDownStreamHttpMessage">the other <see cref="T:PayLoadion.Gcm.GcmDownStreamHttpMessage.Message.IGcmDownStreamHttpMessage"/></param>
+            <returns><see cref="T:PayLoadion.Gcm.GcmDownStreamHttpMessage.Builder.IGcmDownStreamHttpMessageBuilder"/></returns>
+        </member>
+        <member name="T:PayLoadion.Gcm.Factories.GcmPayLoadBuilderFactory">
+            <summary>
+            Represents the factory for <see cref="T:PayLoadion.Gcm.Factories.GcmPayLoadBuilderFactory"/>
+            </summary>
+        </member>
+        <member name="M:PayLoadion.Gcm.Factories.GcmPayLoadBuilderFactory.CreateGcmPayLoadBuilder">
+            <summary>
+            Creates the <see cref="T:PayLoadion.Gcm.PayLoadBuilder.IGcmPayLoadBuilder"/>
+            </summary>
+            <returns><see cref="T:PayLoadion.Gcm.PayLoadBuilder.IGcmPayLoadBuilder"/></returns>
+        </member>
+        <member name="M:PayLoadion.Gcm.Factories.GcmPayLoadBuilderFactory.CreateGcmPayLoadBuilder(PayLoadion.Gcm.PayLoad.IGcmPayLoad)">
+            <summary>
+            Creates the <see cref="T:PayLoadion.Gcm.PayLoadBuilder.IGcmPayLoadBuilder"/>
+            </summary>
+            <param name="gcmPayLoad">The other <see cref="T:PayLoadion.Gcm.PayLoad.IGcmPayLoad"/></param>
+            <returns><see cref="T:PayLoadion.Gcm.PayLoadBuilder.IGcmPayLoadBuilder"/></returns>
+        </member>
+        <member name="T:PayLoadion.Gcm.GcmDownStreamHttpMessage.Builder.IGcmDownStreamHttpMessageFinalBuilder">
+            <summary>
+            Represents the contracts for the builder of <see cref="T:PayLoadion.Gcm.GcmDownStreamHttpMessage.Message.IGcmDownStreamHttpMessage"/>
+            </summary>
+        </member>
+        <member name="M:PayLoadion.Gcm.GcmDownStreamHttpMessage.Builder.IGcmDownStreamHttpMessageFinalBuilder.BuildGcmDownStreamHttpMessage">
+            <summary>
+            Builds the <see cref="T:PayLoadion.Gcm.GcmDownStreamHttpMessage.Message.IGcmDownStreamHttpMessage"/> 
+            </summary>
+            <returns>The <see cref="T:PayLoadion.Gcm.GcmDownStreamHttpMessage.Message.IGcmDownStreamHttpMessage"/></returns>
+        </member>
+        <member name="M:PayLoadion.Gcm.GcmDownStreamHttpMessage.Builder.IGcmDownStreamHttpMessageFinalBuilder.BuildGcmDownStreamHttpMessageAsync(System.Threading.CancellationToken)">
+            <summary>
+            Builds the <see cref="T:PayLoadion.Gcm.GcmDownStreamHttpMessage.Message.IGcmDownStreamHttpMessage"/> async
+            </summary>
+            <param name="cancellationToken"></param>
+            <returns>The <see cref="T:PayLoadion.Gcm.GcmDownStreamHttpMessage.Message.IGcmDownStreamHttpMessage"/>The cancellation token</returns>
+        </member>
+        <member name="M:PayLoadion.Gcm.GcmDownStreamHttpMessage.Builder.IGcmDownStreamHttpMessageFinalBuilder.BuildGcmDownStreamHttpMessageToJson(System.Boolean)">
+            <summary>
+            Builds the <see cref="T:PayLoadion.Gcm.GcmDownStreamHttpMessage.Message.IGcmDownStreamHttpMessage"/> to JSON
+            </summary>
+            <param name="indent">If the JSON should be indented</param>
+            <returns>The <see cref="T:PayLoadion.Gcm.GcmDownStreamHttpMessage.Message.IGcmDownStreamHttpMessage"/> as JSON </returns>
+        </member>
+        <member name="M:PayLoadion.Gcm.GcmDownStreamHttpMessage.Builder.IGcmDownStreamHttpMessageFinalBuilder.BuildGcmDownStreamHttpMessageToJsonAsync(System.Boolean,System.Threading.CancellationToken)">
+            <summary>
+            Builds the <see cref="T:PayLoadion.Gcm.GcmDownStreamHttpMessage.Message.IGcmDownStreamHttpMessage"/> to JSON async
+            </summary>
+            <param name="indent">If the JSON should be indented</param>
+            <param name="cancellationToken">The cancellation token</param>
+            <returns>The <see cref="T:PayLoadion.Gcm.GcmDownStreamHttpMessage.Message.IGcmDownStreamHttpMessage"/> as JSON</returns>
+        </member>
+        <member name="T:PayLoadion.Gcm.GcmDownStreamHttpMessage.Builder.IGcmDownStreamHttpMessageBuilder">
+            <summary>
+            Represents the contracts for the builder of <see cref="T:PayLoadion.Gcm.GcmDownStreamHttpMessage.Message.IGcmDownStreamHttpMessage"/>
+            </summary>
+        </member>
+        <member name="M:PayLoadion.Gcm.GcmDownStreamHttpMessage.Builder.IGcmDownStreamHttpMessageBuilder.ToDevice(System.String)">
+            <summary>
+            Sets the TO. Use this if you want to send to only one device
+            </summary>
+            <param name="deviceRegistrationId">The device registration id on GCM</param>
+            <returns>The builder</returns>
+        </member>
+        <member name="M:PayLoadion.Gcm.GcmDownStreamHttpMessage.Builder.IGcmDownStreamHttpMessageBuilder.AddDeviceId(System.String)">
+            <summary>
+            Adds a device registration id to registration_ids
+            </summary>
+            <param name="deviceRegistrationId">The device registration id on GCM</param>
+            <returns>The builder</returns>
+        </member>
+        <member name="T:PayLoadion.Gcm.GcmDownStreamHttpMessage.Builder.IGcmDownStreamHttpMessageBuilderMultipleTargets">
+            <summary>
+            Represents the contracts for the builder of <see cref="T:PayLoadion.Gcm.GcmDownStreamHttpMessage.Message.IGcmDownStreamHttpMessage"/>
+            </summary>
+        </member>
+        <member name="M:PayLoadion.Gcm.GcmDownStreamHttpMessage.Builder.IGcmDownStreamHttpMessageBuilderMultipleTargets.AddDeviceId(System.String)">
+            <summary>
+            Adds a device registration id to registration_ids
+            </summary>
+            <param name="deviceRegistrationId">The device registration id on GCM</param>
+            <returns>The builder</returns>
+        </member>
+        <member name="T:PayLoadion.Gcm.GcmDownStreamHttpMessage.Builder.IGcmDownStreamHttpMessageBuilderOptions">
+            <summary>
+            Represents the contracts for the builder of <see cref="T:PayLoadion.Gcm.GcmDownStreamHttpMessage.Message.IGcmDownStreamHttpMessage"/>
+            </summary>
+        </member>
+        <member name="M:PayLoadion.Gcm.GcmDownStreamHttpMessage.Builder.IGcmDownStreamHttpMessageBuilderOptions.CollapseKey(System.String)">
+            <summary>
+            Sets the collapse_key
+            </summary>
+            <param name="collapseKey">The collapse_key</param>
+            <returns>The builder</returns>
+        </member>
+        <member name="M:PayLoadion.Gcm.GcmDownStreamHttpMessage.Builder.IGcmDownStreamHttpMessageBuilderOptions.Priority(PayLoadion.Gcm.GcmDownStreamHttpMessage.Message.Enums.GcmPriorityEnum)">
+            <summary>
+            Sets the priority
+            </summary>
+            <param name="priority">The priority</param>
+            <returns>The builder</returns>
+        </member>
+        <member name="M:PayLoadion.Gcm.GcmDownStreamHttpMessage.Builder.IGcmDownStreamHttpMessageBuilderOptions.IsContentAvailable(System.Boolean)">
+            <summary>
+            Sets the content_available
+            </summary>
+            <param name="isContentAvailable">If there is content available</param>
+            <returns>The builder</returns>
+        </member>
+        <member name="M:PayLoadion.Gcm.GcmDownStreamHttpMessage.Builder.IGcmDownStreamHttpMessageBuilderOptions.DelayWhileIdle(System.Boolean)">
+            <summary>
+            Sets the delay_while_idle
+            </summary>
+            <param name="delayWhileIdle">If it should be delayed while idle</param>
+            <returns>The builder</returns>
+        </member>
+        <member name="M:PayLoadion.Gcm.GcmDownStreamHttpMessage.Builder.IGcmDownStreamHttpMessageBuilderOptions.TimeToLiveInSeconds(System.Int32)">
+            <summary>
+            Sets the time_to_live
+            </summary>
+            <param name="seconds">The seconds for time_to_live</param>
+            <returns>The builder</returns>
+        </member>
+        <member name="M:PayLoadion.Gcm.GcmDownStreamHttpMessage.Builder.IGcmDownStreamHttpMessageBuilderOptions.TimeToLiveUntil(System.DateTimeOffset)">
+            <summary>
+            Sets the time_to_live
+            </summary>
+            <param name="limitDate">The limit date for lifetime</param>
+            <returns>The builder</returns>
+        </member>
+        <member name="M:PayLoadion.Gcm.GcmDownStreamHttpMessage.Builder.IGcmDownStreamHttpMessageBuilderOptions.RestrictedPackageName(System.String)">
+            <summary>
+            Sets the restricted_package_name
+            </summary>
+            <param name="restrictedPackageName">The restricted_package_name</param>
+            <returns>The builder</returns>
+        </member>
+        <member name="M:PayLoadion.Gcm.GcmDownStreamHttpMessage.Builder.IGcmDownStreamHttpMessageBuilderOptions.IsDryRun(System.Boolean)">
+            <summary>
+            Sets if this message is a dry run
+            </summary>
+            <param name="isDryRun">if this message is a dry run</param>
+            <returns>The builder</returns>
+        </member>
+        <member name="M:PayLoadion.Gcm.GcmDownStreamHttpMessage.Builder.IGcmDownStreamHttpMessageBuilderOptions.PayLoad">
+            <summary>
+            Starts the payload builder
+            </summary>
+            <returns>The builder</returns>
+        </member>
+        <member name="T:PayLoadion.Gcm.GcmDownStreamHttpMessage.Builder.IGcmDownStreamHttpMessagePayLoadBuilder">
+            <summary>
+            Represents the contracts for the builder of <see cref="T:PayLoadion.Gcm.GcmDownStreamHttpMessage.Message.IGcmDownStreamHttpMessage"/>
+            </summary>
+        </member>
+        <member name="M:PayLoadion.Gcm.GcmDownStreamHttpMessage.Builder.IGcmDownStreamHttpMessagePayLoadBuilder.Notification">
+            <summary>
+            Starts the builder for <see cref="T:PayLoadion.Gcm.PayLoad.GcmNotification.IGcmNotification"/>
+            </summary>
+            <returns>The builder</returns>
+        </member>
+        <member name="M:PayLoadion.Gcm.GcmDownStreamHttpMessage.Builder.IGcmDownStreamHttpMessagePayLoadBuilder.AddCustomData(System.String,System.Object)">
+            <summary>
+            Add custom data to the <see cref="T:PayLoadion.Gcm.GcmDownStreamHttpMessage.Message.IGcmDownStreamHttpMessage"/>
+            </summary>
+            <returns>The builder</returns>
+        </member>
+        <member name="T:PayLoadion.Gcm.GcmDownStreamHttpMessage.Builder.IGcmDownStreamHttpMessagePayLoadBuilderNotificationTitle">
+            <summary>
+            Represents the contracts for the builder of <see cref="T:PayLoadion.Gcm.GcmDownStreamHttpMessage.Message.IGcmDownStreamHttpMessage"/>
+            </summary>
+        </member>
+        <member name="M:PayLoadion.Gcm.GcmDownStreamHttpMessage.Builder.IGcmDownStreamHttpMessagePayLoadBuilderNotificationTitle.Title(System.String)">
+            <summary>
+            Sets the title of <see cref="T:PayLoadion.Gcm.PayLoad.GcmNotification.IGcmNotification"/>
+            </summary>
+            <param name="title">The title</param>
+            <returns>The payload builder</returns>
+        </member>
+        <member name="T:PayLoadion.Gcm.GcmDownStreamHttpMessage.Builder.IGcmDownStreamHttpMessagePayLoadBuilderNotificationIcon">
+            <summary>
+            Represents the contracts for the builder of <see cref="T:PayLoadion.Gcm.GcmDownStreamHttpMessage.Message.IGcmDownStreamHttpMessage"/>
+            </summary>
+        </member>
+        <member name="M:PayLoadion.Gcm.GcmDownStreamHttpMessage.Builder.IGcmDownStreamHttpMessagePayLoadBuilderNotificationIcon.Icon(System.String)">
+            <summary>
+            Sets the icon of <see cref="T:PayLoadion.Gcm.PayLoad.GcmNotification.IGcmNotification"/>
+            </summary>
+            <param name="iconFileName">The icon</param>
+            <returns>The payload builder</returns>
+        </member>
+        <member name="T:PayLoadion.Gcm.GcmDownStreamHttpMessage.Builder.IGcmDownStreamHttpMessagePayLoadBuilderNotificationOptions">
+            <summary>
+            Represents the contracts for the builder of <see cref="T:PayLoadion.Gcm.GcmDownStreamHttpMessage.Message.IGcmDownStreamHttpMessage"/>
+            </summary>
+        </member>
+        <member name="M:PayLoadion.Gcm.GcmDownStreamHttpMessage.Builder.IGcmDownStreamHttpMessagePayLoadBuilderNotificationOptions.Body(System.String)">
+            <summary>
+            Sets the body of <see cref="T:PayLoadion.Gcm.PayLoad.GcmNotification.IGcmNotification"/>
+            </summary>
+            <param name="body">The body</param>
+            <returns>The payload builder</returns>
+        </member>
+        <member name="M:PayLoadion.Gcm.GcmDownStreamHttpMessage.Builder.IGcmDownStreamHttpMessagePayLoadBuilderNotificationOptions.Sound(System.String)">
+            <summary>
+            Sets the sound of <see cref="T:PayLoadion.Gcm.PayLoad.GcmNotification.IGcmNotification"/>
+            </summary>
+            <param name="soundFileName">The sound</param>
+            <returns>The payload builder</returns>
+        </member>
+        <member name="M:PayLoadion.Gcm.GcmDownStreamHttpMessage.Builder.IGcmDownStreamHttpMessagePayLoadBuilderNotificationOptions.BadgeCount(System.String)">
+            <summary>
+            Sets the badge of <see cref="T:PayLoadion.Gcm.PayLoad.GcmNotification.IGcmNotification"/>
+            </summary>
+            <param name="badgeCount">The badge</param>
+            <returns>The payload builder</returns>
+        </member>
+        <member name="M:PayLoadion.Gcm.GcmDownStreamHttpMessage.Builder.IGcmDownStreamHttpMessagePayLoadBuilderNotificationOptions.Tag(System.String)">
+            <summary>
+            Sets the tag of <see cref="T:PayLoadion.Gcm.PayLoad.GcmNotification.IGcmNotification"/>
+            </summary>
+            <param name="tag">The tag</param>
+            <returns>The payload builder</returns>
+        </member>
+        <member name="M:PayLoadion.Gcm.GcmDownStreamHttpMessage.Builder.IGcmDownStreamHttpMessagePayLoadBuilderNotificationOptions.Color(System.String)">
+            <summary>
+            Sets the color of <see cref="T:PayLoadion.Gcm.PayLoad.GcmNotification.IGcmNotification"/>
+            </summary>
+            <param name="color">The color</param>
+            <returns>The payload builder</returns>
+        </member>
+        <member name="M:PayLoadion.Gcm.GcmDownStreamHttpMessage.Builder.IGcmDownStreamHttpMessagePayLoadBuilderNotificationOptions.ClickAction(System.String)">
+            <summary>
+            Sets the click-action of <see cref="T:PayLoadion.Gcm.PayLoad.GcmNotification.IGcmNotification"/>
+            </summary>
+            <param name="clickAction">The click-action</param>
+            <returns>The payload builder</returns>
+        </member>
+        <member name="M:PayLoadion.Gcm.GcmDownStreamHttpMessage.Builder.IGcmDownStreamHttpMessagePayLoadBuilderNotificationOptions.BodyLocalizableKey(System.String)">
+            <summary>
+            Sets the body-loc-key of <see cref="T:PayLoadion.Gcm.PayLoad.GcmNotification.IGcmNotification"/>
+            </summary>
+            <param name="bodyLocalizableKey">The body-loc-key</param>
+            <returns>The payload builder</returns>
+        </member>
+        <member name="M:PayLoadion.Gcm.GcmDownStreamHttpMessage.Builder.IGcmDownStreamHttpMessagePayLoadBuilderNotificationOptions.TitleLocalizableKey(System.String)">
+            <summary>
+            Sets the title-loc-key of <see cref="T:PayLoadion.Gcm.PayLoad.GcmNotification.IGcmNotification"/>
+            </summary>
+            <param name="titleLocalizableKey">The title-loc-key</param>
+            <returns>The payload builder</returns>
+        </member>
+        <member name="M:PayLoadion.Gcm.GcmDownStreamHttpMessage.Builder.IGcmDownStreamHttpMessagePayLoadBuilderNotificationOptions.AddCustomData(System.String,System.Object)">
+            <summary>
+            Add custom data to the <see cref="T:PayLoadion.Gcm.GcmDownStreamHttpMessage.Message.IGcmDownStreamHttpMessage"/>
+            </summary>
+            <returns>The builder</returns>
+        </member>
+        <member name="T:PayLoadion.Gcm.GcmDownStreamHttpMessage.Builder.IGcmDownStreamHttpMessagePayLoadBuilderNotificationOptionsBodyLocalizableArgs">
+            <summary>
+            Represents the contracts for the builder of <see cref="T:PayLoadion.Gcm.GcmDownStreamHttpMessage.Message.IGcmDownStreamHttpMessage"/>
+            </summary>
+        </member>
+        <member name="M:PayLoadion.Gcm.GcmDownStreamHttpMessage.Builder.IGcmDownStreamHttpMessagePayLoadBuilderNotificationOptionsBodyLocalizableArgs.AddBodyLocalizableArgument(System.String)">
+            <summary>
+            Adds a argument to body-loc-argument
+            </summary>
+            <param name="bodyLocArgument">The title-loc argument</param>
+            <returns>The payload builder</returns>
+        </member>
+        <member name="M:PayLoadion.Gcm.GcmDownStreamHttpMessage.Builder.IGcmDownStreamHttpMessagePayLoadBuilderNotificationOptionsBodyLocalizableArgs.TitleLocalizableKey(System.String)">
+            <summary>
+            Sets the title-loc-key of <see cref="T:PayLoadion.Gcm.PayLoad.GcmNotification.IGcmNotification"/>
+            </summary>
+            <param name="titleLocalizableKey">The title-loc-key</param>
+            <returns>The payload builder</returns>
+        </member>
+        <member name="M:PayLoadion.Gcm.GcmDownStreamHttpMessage.Builder.IGcmDownStreamHttpMessagePayLoadBuilderNotificationOptionsBodyLocalizableArgs.AddCustomData(System.String,System.Object)">
+            <summary>
+            Add custom data to the <see cref="T:PayLoadion.Gcm.GcmDownStreamHttpMessage.Message.IGcmDownStreamHttpMessage"/>
+            </summary>
+            <returns>The builder</returns>
+        </member>
+        <member name="T:PayLoadion.Gcm.GcmDownStreamHttpMessage.Builder.IGcmDownStreamHttpMessagePayLoadBuilderNotificationOptionsTitleLocalizableArgs">
+            <summary>
+            Represents the contracts for the builder of <see cref="T:PayLoadion.Gcm.GcmDownStreamHttpMessage.Message.IGcmDownStreamHttpMessage"/>
+            </summary>
+        </member>
+        <member name="M:PayLoadion.Gcm.GcmDownStreamHttpMessage.Builder.IGcmDownStreamHttpMessagePayLoadBuilderNotificationOptionsTitleLocalizableArgs.AddTitleLocalizableArgument(System.String)">
+            <summary>
+            Sets the title-loc-key of <see cref="T:PayLoadion.Gcm.PayLoad.GcmNotification.IGcmNotification"/>
+            </summary>
+            <param name="titleLocArgument">The title-loc argument</param>
+            <returns>The payload builder</returns>
+        </member>
+        <member name="M:PayLoadion.Gcm.GcmDownStreamHttpMessage.Builder.IGcmDownStreamHttpMessagePayLoadBuilderNotificationOptionsTitleLocalizableArgs.AddCustomData(System.String,System.Object)">
+            <summary>
+            Add custom data to the <see cref="T:PayLoadion.Gcm.GcmDownStreamHttpMessage.Message.IGcmDownStreamHttpMessage"/>
+            </summary>
+            <returns>The builder</returns>
+        </member>
+        <member name="T:PayLoadion.Gcm.GcmDownStreamHttpMessage.Message.Enums.GcmPriorityEnum">
+            <summary>
+            Represents the priority
+            </summary>
+        </member>
+        <member name="F:PayLoadion.Gcm.GcmDownStreamHttpMessage.Message.Enums.GcmPriorityEnum.Normal">
+            <summary>
+            Normal priority
+            </summary>
+        </member>
+        <member name="F:PayLoadion.Gcm.GcmDownStreamHttpMessage.Message.Enums.GcmPriorityEnum.High">
+            <summary>
+            High priority
+            </summary>
+        </member>
+        <member name="T:PayLoadion.Gcm.GcmDownStreamHttpMessage.Message.IGcmDownStreamHttpMessage">
+            <summary>
+            Represents the contracts for GCM DownStream Http Message in JSON
+            </summary>
+        </member>
+        <member name="P:PayLoadion.Gcm.GcmDownStreamHttpMessage.Message.IGcmDownStreamHttpMessage.To">
+            <summary>
+            Gets the to. Represents the device id target.
+            </summary>
+        </member>
+        <member name="P:PayLoadion.Gcm.GcmDownStreamHttpMessage.Message.IGcmDownStreamHttpMessage.RegistrationIds">
+            <summary>
+            Gets the registration_ids
+            </summary>
+        </member>
+        <member name="P:PayLoadion.Gcm.GcmDownStreamHttpMessage.Message.IGcmDownStreamHttpMessage.CollapseKey">
+            <summary>
+            Gets the collapse-key
+            </summary>
+        </member>
+        <member name="P:PayLoadion.Gcm.GcmDownStreamHttpMessage.Message.IGcmDownStreamHttpMessage.Priority">
+            <summary>
+            Gets the priority
+            </summary>
+        </member>
+        <member name="P:PayLoadion.Gcm.GcmDownStreamHttpMessage.Message.IGcmDownStreamHttpMessage.ContentAvailable">
+            <summary>
+            Gets the content-available
+            </summary>
+        </member>
+        <member name="P:PayLoadion.Gcm.GcmDownStreamHttpMessage.Message.IGcmDownStreamHttpMessage.DelayWhileIdle">
+            <summary>
+            Gets the delay_while_idle
+            </summary>
+        </member>
+        <member name="P:PayLoadion.Gcm.GcmDownStreamHttpMessage.Message.IGcmDownStreamHttpMessage.TimeToLive">
+            <summary>
+            Gets the time_to_live
+            </summary>
+        </member>
+        <member name="P:PayLoadion.Gcm.GcmDownStreamHttpMessage.Message.IGcmDownStreamHttpMessage.RestrictedPackageName">
+            <summary>
+            Gets the restricted_package_name
+            </summary>
+        </member>
+        <member name="P:PayLoadion.Gcm.GcmDownStreamHttpMessage.Message.IGcmDownStreamHttpMessage.DryRun">
+            <summary>
+            Gets the dry_run
+            </summary>
+        </member>
+        <member name="P:PayLoadion.Gcm.GcmDownStreamHttpMessage.Message.IGcmDownStreamHttpMessage.GcmPayLoad">
+            <summary>
+            Gets the <see cref="T:PayLoadion.Gcm.PayLoad.IGcmPayLoad"/>
+            </summary>
+        </member>
+        <member name="T:PayLoadion.Gcm.PayLoadBuilder.IGcmPayLoadBuilder">
+            <summary>
+            Represents the contracts for the start GCM payload builder
+            </summary>
+        </member>
+        <member name="M:PayLoadion.Gcm.PayLoadBuilder.IGcmPayLoadBuilder.AddCustomData(System.Collections.Generic.IDictionary{System.String,System.Object})">
+            <summary>
+            Add custom data to payload
+            </summary>
+            <param name="customDataDictionary">The custom data values</param>
+            <returns>The payload builder</returns>
+        </member>
+        <member name="M:PayLoadion.Gcm.PayLoadBuilder.IGcmPayLoadBuilder.AddCustomData(System.String,System.Object)">
+            <summary>
+            Add custom data to payload
+            </summary>
+            <param name="customDataKey">The custom data key</param>
+            <param name="customDataValue">the custom data value</param>
+            <returns>The payload builder</returns>
+        </member>
+        <member name="M:PayLoadion.Gcm.PayLoadBuilder.IGcmPayLoadBuilder.Notification">
+            <summary>
+            Starts the builder for <see cref="T:PayLoadion.Gcm.PayLoad.GcmNotification.IGcmNotification"/>
+            </summary>
+            <returns>The payload builder</returns>
+        </member>
+        <member name="T:PayLoadion.Gcm.PayLoadBuilder.IGcmPayLoadBuilderNotificationTitle">
+            <summary>
+            Represents the contracts for the <see cref="T:PayLoadion.Gcm.PayLoad.GcmNotification.IGcmNotification"/> builder
+            </summary>
+        </member>
+        <member name="M:PayLoadion.Gcm.PayLoadBuilder.IGcmPayLoadBuilderNotificationTitle.Title(System.String)">
+            <summary>
+            Sets the title of <see cref="T:PayLoadion.Gcm.PayLoad.GcmNotification.IGcmNotification"/>
+            </summary>
+            <param name="title">The title</param>
+            <returns>The payload builder</returns>
+        </member>
+        <member name="T:PayLoadion.Gcm.PayLoadBuilder.IGcmPayLoadBuilderNotificationIcon">
+            <summary>
+            Represents the contracts for the <see cref="T:PayLoadion.Gcm.PayLoad.GcmNotification.IGcmNotification"/> builder
+            </summary>
+        </member>
+        <member name="M:PayLoadion.Gcm.PayLoadBuilder.IGcmPayLoadBuilderNotificationIcon.Icon(System.String)">
+            <summary>
+            Sets the icon of <see cref="T:PayLoadion.Gcm.PayLoad.GcmNotification.IGcmNotification"/>
+            </summary>
+            <param name="iconFileName">The icon</param>
+            <returns>The payload builder</returns>
+        </member>
+        <member name="T:PayLoadion.Gcm.PayLoadBuilder.IGcmPayLoadBuilderNotificationOptions">
+            <summary>
+            Represents the contracts for the <see cref="T:PayLoadion.Gcm.PayLoad.GcmNotification.IGcmNotification"/> builder
+            </summary>
+        </member>
+        <member name="M:PayLoadion.Gcm.PayLoadBuilder.IGcmPayLoadBuilderNotificationOptions.Body(System.String)">
+            <summary>
+            Sets the body of <see cref="T:PayLoadion.Gcm.PayLoad.GcmNotification.IGcmNotification"/>
+            </summary>
+            <param name="body">The body</param>
+            <returns>The payload builder</returns>
+        </member>
+        <member name="M:PayLoadion.Gcm.PayLoadBuilder.IGcmPayLoadBuilderNotificationOptions.Sound(System.String)">
+            <summary>
+            Sets the sound of <see cref="T:PayLoadion.Gcm.PayLoad.GcmNotification.IGcmNotification"/>
+            </summary>
+            <param name="soundFileName">The sound</param>
+            <returns>The payload builder</returns>
+        </member>
+        <member name="M:PayLoadion.Gcm.PayLoadBuilder.IGcmPayLoadBuilderNotificationOptions.BadgeCount(System.String)">
+            <summary>
+            Sets the badge of <see cref="T:PayLoadion.Gcm.PayLoad.GcmNotification.IGcmNotification"/>
+            </summary>
+            <param name="badgeCount">The badge</param>
+            <returns>The payload builder</returns>
+        </member>
+        <member name="M:PayLoadion.Gcm.PayLoadBuilder.IGcmPayLoadBuilderNotificationOptions.Tag(System.String)">
+            <summary>
+            Sets the tag of <see cref="T:PayLoadion.Gcm.PayLoad.GcmNotification.IGcmNotification"/>
+            </summary>
+            <param name="tag">The tag</param>
+            <returns>The payload builder</returns>
+        </member>
+        <member name="M:PayLoadion.Gcm.PayLoadBuilder.IGcmPayLoadBuilderNotificationOptions.Color(System.String)">
+            <summary>
+            Sets the color of <see cref="T:PayLoadion.Gcm.PayLoad.GcmNotification.IGcmNotification"/>
+            </summary>
+            <param name="color">The color</param>
+            <returns>The payload builder</returns>
+        </member>
+        <member name="M:PayLoadion.Gcm.PayLoadBuilder.IGcmPayLoadBuilderNotificationOptions.ClickAction(System.String)">
+            <summary>
+            Sets the click-action of <see cref="T:PayLoadion.Gcm.PayLoad.GcmNotification.IGcmNotification"/>
+            </summary>
+            <param name="clickAction">The click-action</param>
+            <returns>The payload builder</returns>
+        </member>
+        <member name="M:PayLoadion.Gcm.PayLoadBuilder.IGcmPayLoadBuilderNotificationOptions.BodyLocalizableKey(System.String)">
+            <summary>
+            Sets the body-loc-key of <see cref="T:PayLoadion.Gcm.PayLoad.GcmNotification.IGcmNotification"/>
+            </summary>
+            <param name="bodyLocalizableKey">The body-loc-key</param>
+            <returns>The payload builder</returns>
+        </member>
+        <member name="M:PayLoadion.Gcm.PayLoadBuilder.IGcmPayLoadBuilderNotificationOptions.TitleLocalizableKey(System.String)">
+            <summary>
+            Sets the title-loc-key of <see cref="T:PayLoadion.Gcm.PayLoad.GcmNotification.IGcmNotification"/>
+            </summary>
+            <param name="titleLocalizableKey">The title-loc-key</param>
+            <returns>The payload builder</returns>
+        </member>
+        <member name="T:PayLoadion.Gcm.PayLoadBuilder.IGcmPayLoadBuilderNotificationBodyLocalizableArgs">
+            <summary>
+            Represents the contracts for the <see cref="T:PayLoadion.Gcm.PayLoad.GcmNotification.IGcmNotification"/> builder
+            </summary>
+        </member>
+        <member name="M:PayLoadion.Gcm.PayLoadBuilder.IGcmPayLoadBuilderNotificationBodyLocalizableArgs.AddBodyLocalizableArgument(System.String)">
+            <summary>
+            Adds a argument to body-loc-argument
+            </summary>
+            <param name="bodyLocArgument">The title-loc argument</param>
+            <returns>The payload builder</returns>
+        </member>
+        <member name="M:PayLoadion.Gcm.PayLoadBuilder.IGcmPayLoadBuilderNotificationBodyLocalizableArgs.TitleLocalizableKey(System.String)">
+            <summary>
+            Sets the title-loc-key of <see cref="T:PayLoadion.Gcm.PayLoad.GcmNotification.IGcmNotification"/>
+            </summary>
+            <param name="titleLocalizableKey">The title-loc-key</param>
+            <returns>The payload builder</returns>
+        </member>
+        <member name="T:PayLoadion.Gcm.PayLoadBuilder.IGcmPayLoadBuilderNotificationTitleLocalizableArgs">
+            <summary>
+            Represents the contracts for the <see cref="T:PayLoadion.Gcm.PayLoad.GcmNotification.IGcmNotification"/> builder
+            </summary>
+        </member>
+        <member name="M:PayLoadion.Gcm.PayLoadBuilder.IGcmPayLoadBuilderNotificationTitleLocalizableArgs.AddTitleLocalizableArgument(System.String)">
+            <summary>
+            Sets the title-loc-key of <see cref="T:PayLoadion.Gcm.PayLoad.GcmNotification.IGcmNotification"/>
+            </summary>
+            <param name="titleLocArgument">The title-loc argument</param>
+            <returns>The payload builder</returns>
+        </member>
+        <member name="T:PayLoadion.Gcm.PayLoad.GcmNotification.IGcmNotification">
+            <summary>
+            Represents the contracts for GCM notification
+            </summary>
+        </member>
+        <member name="P:PayLoadion.Gcm.PayLoad.GcmNotification.IGcmNotification.Title">
+            <summary>
+            Gets the title
+            </summary>
+        </member>
+        <member name="P:PayLoadion.Gcm.PayLoad.GcmNotification.IGcmNotification.Body">
+            <summary>
+            Gets the body
+            </summary>
+        </member>
+        <member name="P:PayLoadion.Gcm.PayLoad.GcmNotification.IGcmNotification.Icon">
+            <summary>
+            Gets the icon
+            </summary>
+        </member>
+        <member name="P:PayLoadion.Gcm.PayLoad.GcmNotification.IGcmNotification.Sound">
+            <summary>
+            Gets the sound
+            </summary>
+        </member>
+        <member name="P:PayLoadion.Gcm.PayLoad.GcmNotification.IGcmNotification.Badge">
+            <summary>
+            Gets the badge
+            </summary>
+        </member>
+        <member name="P:PayLoadion.Gcm.PayLoad.GcmNotification.IGcmNotification.Tag">
+            <summary>
+            Gets the tag
+            </summary>
+        </member>
+        <member name="P:PayLoadion.Gcm.PayLoad.GcmNotification.IGcmNotification.Color">
+            <summary>
+            Gets the color
+            </summary>
+        </member>
+        <member name="P:PayLoadion.Gcm.PayLoad.GcmNotification.IGcmNotification.ClickAction">
+            <summary>
+            Gets the click-action
+            </summary>
+        </member>
+        <member name="P:PayLoadion.Gcm.PayLoad.GcmNotification.IGcmNotification.BodyLocKey">
+            <summary>
+            Gets the body-loc-key
+            </summary>
+        </member>
+        <member name="P:PayLoadion.Gcm.PayLoad.GcmNotification.IGcmNotification.BodyLocArgs">
+            <summary>
+            Gets the body-loc-args
+            </summary>
+        </member>
+        <member name="P:PayLoadion.Gcm.PayLoad.GcmNotification.IGcmNotification.TitleLocKey">
+            <summary>
+            Gets the title-loc-key
+            </summary>
+        </member>
+        <member name="P:PayLoadion.Gcm.PayLoad.GcmNotification.IGcmNotification.TitleLocArgs">
+            <summary>
+            Gets the title-loc-args
+            </summary>
+        </member>
+        <member name="T:PayLoadion.Gcm.PayLoad.IGcmPayLoad">
+            <summary>
+            Represents the contracts for GCM - Google Cloud Messaging
+            </summary>
+        </member>
+        <member name="P:PayLoadion.Gcm.PayLoad.IGcmPayLoad.Notification">
+            <summary>
+            Gets the <see cref="T:PayLoadion.Gcm.PayLoad.GcmNotification.IGcmNotification"/> for this payload
+            </summary>
+        </member>
+    </members>
+</doc>

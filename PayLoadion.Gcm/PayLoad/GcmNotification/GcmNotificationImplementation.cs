@@ -5,10 +5,21 @@ namespace PayLoadion.Gcm.PayLoad.GcmNotification
 {
     internal class GcmNotificationImplementation : IGcmNotification
     {
+        #region Fields
         private List<string> _internalBodyLocArgs;
 
         private List<string> _internalTitleLocArgs;
+        #endregion Fields
 
+        #region Properties
+
+        #region Private Properties
+
+        #endregion Private Properties
+
+        #region Public Properties
+
+        #region IGcmNotification
         [JsonProperty(PropertyName = "title", NullValueHandling = NullValueHandling.Ignore)]
         public string Title { get; set; }
 
@@ -36,11 +47,6 @@ namespace PayLoadion.Gcm.PayLoad.GcmNotification
         [JsonProperty(PropertyName = "body_loc_key", NullValueHandling = NullValueHandling.Ignore)]
         public string BodyLocKey { get; set; }
 
-        internal List<string> InternalBodyLocArgs
-        {
-            get { return _internalBodyLocArgs ?? (_internalBodyLocArgs = new List<string>()); }
-        }
-
         [JsonProperty(PropertyName = "body_loc_args", NullValueHandling = NullValueHandling.Ignore)]
         public IReadOnlyList<string> BodyLocArgs
         {
@@ -50,17 +56,47 @@ namespace PayLoadion.Gcm.PayLoad.GcmNotification
         [JsonProperty(PropertyName = "title_loc_key", NullValueHandling = NullValueHandling.Ignore)]
         public string TitleLocKey { get; set; }
 
-        internal List<string> InternalTitleLocArgs
-        {
-            get { return _internalTitleLocArgs ?? (_internalTitleLocArgs = new List<string>()); }
-        }
-
         [JsonProperty(PropertyName = "title_loc_args", NullValueHandling = NullValueHandling.Ignore)]
         public IReadOnlyList<string> TitleLocArgs
         {
             get { return _internalTitleLocArgs; }
         }
+        #endregion
+        #endregion Public Properties
 
+        #region Protected Properties
+
+        #endregion Protected Properties
+
+        #region Internal Properties
+        internal List<string> InternalBodyLocArgs
+        {
+            get { return _internalBodyLocArgs ?? (_internalBodyLocArgs = new List<string>()); }
+        }
+
+        internal List<string> InternalTitleLocArgs
+        {
+            get { return _internalTitleLocArgs ?? (_internalTitleLocArgs = new List<string>()); }
+        }
+        #endregion Internal Properties
+
+        #endregion Properties
+
+        #region Constructors
+
+        #region Private Constructors
+
+        #endregion Private Constructors
+
+        #region Public Constructors
+
+        #endregion Public Constructors
+
+        #region Protected Constructors
+
+        #endregion Protected Constructors
+
+        #region Internal Constructors
         internal GcmNotificationImplementation()
         {
 
@@ -92,7 +128,17 @@ namespace PayLoadion.Gcm.PayLoad.GcmNotification
 
             _internalTitleLocArgs = new List<string>(gcmNotification.TitleLocArgs);
         }
+        #endregion Internal Constructors
 
+        #endregion Constructors
+
+        #region Methods
+
+        #region Private Methods
+
+        #endregion Private Methods
+
+        #region Public Methods
         #region Implementation of IDisposable
 
         public void Dispose()
@@ -103,5 +149,16 @@ namespace PayLoadion.Gcm.PayLoad.GcmNotification
         }
 
         #endregion
+        #endregion Public Methods
+
+        #region Protected Methods
+
+        #endregion Protected Methods
+
+        #region Internal Methods
+
+        #endregion Internal Methods
+
+        #endregion Methods
     }
 }

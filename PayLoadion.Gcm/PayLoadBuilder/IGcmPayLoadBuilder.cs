@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using PayLoadion.Gcm.PayLoad;
 using PayLoadion.Gcm.PayLoad.GcmNotification;
 using PayLoadion.PayLoadBuilder;
@@ -9,14 +10,22 @@ namespace PayLoadion.Gcm.PayLoadBuilder
     /// </summary>
     public interface IGcmPayLoadBuilder : IPayLoadBuilder<IGcmPayLoad>
     {
-       
-    }
 
-    /// <summary>
-    /// Represents the contracts for the start GCM payload builder
-    /// </summary>
-    public interface IGcmPayLoadBuilderNotification : IGcmPayLoadBuilder
-    {
+        /// <summary>
+        /// Add custom data to payload
+        /// </summary>
+        /// <param name="customDataDictionary">The custom data values</param>
+        /// <returns>The payload builder</returns>
+        IGcmPayLoadBuilder AddCustomData(IDictionary<string, object> customDataDictionary);
+
+        /// <summary>
+        /// Add custom data to payload
+        /// </summary>
+        /// <param name="customDataKey">The custom data key</param>
+        /// <param name="customDataValue">the custom data value</param>
+        /// <returns>The payload builder</returns>
+        IGcmPayLoadBuilder AddCustomData(string customDataKey, object customDataValue);
+
         /// <summary>
         /// Starts the builder for <see cref="IGcmNotification"/>
         /// </summary>

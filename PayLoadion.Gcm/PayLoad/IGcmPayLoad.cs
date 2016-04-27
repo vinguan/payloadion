@@ -8,9 +8,11 @@ namespace PayLoadion.Gcm.PayLoad
     /// </summary>
     public interface IGcmPayLoad : IPayLoad
     {
+        #region Properties
         /// <summary>
         /// Gets the <see cref="IGcmNotification"/> for this payload
         /// </summary>
         IGcmNotification Notification { get; }
+        #endregion Properties
     }
 }
