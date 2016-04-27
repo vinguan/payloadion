@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using Newtonsoft.Json;
 using PayLoadion.Apns.PayLoad.Alert;
@@ -8,26 +9,34 @@ namespace PayLoadion.Apns.PayLoad
     [JsonObject(MemberSerialization = MemberSerialization.OptIn)]
     internal class ApnsPayLoadImplementation : IApnsPayLoad
     {
+        #region Fields
         private Dictionary<string, object> _internalCustomData;
+        #endregion Fields
 
+        #region Properties
+
+        #region Private Properties
+
+        #endregion Private Properties
+
+        #region Public Properties
         [JsonProperty(PropertyName = "alert", NullValueHandling = NullValueHandling.Ignore)]
         public object AlertValue
         {
             get
             {
-                if(Alert != null)
+                if (Alert != null)
                     return Alert;
 
                 return AlertMessage;
             }
         }
 
+        #region Implementation of IApnsPayLoad
         public IApnsAlert Alert
         {
             get { return AlertImplementation; }
         }
-
-        internal ApnsAlertImplementation AlertImplementation { get; set; }
 
         public string AlertMessage { get; set; }
 
@@ -43,16 +52,44 @@ namespace PayLoadion.Apns.PayLoad
         [JsonProperty(PropertyName = "category", NullValueHandling = NullValueHandling.Ignore)]
         public string Category { get; set; }
 
-        internal Dictionary<string, object> InternalCustomData
-        {
-            get { return _internalCustomData ?? (_internalCustomData = new Dictionary<string, object>()); }
-        }
-
         public IReadOnlyDictionary<string, object> CustomData
         {
             get { return _internalCustomData; }
         }
+        #endregion Implementation of IApnsPayLoad
 
+        #endregion Public Properties
+
+        #region Protected Properties
+
+        #endregion Protected Properties
+
+        #region Internal Properties
+        internal ApnsAlertImplementation AlertImplementation { get; set; }
+
+        internal Dictionary<string, object> InternalCustomData
+        {
+            get { return _internalCustomData ?? (_internalCustomData = new Dictionary<string, object>()); }
+        }
+        #endregion Internal Properties
+
+        #endregion Properties
+
+        #region Constructors
+
+        #region Private Constructors
+
+        #endregion Private Constructors
+
+        #region Public Constructors
+
+        #endregion Public Constructors
+
+        #region Protected Constructors
+
+        #endregion Protected Constructors
+
+        #region Internal Constructors
         internal ApnsPayLoadImplementation()
         {
             AlertMessage = null;
@@ -78,8 +115,18 @@ namespace PayLoadion.Apns.PayLoad
                                                                          customDataKvpValue => customDataKvpValue.Value);
             }
         }
+        #endregion Internal Constructors
 
+        #endregion Constructors
 
+        #region Methods
+
+        #region Private Methods
+
+        #endregion Private Methods
+
+        #region Public Methods
+        #region Implementation of IDisposable
         public void Dispose()
         {
             _internalCustomData = null;
@@ -87,7 +134,20 @@ namespace PayLoadion.Apns.PayLoad
             AlertImplementation.Dispose();
 
             AlertImplementation = null;
-        }
 
+            GC.SuppressFinalize(this);
+        }
+        #endregion Implementation of IDisposable
+        #endregion Public Methods
+
+        #region Protected Methods
+
+        #endregion Protected Methods
+
+        #region Internal Methods
+
+        #endregion Internal Methods
+
+        #endregion Methods
     }
 }

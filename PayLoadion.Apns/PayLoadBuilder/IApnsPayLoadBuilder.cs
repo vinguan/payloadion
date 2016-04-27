@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using PayLoadion.Apns.PayLoad;
 using PayLoadion.Apns.PayLoad.Alert;
 using PayLoadion.PayLoadBuilder;
@@ -8,8 +9,9 @@ namespace PayLoadion.Apns.PayLoadBuilder
     /// <summary>
     /// Represents the contracts for building a IApnsPayLoadBuilder
     /// </summary>
-    public interface IApnsPayLoadBuilderStart 
+    public interface IApnsPayLoadBuilder : IDisposable
     {
+        #region Methods
         /// <summary>
         /// Starts the builder for building the <see cref="IApnsAlert"/>
         /// </summary>
@@ -22,13 +24,38 @@ namespace PayLoadion.Apns.PayLoadBuilder
         /// <param name="alertMessage">The message</param>
         /// <returns>The payload builder</returns>
         IApnsPayLoadBuilderWithBadge Alert(string alertMessage);
+        #endregion Methods
+    }
+
+    /// <summary>
+    /// Represents the contracts for building a IApnsPayLoadBuilder
+    /// </summary>
+    public interface IApnsPayLoadBuilderWithCustomData : IPayLoadBuilder<IApnsPayLoad>
+    {
+        #region Methods
+        /// <summary>
+        /// Add custom data to payload
+        /// </summary>
+        /// <param name="customDataDictionary">The custom data values</param>
+        /// <returns>The payload builder</returns>
+        IApnsPayLoadBuilderWithCustomData AddCustomData(IDictionary<string, object> customDataDictionary);
+
+        /// <summary>
+        /// Add custom data to payload
+        /// </summary>
+        /// <param name="customDataKey">The custom data key</param>
+        /// <param name="customDataValue">the custom data value</param>
+        /// <returns>The payload builder</returns>
+        IApnsPayLoadBuilderWithCustomData AddCustomData(string customDataKey, object customDataValue);
+        #endregion Methods
     }
 
     /// <summary>
     /// Represents the contracts for building a <see cref="IApnsPayLoad"/> with <see cref="IApnsAlert"/>
     /// </summary>
-    public interface IApnsPayLoadBuilderAlert : IPayLoadBuilder<IApnsPayLoad>
+    public interface IApnsPayLoadBuilderAlert : IApnsPayLoadBuilder, IApnsPayLoadBuilderWithCustomData
     {
+        #region Methods
         /// <summary>
         /// Sets the title of the <see cref="IApnsAlert"/>
         /// </summary>
@@ -70,13 +97,15 @@ namespace PayLoadion.Apns.PayLoadBuilder
         /// <param name="launchImageFileName">the launch-image</param>
         /// <returns>The payload builder</returns>
         IApnsPayLoadBuilderWithBadge LaunchImageFileName(string launchImageFileName);
+        #endregion Methods
     }
 
     /// <summary>
     /// Represents the contracts for building a <see cref="IApnsPayLoad"/> with <see cref="IApnsAlert"/> with title-loc-args
     /// </summary>
-    public interface IApnsPayLoadBuilderAlertTitleLocalizableArgs : IPayLoadBuilder<IApnsPayLoad>
+    public interface IApnsPayLoadBuilderAlertTitleLocalizableArgs : IApnsPayLoadBuilder, IApnsPayLoadBuilderWithCustomData
     {
+        #region Methods
         /// <summary>
         /// Adds a argument to title-loc-args of the <see cref="IApnsAlert"/>
         /// </summary>
@@ -104,13 +133,15 @@ namespace PayLoadion.Apns.PayLoadBuilder
         /// <param name="launchImageFileName">the launch-image></param>
         /// <returns>The payload builder</returns>
         IApnsPayLoadBuilderWithBadge LaunchImageFileName(string launchImageFileName);
+        #endregion Methods
     }
 
     /// <summary>
     /// Represents the contracts for building a <see cref="IApnsPayLoad"/> with <see cref="IApnsAlert"/> with loc-args
     /// </summary>
-    public interface IApnsPayLoadBuilderAlertLocalizableArgs : IPayLoadBuilder<IApnsPayLoad>
+    public interface IApnsPayLoadBuilderAlertLocalizableArgs : IApnsPayLoadBuilder, IApnsPayLoadBuilderWithCustomData
     {
+        #region Methods
         /// <summary>
         /// Adds a argument to title-loc-args of the <see cref="IApnsAlert"/>
         /// </summary>
@@ -131,12 +162,13 @@ namespace PayLoadion.Apns.PayLoadBuilder
         /// <param name="launchImageFileName">the launch-image></param>
         /// <returns>The payload builder</returns>
         IApnsPayLoadBuilderWithBadge LaunchImageFileName(string launchImageFileName);
+        #endregion Methods
     }
 
     /// <summary>
     /// Represents the contracts for building a <see cref="IApnsPayLoad"/> with <see cref="IApnsAlert"/> with launch-iamge
     /// </summary>
-    public interface IApnsPayLoadBuilderAlertLaunchImage : IPayLoadBuilder<IApnsPayLoad>
+    public interface IApnsPayLoadBuilderAlertLaunchImage : IApnsPayLoadBuilder, IApnsPayLoadBuilderWithCustomData
     {
         /// <summary>
         /// Sets the launch-image of the <see cref="IApnsAlert"/>
@@ -156,8 +188,9 @@ namespace PayLoadion.Apns.PayLoadBuilder
     /// <summary>
     /// Represents the contracts for building a <see cref="IApnsPayLoad"/>
     /// </summary>
-    public interface IApnsPayLoadBuilderWithBadge : IPayLoadBuilder<IApnsPayLoad>
+    public interface IApnsPayLoadBuilderWithBadge : IApnsPayLoadBuilder, IApnsPayLoadBuilderWithCustomData
     {
+        #region Methods
         /// <summary>
         /// Sets the badge count
         /// </summary>
@@ -184,14 +217,16 @@ namespace PayLoadion.Apns.PayLoadBuilder
         /// </summary>
         /// <param name="categoryIdentifier">The category identifier</param>
         /// <returns>The payload builder</returns>
-        IPayLoadBuilder<IApnsPayLoad> CategoryIdentifier(string categoryIdentifier);
+        IApnsPayLoadBuilderWithCustomData CategoryIdentifier(string categoryIdentifier);
+        #endregion Methods
     }
 
     /// <summary>
     /// Represents the contracts for building a <see cref="IApnsPayLoad"/>
     /// </summary>
-    public interface IApnsPayLoadBuilderWithSound : IPayLoadBuilder<IApnsPayLoad>
+    public interface IApnsPayLoadBuilderWithSound : IApnsPayLoadBuilder, IApnsPayLoadBuilderWithCustomData
     {
+        #region Methods
         /// <summary>
         /// Sets the sound
         /// </summary>
@@ -211,14 +246,16 @@ namespace PayLoadion.Apns.PayLoadBuilder
         /// </summary>
         /// <param name="categoryIdentifier">The category identifier</param>
         /// <returns>The payload builder</returns>
-        IPayLoadBuilder<IApnsPayLoad> CategoryIdentifier(string categoryIdentifier);
+        IApnsPayLoadBuilderWithCustomData CategoryIdentifier(string categoryIdentifier);
+        #endregion Methods
     }
 
     /// <summary>
     /// Represents the contracts for building a <see cref="IApnsPayLoad"/>
     /// </summary>
-    public interface IApnsPayLoadBuilderWithContentAvailable : IPayLoadBuilder<IApnsPayLoad>
+    public interface IApnsPayLoadBuilderWithContentAvailable : IApnsPayLoadBuilder, IApnsPayLoadBuilderWithCustomData
     {
+        #region Methods
         /// <summary>
         /// Sets if there is content available
         /// </summary>
@@ -231,19 +268,22 @@ namespace PayLoadion.Apns.PayLoadBuilder
         /// </summary>
         /// <param name="categoryIdentifier">The category identifier</param>
         /// <returns>The payload builder</returns>
-        IPayLoadBuilder<IApnsPayLoad> CategoryIdentifier(string categoryIdentifier);
+        IApnsPayLoadBuilderWithCustomData CategoryIdentifier(string categoryIdentifier);
+        #endregion Methods
     }
 
     /// <summary>
     /// Represents the contracts for building a <see cref="IApnsPayLoad"/>
     /// </summary>
-    public interface IApnsPayLoadBuilderWithCategoryIdentifier : IPayLoadBuilder<IApnsPayLoad>
+    public interface IApnsPayLoadBuilderWithCategoryIdentifier : IApnsPayLoadBuilder, IApnsPayLoadBuilderWithCustomData
     {
+        #region Methods
         /// <summary>
         /// Sets the category
         /// </summary>
         /// <param name="categoryIdentifier">The category identifier</param>
         /// <returns>The payload builder</returns>
-        IPayLoadBuilder<IApnsPayLoad> CategoryIdentifier(string categoryIdentifier);
+        IApnsPayLoadBuilderWithCustomData CategoryIdentifier(string categoryIdentifier);
+        #endregion Methods
     }
 }

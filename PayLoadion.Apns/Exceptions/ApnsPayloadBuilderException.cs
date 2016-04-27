@@ -7,6 +7,8 @@ namespace PayLoadion.Apns.Exceptions
     /// </summary>
     public class ApnsPayloadBuilderException : Exception
     {
+        #region Constructors
+        #region Public Constructors
         /// <summary>
         ///  Inits a new instance of <see cref="ApnsPayloadBuilderException"/>
         /// </summary>
@@ -16,5 +18,7 @@ namespace PayLoadion.Apns.Exceptions
         {
 
         }
+        #endregion Public Constructors
+        #endregion Constructors
     }
 }

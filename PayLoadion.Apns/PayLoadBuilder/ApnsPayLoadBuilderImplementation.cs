@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Reflection;
 using System.Threading;
 using System.Threading.Tasks;
@@ -12,7 +13,8 @@ using PayLoadion.PayLoadBuilder;
 namespace PayLoadion.Apns.PayLoadBuilder
 {
     internal class ApnsPayLoadBuilderImplementation : IPayLoadBuilder<IApnsPayLoad>,
-                                                      IApnsPayLoadBuilderStart,
+                                                      IApnsPayLoadBuilder,
+                                                      IApnsPayLoadBuilderWithCustomData,
                                                       IApnsPayLoadBuilderAlert,
                                                       IApnsPayLoadBuilderAlertTitleLocalizableArgs,
                                                       IApnsPayLoadBuilderAlertLocalizableArgs,
@@ -22,13 +24,48 @@ namespace PayLoadion.Apns.PayLoadBuilder
                                                       IApnsPayLoadBuilderWithContentAvailable,
                                                       IApnsPayLoadBuilderWithCategoryIdentifier
     {
+        #region Fields
         private ApnsPayLoadImplementation _apnsPayLoadImplementation;
+        #endregion Fields
 
+        #region Properties
+
+        #region Private Properties
+
+        #endregion Private Properties
+
+        #region Public Properties
         public IApnsPayLoad PayLoad
         {
             get { return _apnsPayLoadImplementation; }
         }
+        #endregion Public Properties
 
+        #region Protected Properties
+
+        #endregion Protected Properties
+
+        #region Internal Properties
+
+        #endregion Internal Properties
+
+        #endregion Properties
+
+        #region Constructors
+
+        #region Private Constructors
+
+        #endregion Private Constructors
+
+        #region Public Constructors
+
+        #endregion Public Constructors
+
+        #region Protected Constructors
+
+        #endregion Protected Constructors
+
+        #region Internal Constructors
         internal ApnsPayLoadBuilderImplementation()
         {
             _apnsPayLoadImplementation = new ApnsPayLoadImplementation();
@@ -38,20 +75,56 @@ namespace PayLoadion.Apns.PayLoadBuilder
         {
             _apnsPayLoadImplementation = new ApnsPayLoadImplementation(apnsPayLoad);
         }
+        #endregion Internal Constructors
 
-        public IApnsPayLoadBuilderWithBadge Alert(string alertMessage)
+        #endregion Constructors
+
+        #region Methods
+
+        #region Private Methods
+
+        #endregion Private Methods
+
+        #region Public Methods
+
+        #region IApnsPayLoadBuilder
+
+        IApnsPayLoadBuilderAlert IApnsPayLoadBuilder.Alert()
+        {
+            _apnsPayLoadImplementation.AlertImplementation = new ApnsAlertImplementation();
+
+            return this;
+        }
+
+        IApnsPayLoadBuilderWithBadge IApnsPayLoadBuilder.Alert(string alertMessage)
         {
             _apnsPayLoadImplementation.AlertMessage = alertMessage;
 
             return this;
         }
 
-        public IApnsPayLoadBuilderAlert Alert()
+        #endregion
+
+        #region IApnsPayLoadBuilderWithCustomData
+
+        IApnsPayLoadBuilderWithCustomData IApnsPayLoadBuilderWithCustomData.AddCustomData(IDictionary<string, object> customDataDictionary)
         {
-            _apnsPayLoadImplementation.AlertImplementation = new ApnsAlertImplementation();
+            foreach (var customData in customDataDictionary)
+            {
+                _apnsPayLoadImplementation.InternalCustomData.Add(customData.Key, customData.Value);
+            }
 
             return this;
         }
+
+        IApnsPayLoadBuilderWithCustomData IApnsPayLoadBuilderWithCustomData.AddCustomData(string customDataKey, object customDataValue)
+        {
+            _apnsPayLoadImplementation.InternalCustomData.Add(customDataKey, customDataValue);
+
+            return this;
+        }
+
+        #endregion
 
         #region IApnsPayLoadBuilderAlert
 
@@ -191,7 +264,7 @@ namespace PayLoadion.Apns.PayLoadBuilder
             return this;
         }
 
-        IPayLoadBuilder<IApnsPayLoad> IApnsPayLoadBuilderWithBadge.CategoryIdentifier(string categoryIdentifier)
+        IApnsPayLoadBuilderWithCustomData IApnsPayLoadBuilderWithBadge.CategoryIdentifier(string categoryIdentifier)
         {
             _apnsPayLoadImplementation.Category = categoryIdentifier;
 
@@ -214,7 +287,7 @@ namespace PayLoadion.Apns.PayLoadBuilder
             return this;
         }
 
-        IPayLoadBuilder<IApnsPayLoad> IApnsPayLoadBuilderWithSound.CategoryIdentifier(string categoryIdentifier)
+        IApnsPayLoadBuilderWithCustomData IApnsPayLoadBuilderWithSound.CategoryIdentifier(string categoryIdentifier)
         {
             _apnsPayLoadImplementation.Category = categoryIdentifier;
 
@@ -230,7 +303,7 @@ namespace PayLoadion.Apns.PayLoadBuilder
             return this;
         }
 
-        IPayLoadBuilder<IApnsPayLoad> IApnsPayLoadBuilderWithContentAvailable.CategoryIdentifier(string categoryIdentifier)
+        IApnsPayLoadBuilderWithCustomData IApnsPayLoadBuilderWithContentAvailable.CategoryIdentifier(string categoryIdentifier)
         {
             _apnsPayLoadImplementation.Category = categoryIdentifier;
 
@@ -239,7 +312,7 @@ namespace PayLoadion.Apns.PayLoadBuilder
         #endregion IApnsPayLoadBuilderWithContentAvailable
 
         #region IApnsPayLoadBuilderWithCategoryIdentifier
-        IPayLoadBuilder<IApnsPayLoad> IApnsPayLoadBuilderWithCategoryIdentifier.CategoryIdentifier(string categoryIdentifier)
+        IApnsPayLoadBuilderWithCustomData IApnsPayLoadBuilderWithCategoryIdentifier.CategoryIdentifier(string categoryIdentifier)
         {
             _apnsPayLoadImplementation.Category = categoryIdentifier;
 
@@ -248,18 +321,6 @@ namespace PayLoadion.Apns.PayLoadBuilder
         #endregion IApnsPayLoadBuilderWithCategoryIdentifier
 
         #region IPayLoadBuilder<IApnsPayLoad>
-        public IPayLoadBuilder<IApnsPayLoad> AddCustomData(string customDataKey, object customDataValue)
-        {
-            if (string.IsNullOrEmpty(customDataKey))
-                throw new ArgumentNullException(nameof(customDataKey));
-
-            if (customDataValue == null)
-                throw new ArgumentNullException(nameof(customDataValue));
-
-            _apnsPayLoadImplementation.InternalCustomData.Add(customDataKey, customDataValue);
-
-            return this;
-        }
 
         public IApnsPayLoad BuildPayLoad()
         {
@@ -337,8 +398,24 @@ namespace PayLoadion.Apns.PayLoadBuilder
         #region IDisposable
         public void Dispose()
         {
+            _apnsPayLoadImplementation.Dispose();
+
             _apnsPayLoadImplementation = null;
+
+            GC.SuppressFinalize(this);
         }
         #endregion IDisposable
+
+        #endregion Public Methods
+
+        #region Protected Methods
+
+        #endregion Protected Methods
+
+        #region Internal Methods
+
+        #endregion Internal Methods
+
+        #endregion Methods
     }
 }

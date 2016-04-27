@@ -9,6 +9,7 @@ namespace PayLoadion.Apns.PayLoad
     /// </summary>
     public interface IApnsPayLoad : IPayLoad
     {
+        #region Properties
         /// <summary>
         /// Gets the <see cref="IApnsAlert"/>
         /// </summary>
@@ -38,5 +39,6 @@ namespace PayLoadion.Apns.PayLoad
         /// Gets or sets the category
         /// </summary>
         string Category { get; }
+        #endregion Properties 
     }
 }

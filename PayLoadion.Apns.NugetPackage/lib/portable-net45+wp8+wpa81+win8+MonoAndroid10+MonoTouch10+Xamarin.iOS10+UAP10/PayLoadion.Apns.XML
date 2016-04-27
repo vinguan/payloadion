@@ -1,0 +1,371 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>PayLoadion.Apns</name>
+    </assembly>
+    <members>
+        <member name="T:PayLoadion.Apns.Exceptions.ApnsPayloadBuilderException">
+            <summary>
+            Represents the Exception that may occur while ApnsPayLoadBuilder execution
+            </summary>
+        </member>
+        <member name="M:PayLoadion.Apns.Exceptions.ApnsPayloadBuilderException.#ctor(System.String,System.Exception)">
+            <summary>
+             Inits a new instance of <see cref="T:PayLoadion.Apns.Exceptions.ApnsPayloadBuilderException"/>
+            </summary>
+            <param name="message">The message</param>
+            <param name="innerException">the inner exception</param>
+        </member>
+        <member name="T:PayLoadion.Apns.Factories.ApnsPayLoadBuilderFactory">
+            <summary>
+            Represents the factory for <see cref="T:PayLoadion.Apns.PayLoadBuilder.IApnsPayLoadBuilder"/>
+            </summary>
+        </member>
+        <member name="M:PayLoadion.Apns.Factories.ApnsPayLoadBuilderFactory.CreateApnsPayLoadBuilder">
+            <summary>
+            Creates the <see cref="T:PayLoadion.Apns.PayLoadBuilder.IApnsPayLoadBuilder"/>
+            </summary>
+            <returns>the payload builder</returns>
+        </member>
+        <member name="M:PayLoadion.Apns.Factories.ApnsPayLoadBuilderFactory.CreateApnsPayLoadBuilder(PayLoadion.Apns.PayLoad.IApnsPayLoad)">
+            <summary>
+            Creates the <see cref="T:PayLoadion.Apns.PayLoadBuilder.IApnsPayLoadBuilder"/> based on another <see cref="T:PayLoadion.Apns.PayLoad.IApnsPayLoad"/>
+            </summary>
+            <param name="apnsPayLoad">The <see cref="T:PayLoadion.Apns.PayLoad.IApnsPayLoad"/></param>
+            <returns>the payload builder</returns>
+        </member>
+        <member name="T:PayLoadion.Apns.PayLoadBuilder.IApnsPayLoadBuilder">
+            <summary>
+            Represents the contracts for building a IApnsPayLoadBuilder
+            </summary>
+        </member>
+        <member name="M:PayLoadion.Apns.PayLoadBuilder.IApnsPayLoadBuilder.Alert">
+            <summary>
+            Starts the builder for building the <see cref="T:PayLoadion.Apns.PayLoad.Alert.IApnsAlert"/>
+            </summary>
+            <returns>The payload builder</returns>
+        </member>
+        <member name="M:PayLoadion.Apns.PayLoadBuilder.IApnsPayLoadBuilder.Alert(System.String)">
+            <summary>
+            Starts the builder with a alert message
+            </summary>
+            <param name="alertMessage">The message</param>
+            <returns>The payload builder</returns>
+        </member>
+        <member name="T:PayLoadion.Apns.PayLoadBuilder.IApnsPayLoadBuilderWithCustomData">
+            <summary>
+            Represents the contracts for building a IApnsPayLoadBuilder
+            </summary>
+        </member>
+        <member name="M:PayLoadion.Apns.PayLoadBuilder.IApnsPayLoadBuilderWithCustomData.AddCustomData(System.Collections.Generic.IDictionary{System.String,System.Object})">
+            <summary>
+            Add custom data to payload
+            </summary>
+            <param name="customDataDictionary">The custom data values</param>
+            <returns>The payload builder</returns>
+        </member>
+        <member name="M:PayLoadion.Apns.PayLoadBuilder.IApnsPayLoadBuilderWithCustomData.AddCustomData(System.String,System.Object)">
+            <summary>
+            Add custom data to payload
+            </summary>
+            <param name="customDataKey">The custom data key</param>
+            <param name="customDataValue">the custom data value</param>
+            <returns>The payload builder</returns>
+        </member>
+        <member name="T:PayLoadion.Apns.PayLoadBuilder.IApnsPayLoadBuilderAlert">
+            <summary>
+            Represents the contracts for building a <see cref="T:PayLoadion.Apns.PayLoad.IApnsPayLoad"/> with <see cref="T:PayLoadion.Apns.PayLoad.Alert.IApnsAlert"/>
+            </summary>
+        </member>
+        <member name="M:PayLoadion.Apns.PayLoadBuilder.IApnsPayLoadBuilderAlert.Title(System.String)">
+            <summary>
+            Sets the title of the <see cref="T:PayLoadion.Apns.PayLoad.Alert.IApnsAlert"/>
+            </summary>
+            <param name="title">the title</param>
+            <returns>The payload builder</returns>
+        </member>
+        <member name="M:PayLoadion.Apns.PayLoadBuilder.IApnsPayLoadBuilderAlert.Body(System.String)">
+            <summary>
+            Sets the body of the <see cref="T:PayLoadion.Apns.PayLoad.Alert.IApnsAlert"/>
+            </summary>
+            <param name="body">The body</param>
+            <returns>The payload builder</returns>
+        </member>
+        <member name="M:PayLoadion.Apns.PayLoadBuilder.IApnsPayLoadBuilderAlert.TitleLocalizableKey(System.String)">
+            <summary>
+            Sets the title-loc-key of the <see cref="T:PayLoadion.Apns.PayLoad.Alert.IApnsAlert"/>
+            </summary>
+            <param name="titleLocKey">The title loc key</param>
+            <returns>The payload builder</returns>
+        </member>
+        <member name="M:PayLoadion.Apns.PayLoadBuilder.IApnsPayLoadBuilderAlert.LocalizableKey(System.String)">
+            <summary>
+            Sets the loc-key of the <see cref="T:PayLoadion.Apns.PayLoad.Alert.IApnsAlert"/>
+            </summary>
+            <param name="localizableKey">The localizable key</param>
+            <returns>The payload builder</returns>
+        </member>
+        <member name="M:PayLoadion.Apns.PayLoadBuilder.IApnsPayLoadBuilderAlert.ActionLocalizableKey(System.String)">
+            <summary>
+            Sets the action-loc-key of the <see cref="T:PayLoadion.Apns.PayLoad.Alert.IApnsAlert"/>
+            </summary>
+            <param name="actionLocalizableKey">the action-loc-key</param>
+            <returns>The payload builder</returns>
+        </member>
+        <member name="M:PayLoadion.Apns.PayLoadBuilder.IApnsPayLoadBuilderAlert.LaunchImageFileName(System.String)">
+            <summary>
+            Sets the launch-image of the <see cref="T:PayLoadion.Apns.PayLoad.Alert.IApnsAlert"/>
+            </summary>
+            <param name="launchImageFileName">the launch-image</param>
+            <returns>The payload builder</returns>
+        </member>
+        <member name="T:PayLoadion.Apns.PayLoadBuilder.IApnsPayLoadBuilderAlertTitleLocalizableArgs">
+            <summary>
+            Represents the contracts for building a <see cref="T:PayLoadion.Apns.PayLoad.IApnsPayLoad"/> with <see cref="T:PayLoadion.Apns.PayLoad.Alert.IApnsAlert"/> with title-loc-args
+            </summary>
+        </member>
+        <member name="M:PayLoadion.Apns.PayLoadBuilder.IApnsPayLoadBuilderAlertTitleLocalizableArgs.AddTitleLocalizableArgument(System.String)">
+            <summary>
+            Adds a argument to title-loc-args of the <see cref="T:PayLoadion.Apns.PayLoad.Alert.IApnsAlert"/>
+            </summary>
+            <param name="titleLocArgument">the title-loc-arg</param>
+            <returns>The payload builder</returns>
+        </member>
+        <member name="M:PayLoadion.Apns.PayLoadBuilder.IApnsPayLoadBuilderAlertTitleLocalizableArgs.LocalizableKey(System.String)">
+            <summary>
+            Sets the loc-key of the <see cref="T:PayLoadion.Apns.PayLoad.Alert.IApnsAlert"/>
+            </summary>
+            <param name="localizableKey">the loc-Key</param>
+            <returns>The payload builder</returns>
+        </member>
+        <member name="M:PayLoadion.Apns.PayLoadBuilder.IApnsPayLoadBuilderAlertTitleLocalizableArgs.ActionLocalizableKey(System.String)">
+            <summary>
+            Sets the action-loc-key of the <see cref="T:PayLoadion.Apns.PayLoad.Alert.IApnsAlert"/>
+            </summary>
+            <param name="actionLocalizableKey">the action-loc-key</param>
+            <returns>The payload builder</returns>
+        </member>
+        <member name="M:PayLoadion.Apns.PayLoadBuilder.IApnsPayLoadBuilderAlertTitleLocalizableArgs.LaunchImageFileName(System.String)">
+            <summary>
+            Sets the launch-image of the <see cref="T:PayLoadion.Apns.PayLoad.Alert.IApnsAlert"/>
+            </summary>
+            <param name="launchImageFileName">the launch-image></param>
+            <returns>The payload builder</returns>
+        </member>
+        <member name="T:PayLoadion.Apns.PayLoadBuilder.IApnsPayLoadBuilderAlertLocalizableArgs">
+            <summary>
+            Represents the contracts for building a <see cref="T:PayLoadion.Apns.PayLoad.IApnsPayLoad"/> with <see cref="T:PayLoadion.Apns.PayLoad.Alert.IApnsAlert"/> with loc-args
+            </summary>
+        </member>
+        <member name="M:PayLoadion.Apns.PayLoadBuilder.IApnsPayLoadBuilderAlertLocalizableArgs.AddLocalizableArgument(System.String)">
+            <summary>
+            Adds a argument to title-loc-args of the <see cref="T:PayLoadion.Apns.PayLoad.Alert.IApnsAlert"/>
+            </summary>
+            <param name="localizableArgument">the title-loc-arg</param>
+            <returns>The payload builder</returns>
+        </member>
+        <member name="M:PayLoadion.Apns.PayLoadBuilder.IApnsPayLoadBuilderAlertLocalizableArgs.ActionLocalizableKey(System.String)">
+            <summary>
+            Adds a argument to action-loc-key of the <see cref="T:PayLoadion.Apns.PayLoad.Alert.IApnsAlert"/>
+            </summary>
+            <param name="actionLocalizableKey">the action-loc-key</param>
+            <returns>The payload builder</returns>
+        </member>
+        <member name="M:PayLoadion.Apns.PayLoadBuilder.IApnsPayLoadBuilderAlertLocalizableArgs.LaunchImageFileName(System.String)">
+            <summary>
+            Sets the launch-image of the <see cref="T:PayLoadion.Apns.PayLoad.Alert.IApnsAlert"/>
+            </summary>
+            <param name="launchImageFileName">the launch-image></param>
+            <returns>The payload builder</returns>
+        </member>
+        <member name="T:PayLoadion.Apns.PayLoadBuilder.IApnsPayLoadBuilderAlertLaunchImage">
+            <summary>
+            Represents the contracts for building a <see cref="T:PayLoadion.Apns.PayLoad.IApnsPayLoad"/> with <see cref="T:PayLoadion.Apns.PayLoad.Alert.IApnsAlert"/> with launch-iamge
+            </summary>
+        </member>
+        <member name="M:PayLoadion.Apns.PayLoadBuilder.IApnsPayLoadBuilderAlertLaunchImage.LaunchImageFileName(System.String)">
+            <summary>
+            Sets the launch-image of the <see cref="T:PayLoadion.Apns.PayLoad.Alert.IApnsAlert"/>
+            </summary>
+            <param name="launchImageFileName">the launch-image></param>
+            <returns>The payload builder</returns>
+        </member>
+        <member name="M:PayLoadion.Apns.PayLoadBuilder.IApnsPayLoadBuilderAlertLaunchImage.BadgeCount(System.Int32)">
+            <summary>
+            Sets the badge count
+            </summary>
+            <param name="badgeCount">the badge count</param>
+            <returns>The payload builder</returns>
+        </member>
+        <member name="T:PayLoadion.Apns.PayLoadBuilder.IApnsPayLoadBuilderWithBadge">
+            <summary>
+            Represents the contracts for building a <see cref="T:PayLoadion.Apns.PayLoad.IApnsPayLoad"/>
+            </summary>
+        </member>
+        <member name="M:PayLoadion.Apns.PayLoadBuilder.IApnsPayLoadBuilderWithBadge.BadgeCount(System.Int32)">
+            <summary>
+            Sets the badge count
+            </summary>
+            <param name="badgeCount">the badge count</param>
+            <returns>The payload builder</returns>
+        </member>
+        <member name="M:PayLoadion.Apns.PayLoadBuilder.IApnsPayLoadBuilderWithBadge.SoundName(System.String)">
+            <summary>
+            Sets the sound
+            </summary>
+            <param name="soundName">the sound name</param>
+            <returns>The payload builder</returns>
+        </member>
+        <member name="M:PayLoadion.Apns.PayLoadBuilder.IApnsPayLoadBuilderWithBadge.IsContentAvailable(System.Boolean)">
+            <summary>
+            Sets if there is content available
+            </summary>
+            <param name="isContentAvailable">if there is content available</param>
+            <returns>The payload builder</returns>
+        </member>
+        <member name="M:PayLoadion.Apns.PayLoadBuilder.IApnsPayLoadBuilderWithBadge.CategoryIdentifier(System.String)">
+            <summary>
+            Sets the category
+            </summary>
+            <param name="categoryIdentifier">The category identifier</param>
+            <returns>The payload builder</returns>
+        </member>
+        <member name="T:PayLoadion.Apns.PayLoadBuilder.IApnsPayLoadBuilderWithSound">
+            <summary>
+            Represents the contracts for building a <see cref="T:PayLoadion.Apns.PayLoad.IApnsPayLoad"/>
+            </summary>
+        </member>
+        <member name="M:PayLoadion.Apns.PayLoadBuilder.IApnsPayLoadBuilderWithSound.SoundName(System.String)">
+            <summary>
+            Sets the sound
+            </summary>
+            <param name="soundName">the sound name</param>
+            <returns>The payload builder</returns>
+        </member>
+        <member name="M:PayLoadion.Apns.PayLoadBuilder.IApnsPayLoadBuilderWithSound.IsContentAvailable(System.Boolean)">
+            <summary>
+            Sets if there is content available
+            </summary>
+            <param name="isContentAvailable">if there is content available</param>
+            <returns>The payload builder</returns>
+        </member>
+        <member name="M:PayLoadion.Apns.PayLoadBuilder.IApnsPayLoadBuilderWithSound.CategoryIdentifier(System.String)">
+            <summary>
+            Sets the category
+            </summary>
+            <param name="categoryIdentifier">The category identifier</param>
+            <returns>The payload builder</returns>
+        </member>
+        <member name="T:PayLoadion.Apns.PayLoadBuilder.IApnsPayLoadBuilderWithContentAvailable">
+            <summary>
+            Represents the contracts for building a <see cref="T:PayLoadion.Apns.PayLoad.IApnsPayLoad"/>
+            </summary>
+        </member>
+        <member name="M:PayLoadion.Apns.PayLoadBuilder.IApnsPayLoadBuilderWithContentAvailable.IsContentAvailable(System.Boolean)">
+            <summary>
+            Sets if there is content available
+            </summary>
+            <param name="isContentAvailable">if there is content available</param>
+            <returns>The payload builder</returns>
+        </member>
+        <member name="M:PayLoadion.Apns.PayLoadBuilder.IApnsPayLoadBuilderWithContentAvailable.CategoryIdentifier(System.String)">
+            <summary>
+            Sets the category
+            </summary>
+            <param name="categoryIdentifier">The category identifier</param>
+            <returns>The payload builder</returns>
+        </member>
+        <member name="T:PayLoadion.Apns.PayLoadBuilder.IApnsPayLoadBuilderWithCategoryIdentifier">
+            <summary>
+            Represents the contracts for building a <see cref="T:PayLoadion.Apns.PayLoad.IApnsPayLoad"/>
+            </summary>
+        </member>
+        <member name="M:PayLoadion.Apns.PayLoadBuilder.IApnsPayLoadBuilderWithCategoryIdentifier.CategoryIdentifier(System.String)">
+            <summary>
+            Sets the category
+            </summary>
+            <param name="categoryIdentifier">The category identifier</param>
+            <returns>The payload builder</returns>
+        </member>
+        <member name="T:PayLoadion.Apns.PayLoad.Alert.IApnsAlert">
+            <summary>
+            Represents the contracts for Apns Alert properties 
+            </summary>
+        </member>
+        <member name="P:PayLoadion.Apns.PayLoad.Alert.IApnsAlert.Title">
+            <summary>
+            Gets the Title
+            </summary>
+        </member>
+        <member name="P:PayLoadion.Apns.PayLoad.Alert.IApnsAlert.Body">
+            <summary>
+            Gets the Body
+            </summary>
+        </member>
+        <member name="P:PayLoadion.Apns.PayLoad.Alert.IApnsAlert.TitleLocKey">
+            <summary>
+            Gets the TitleLocKey
+            </summary>
+        </member>
+        <member name="P:PayLoadion.Apns.PayLoad.Alert.IApnsAlert.TitleLocArgs">
+            <summary>
+            Gets the TitleLocArgs
+            </summary>
+        </member>
+        <member name="P:PayLoadion.Apns.PayLoad.Alert.IApnsAlert.ActionLocKey">
+            <summary>
+            Gets the ActionLocKey
+            </summary>
+        </member>
+        <member name="P:PayLoadion.Apns.PayLoad.Alert.IApnsAlert.LocKey">
+            <summary>
+            Gets the LocKey
+            </summary>
+        </member>
+        <member name="P:PayLoadion.Apns.PayLoad.Alert.IApnsAlert.LocArgs">
+            <summary>
+            Gets the LocArgs
+            </summary>
+        </member>
+        <member name="P:PayLoadion.Apns.PayLoad.Alert.IApnsAlert.LaunchImage">
+            <summary>
+            Gets the LaunchImage
+            </summary>
+        </member>
+        <member name="T:PayLoadion.Apns.PayLoad.IApnsPayLoad">
+            <summary>
+            Represents the contracts for the Apns Payload
+            </summary>
+        </member>
+        <member name="P:PayLoadion.Apns.PayLoad.IApnsPayLoad.Alert">
+            <summary>
+            Gets the <see cref="T:PayLoadion.Apns.PayLoad.Alert.IApnsAlert"/>
+            </summary>
+        </member>
+        <member name="P:PayLoadion.Apns.PayLoad.IApnsPayLoad.AlertMessage">
+            <summary>
+            Gets the Alert message
+            </summary>
+        </member>
+        <member name="P:PayLoadion.Apns.PayLoad.IApnsPayLoad.Badge">
+            <summary>
+            Gets the badge count
+            </summary>
+        </member>
+        <member name="P:PayLoadion.Apns.PayLoad.IApnsPayLoad.Sound">
+            <summary>
+            Gets the sound file name
+            </summary>
+        </member>
+        <member name="P:PayLoadion.Apns.PayLoad.IApnsPayLoad.ContentAvailable">
+            <summary>
+            Gets whether is content available
+            </summary>
+        </member>
+        <member name="P:PayLoadion.Apns.PayLoad.IApnsPayLoad.Category">
+            <summary>
+            Gets or sets the category
+            </summary>
+        </member>
+    </members>
+</doc>

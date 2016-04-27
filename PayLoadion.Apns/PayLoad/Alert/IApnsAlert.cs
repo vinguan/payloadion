@@ -8,6 +8,7 @@ namespace PayLoadion.Apns.PayLoad.Alert
     /// </summary>
     public interface IApnsAlert : IDisposable 
     {
+        #region Properties
         /// <summary>
         /// Gets the Title
         /// </summary>
@@ -47,5 +48,6 @@ namespace PayLoadion.Apns.PayLoad.Alert
         /// Gets the LaunchImage
         /// </summary>
         string LaunchImage { get; }
+        #endregion Properties
     }
 }
