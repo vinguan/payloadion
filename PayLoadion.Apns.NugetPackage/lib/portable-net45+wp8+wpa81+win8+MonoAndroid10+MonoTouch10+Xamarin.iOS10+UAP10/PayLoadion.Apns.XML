@@ -119,6 +119,34 @@
             <param name="launchImageFileName">the launch-image</param>
             <returns>The payload builder</returns>
         </member>
+        <member name="M:PayLoadion.Apns.PayLoadBuilder.IApnsPayLoadBuilderAlert.Badge(System.Int32)">
+            <summary>
+            Sets the badge count
+            </summary>
+            <param name="badgeCount">the badge count</param>
+            <returns>The payload builder</returns>
+        </member>
+        <member name="M:PayLoadion.Apns.PayLoadBuilder.IApnsPayLoadBuilderAlert.Sound(System.String)">
+            <summary>
+            Sets the sound
+            </summary>
+            <param name="soundName">the sound name</param>
+            <returns>The payload builder</returns>
+        </member>
+        <member name="M:PayLoadion.Apns.PayLoadBuilder.IApnsPayLoadBuilderAlert.IsContentAvailable(System.Boolean)">
+            <summary>
+            Sets if there is content available
+            </summary>
+            <param name="isContentAvailable">if there is content available</param>
+            <returns>The payload builder</returns>
+        </member>
+        <member name="M:PayLoadion.Apns.PayLoadBuilder.IApnsPayLoadBuilderAlert.Category(System.String)">
+            <summary>
+            Sets the category
+            </summary>
+            <param name="categoryIdentifier">The category identifier</param>
+            <returns>The payload builder</returns>
+        </member>
         <member name="T:PayLoadion.Apns.PayLoadBuilder.IApnsPayLoadBuilderAlertTitleLocalizableArgs">
             <summary>
             Represents the contracts for building a <see cref="T:PayLoadion.Apns.PayLoad.IApnsPayLoad"/> with <see cref="T:PayLoadion.Apns.PayLoad.Alert.IApnsAlert"/> with title-loc-args
@@ -190,7 +218,7 @@
             <param name="launchImageFileName">the launch-image></param>
             <returns>The payload builder</returns>
         </member>
-        <member name="M:PayLoadion.Apns.PayLoadBuilder.IApnsPayLoadBuilderAlertLaunchImage.BadgeCount(System.Int32)">
+        <member name="M:PayLoadion.Apns.PayLoadBuilder.IApnsPayLoadBuilderAlertLaunchImage.Badge(System.Int32)">
             <summary>
             Sets the badge count
             </summary>
@@ -202,14 +230,14 @@
             Represents the contracts for building a <see cref="T:PayLoadion.Apns.PayLoad.IApnsPayLoad"/>
             </summary>
         </member>
-        <member name="M:PayLoadion.Apns.PayLoadBuilder.IApnsPayLoadBuilderWithBadge.BadgeCount(System.Int32)">
+        <member name="M:PayLoadion.Apns.PayLoadBuilder.IApnsPayLoadBuilderWithBadge.Badge(System.Int32)">
             <summary>
             Sets the badge count
             </summary>
             <param name="badgeCount">the badge count</param>
             <returns>The payload builder</returns>
         </member>
-        <member name="M:PayLoadion.Apns.PayLoadBuilder.IApnsPayLoadBuilderWithBadge.SoundName(System.String)">
+        <member name="M:PayLoadion.Apns.PayLoadBuilder.IApnsPayLoadBuilderWithBadge.Sound(System.String)">
             <summary>
             Sets the sound
             </summary>
@@ -223,7 +251,7 @@
             <param name="isContentAvailable">if there is content available</param>
             <returns>The payload builder</returns>
         </member>
-        <member name="M:PayLoadion.Apns.PayLoadBuilder.IApnsPayLoadBuilderWithBadge.CategoryIdentifier(System.String)">
+        <member name="M:PayLoadion.Apns.PayLoadBuilder.IApnsPayLoadBuilderWithBadge.Category(System.String)">
             <summary>
             Sets the category
             </summary>
@@ -235,7 +263,7 @@
             Represents the contracts for building a <see cref="T:PayLoadion.Apns.PayLoad.IApnsPayLoad"/>
             </summary>
         </member>
-        <member name="M:PayLoadion.Apns.PayLoadBuilder.IApnsPayLoadBuilderWithSound.SoundName(System.String)">
+        <member name="M:PayLoadion.Apns.PayLoadBuilder.IApnsPayLoadBuilderWithSound.Sound(System.String)">
             <summary>
             Sets the sound
             </summary>
@@ -249,7 +277,7 @@
             <param name="isContentAvailable">if there is content available</param>
             <returns>The payload builder</returns>
         </member>
-        <member name="M:PayLoadion.Apns.PayLoadBuilder.IApnsPayLoadBuilderWithSound.CategoryIdentifier(System.String)">
+        <member name="M:PayLoadion.Apns.PayLoadBuilder.IApnsPayLoadBuilderWithSound.Category(System.String)">
             <summary>
             Sets the category
             </summary>
@@ -268,7 +296,7 @@
             <param name="isContentAvailable">if there is content available</param>
             <returns>The payload builder</returns>
         </member>
-        <member name="M:PayLoadion.Apns.PayLoadBuilder.IApnsPayLoadBuilderWithContentAvailable.CategoryIdentifier(System.String)">
+        <member name="M:PayLoadion.Apns.PayLoadBuilder.IApnsPayLoadBuilderWithContentAvailable.Category(System.String)">
             <summary>
             Sets the category
             </summary>
@@ -280,7 +308,7 @@
             Represents the contracts for building a <see cref="T:PayLoadion.Apns.PayLoad.IApnsPayLoad"/>
             </summary>
         </member>
-        <member name="M:PayLoadion.Apns.PayLoadBuilder.IApnsPayLoadBuilderWithCategoryIdentifier.CategoryIdentifier(System.String)">
+        <member name="M:PayLoadion.Apns.PayLoadBuilder.IApnsPayLoadBuilderWithCategoryIdentifier.Category(System.String)">
             <summary>
             Sets the category
             </summary>

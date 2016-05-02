@@ -97,6 +97,36 @@ namespace PayLoadion.Apns.PayLoadBuilder
         /// <param name="launchImageFileName">the launch-image</param>
         /// <returns>The payload builder</returns>
         IApnsPayLoadBuilderWithBadge LaunchImageFileName(string launchImageFileName);
+
+        /// <summary>
+        /// Sets the badge count
+        /// </summary>
+        /// <param name="badgeCount">the badge count</param>
+        /// <returns>The payload builder</returns>
+        IApnsPayLoadBuilderWithSound Badge(int badgeCount);
+
+        /// <summary>
+        /// Sets the sound
+        /// </summary>
+        /// <param name="soundName">the sound name</param>
+        /// <returns>The payload builder</returns>
+        IApnsPayLoadBuilderWithContentAvailable Sound(string soundName);
+
+        /// <summary>
+        /// Sets if there is content available
+        /// </summary>
+        /// <param name="isContentAvailable">if there is content available</param>
+        /// <returns>The payload builder</returns>
+        IApnsPayLoadBuilderWithCategoryIdentifier IsContentAvailable(bool isContentAvailable);
+
+        /// <summary>
+        /// Sets the category
+        /// </summary>
+        /// <param name="categoryIdentifier">The category identifier</param>
+        /// <returns>The payload builder</returns>
+        IApnsPayLoadBuilderWithCustomData Category(string categoryIdentifier);
+
+
         #endregion Methods
     }
 
@@ -182,7 +212,7 @@ namespace PayLoadion.Apns.PayLoadBuilder
         /// </summary>
         /// <param name="badgeCount">the badge count</param>
         /// <returns>The payload builder</returns>
-        IApnsPayLoadBuilderWithSound BadgeCount(int badgeCount);
+        IApnsPayLoadBuilderWithSound Badge(int badgeCount);
     }
 
     /// <summary>
@@ -196,14 +226,14 @@ namespace PayLoadion.Apns.PayLoadBuilder
         /// </summary>
         /// <param name="badgeCount">the badge count</param>
         /// <returns>The payload builder</returns>
-        IApnsPayLoadBuilderWithSound BadgeCount(int badgeCount);
+        IApnsPayLoadBuilderWithSound Badge(int badgeCount);
 
         /// <summary>
         /// Sets the sound
         /// </summary>
         /// <param name="soundName">the sound name</param>
         /// <returns>The payload builder</returns>
-        IApnsPayLoadBuilderWithContentAvailable SoundName(string soundName);
+        IApnsPayLoadBuilderWithContentAvailable Sound(string soundName);
 
         /// <summary>
         /// Sets if there is content available
@@ -217,7 +247,7 @@ namespace PayLoadion.Apns.PayLoadBuilder
         /// </summary>
         /// <param name="categoryIdentifier">The category identifier</param>
         /// <returns>The payload builder</returns>
-        IApnsPayLoadBuilderWithCustomData CategoryIdentifier(string categoryIdentifier);
+        IApnsPayLoadBuilderWithCustomData Category(string categoryIdentifier);
         #endregion Methods
     }
 
@@ -232,7 +262,7 @@ namespace PayLoadion.Apns.PayLoadBuilder
         /// </summary>
         /// <param name="soundName">the sound name</param>
         /// <returns>The payload builder</returns>
-        IApnsPayLoadBuilderWithContentAvailable SoundName(string soundName);
+        IApnsPayLoadBuilderWithContentAvailable Sound(string soundName);
 
         /// <summary>
         /// Sets if there is content available
@@ -246,7 +276,7 @@ namespace PayLoadion.Apns.PayLoadBuilder
         /// </summary>
         /// <param name="categoryIdentifier">The category identifier</param>
         /// <returns>The payload builder</returns>
-        IApnsPayLoadBuilderWithCustomData CategoryIdentifier(string categoryIdentifier);
+        IApnsPayLoadBuilderWithCustomData Category(string categoryIdentifier);
         #endregion Methods
     }
 
@@ -268,7 +298,7 @@ namespace PayLoadion.Apns.PayLoadBuilder
         /// </summary>
         /// <param name="categoryIdentifier">The category identifier</param>
         /// <returns>The payload builder</returns>
-        IApnsPayLoadBuilderWithCustomData CategoryIdentifier(string categoryIdentifier);
+        IApnsPayLoadBuilderWithCustomData Category(string categoryIdentifier);
         #endregion Methods
     }
 
@@ -283,7 +313,7 @@ namespace PayLoadion.Apns.PayLoadBuilder
         /// </summary>
         /// <param name="categoryIdentifier">The category identifier</param>
         /// <returns>The payload builder</returns>
-        IApnsPayLoadBuilderWithCustomData CategoryIdentifier(string categoryIdentifier);
+        IApnsPayLoadBuilderWithCustomData Category(string categoryIdentifier);
         #endregion Methods
     }
 }

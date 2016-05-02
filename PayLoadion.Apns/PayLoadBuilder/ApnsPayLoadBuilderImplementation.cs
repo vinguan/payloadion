@@ -170,6 +170,34 @@ namespace PayLoadion.Apns.PayLoadBuilder
             return this;
         }
 
+        IApnsPayLoadBuilderWithSound IApnsPayLoadBuilderAlert.Badge(int badgeCount)
+        {
+            _apnsPayLoadImplementation.Badge = badgeCount;
+
+            return this;
+        }
+
+        IApnsPayLoadBuilderWithContentAvailable IApnsPayLoadBuilderAlert.Sound(string soundName)
+        {
+            _apnsPayLoadImplementation.Sound = soundName;
+
+            return this;
+        }
+
+        IApnsPayLoadBuilderWithCategoryIdentifier IApnsPayLoadBuilderAlert.IsContentAvailable(bool isContentAvailable)
+        {
+            _apnsPayLoadImplementation.ContentAvailable = isContentAvailable ? 1 : (int?)null;
+
+            return this;
+        }
+
+        IApnsPayLoadBuilderWithCustomData IApnsPayLoadBuilderAlert.Category(string categoryIdentifier)
+        {
+            _apnsPayLoadImplementation.Category = categoryIdentifier;
+
+            return this;
+        }
+
         #endregion IApnsPayLoadBuilderAlert
 
         #region IApnsPayLoadBuilderAlertTitleLocalizableArgs
@@ -233,7 +261,7 @@ namespace PayLoadion.Apns.PayLoadBuilder
             return this;
         }
 
-        IApnsPayLoadBuilderWithSound IApnsPayLoadBuilderAlertLaunchImage.BadgeCount(int badgeCount)
+        IApnsPayLoadBuilderWithSound IApnsPayLoadBuilderAlertLaunchImage.Badge(int badgeCount)
         {
             _apnsPayLoadImplementation.Badge = badgeCount;
 
@@ -243,14 +271,14 @@ namespace PayLoadion.Apns.PayLoadBuilder
 
         #region IApnsPayLoadBuilderWithBadge
 
-        IApnsPayLoadBuilderWithSound IApnsPayLoadBuilderWithBadge.BadgeCount(int badgeCount)
+        IApnsPayLoadBuilderWithSound IApnsPayLoadBuilderWithBadge.Badge(int badgeCount)
         {
             _apnsPayLoadImplementation.Badge = badgeCount;
 
             return this;
         }
 
-        IApnsPayLoadBuilderWithContentAvailable IApnsPayLoadBuilderWithBadge.SoundName(string soundName)
+        IApnsPayLoadBuilderWithContentAvailable IApnsPayLoadBuilderWithBadge.Sound(string soundName)
         {
             _apnsPayLoadImplementation.Sound = soundName;
 
@@ -264,7 +292,7 @@ namespace PayLoadion.Apns.PayLoadBuilder
             return this;
         }
 
-        IApnsPayLoadBuilderWithCustomData IApnsPayLoadBuilderWithBadge.CategoryIdentifier(string categoryIdentifier)
+        IApnsPayLoadBuilderWithCustomData IApnsPayLoadBuilderWithBadge.Category(string categoryIdentifier)
         {
             _apnsPayLoadImplementation.Category = categoryIdentifier;
 
@@ -273,7 +301,7 @@ namespace PayLoadion.Apns.PayLoadBuilder
         #endregion IApnsPayLoadBuilderWithBadge
 
         #region IApnsPayLoadBuilderWithSound
-        IApnsPayLoadBuilderWithContentAvailable IApnsPayLoadBuilderWithSound.SoundName(string soundName)
+        IApnsPayLoadBuilderWithContentAvailable IApnsPayLoadBuilderWithSound.Sound(string soundName)
         {
             _apnsPayLoadImplementation.Sound = soundName;
 
@@ -287,7 +315,7 @@ namespace PayLoadion.Apns.PayLoadBuilder
             return this;
         }
 
-        IApnsPayLoadBuilderWithCustomData IApnsPayLoadBuilderWithSound.CategoryIdentifier(string categoryIdentifier)
+        IApnsPayLoadBuilderWithCustomData IApnsPayLoadBuilderWithSound.Category(string categoryIdentifier)
         {
             _apnsPayLoadImplementation.Category = categoryIdentifier;
 
@@ -303,7 +331,7 @@ namespace PayLoadion.Apns.PayLoadBuilder
             return this;
         }
 
-        IApnsPayLoadBuilderWithCustomData IApnsPayLoadBuilderWithContentAvailable.CategoryIdentifier(string categoryIdentifier)
+        IApnsPayLoadBuilderWithCustomData IApnsPayLoadBuilderWithContentAvailable.Category(string categoryIdentifier)
         {
             _apnsPayLoadImplementation.Category = categoryIdentifier;
 
@@ -312,7 +340,7 @@ namespace PayLoadion.Apns.PayLoadBuilder
         #endregion IApnsPayLoadBuilderWithContentAvailable
 
         #region IApnsPayLoadBuilderWithCategoryIdentifier
-        IApnsPayLoadBuilderWithCustomData IApnsPayLoadBuilderWithCategoryIdentifier.CategoryIdentifier(string categoryIdentifier)
+        IApnsPayLoadBuilderWithCustomData IApnsPayLoadBuilderWithCategoryIdentifier.Category(string categoryIdentifier)
         {
             _apnsPayLoadImplementation.Category = categoryIdentifier;
 

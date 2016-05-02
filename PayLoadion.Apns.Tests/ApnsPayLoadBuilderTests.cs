@@ -41,7 +41,7 @@ namespace PayLoadion.Apple.Tests
 
                 IPayLoadBuilder<IApnsPayLoad> apnsPayLoad = ApnsPayLoadBuilderFactory.CreateApnsPayLoadBuilder()
                                                   .Alert("Hello Payloadion")
-                                                  .BadgeCount(1);
+                                                  .Badge(1);
 
                 var apnsPayLoadString = await apnsPayLoad.BuildPayLoadToStringAsync(true);
 
@@ -64,7 +64,7 @@ namespace PayLoadion.Apple.Tests
 
                 var apnsPayLoad = ApnsPayLoadBuilderFactory.CreateApnsPayLoadBuilder()
                     .Alert("Hello Payloadion")
-                    .BadgeCount(1)
+                    .Badge(1)
                     .AddCustomData("id", "123")
                     .AddCustomData("id2", 12)
                     .AddCustomData("customDataObject", new CustomDataObject() {Id = "12"})
@@ -94,9 +94,8 @@ namespace PayLoadion.Apple.Tests
 
                 var apnsPayLoad = ApnsPayLoadBuilderFactory.CreateApnsPayLoadBuilder()
                                                                         .Alert("Hello Payloadion")
-                                                                        .BadgeCount(1)
+                                                                        .Badge(1)
                                                                         .AddCustomData(customData);
-
 
                 var apnsPayLoadString = apnsPayLoad.BuildPayLoadToString(true);
 
@@ -119,7 +118,7 @@ namespace PayLoadion.Apple.Tests
 
                 var apnsPayLoad = ApnsPayLoadBuilderFactory.CreateApnsPayLoadBuilder()
                                                   .Alert("Hello Payloadion")
-                                                  .BadgeCount(1)
+                                                  .Badge(1)
                                                   .AddCustomData("id", "123")
                                                   .AddCustomData("id2", 12)
                                                   .AddCustomData("customDataObject", new CustomDataObject() { Id = "12" })
@@ -147,11 +146,9 @@ namespace PayLoadion.Apple.Tests
                                                   .Alert()
                                                   .Title("Simple Custom Alert Message")
                                                   .Body("Teste")
-                                                  .LaunchImageFileName("sampleimage")
-                                                  .BadgeCount(1)
-                                                  .SoundName("aperture.caf")
+                                                  .Sound("default")
                                                   .IsContentAvailable(true)
-                                                  .CategoryIdentifier("Test")
+                                                  .Category("Test")
                                                   .AddCustomData("Id", "123")
                                                   .AddCustomData("Id2", 12)
                                                   .AddCustomData("CustomDataObject", new CustomDataObject() { Id = "12" })
@@ -180,10 +177,10 @@ namespace PayLoadion.Apple.Tests
                                                   .Title("Simple Custom Alert Message")
                                                   .Body("Teste")
                                                   .LaunchImageFileName("sampleimage")
-                                                  .BadgeCount(1)
-                                                  .SoundName("aperture.caf")
+                                                  .Badge(1)
+                                                  .Sound("aperture.caf")
                                                   .IsContentAvailable(true)
-                                                  .CategoryIdentifier("Test")
+                                                  .Category("Test")
                                                   .AddCustomData("Id", "123")
                                                   .AddCustomData("Id2", 12)
                                                   .AddCustomData("CustomDataObject", new CustomDataObject() { Id = "12" })
@@ -220,10 +217,10 @@ namespace PayLoadion.Apple.Tests
                                                           .AddLocalizableArgument("LocKeyTestarg2")
                                                           .ActionLocalizableKey("actionLocKeyTest")
                                                           .LaunchImageFileName("sampleimage")
-                                                          .BadgeCount(1)
-                                                          .SoundName("aperture.caf")
+                                                          .Badge(1)
+                                                          .Sound("aperture.caf")
                                                           .IsContentAvailable(true)
-                                                          .CategoryIdentifier("Test")
+                                                          .Category("Test")
                                                           .AddCustomData("Id", "123")
                                                           .AddCustomData("Id2", 12)
                                                           .AddCustomData("CustomDataObject", new CustomDataObject() { Id = "12" })
