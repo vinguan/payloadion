@@ -255,7 +255,7 @@
             <param name="soundFileName">The sound</param>
             <returns>The payload builder</returns>
         </member>
-        <member name="M:PayLoadion.Gcm.GcmDownStreamHttpMessage.Builder.IGcmDownStreamHttpMessagePayLoadBuilderNotificationOptions.BadgeCount(System.String)">
+        <member name="M:PayLoadion.Gcm.GcmDownStreamHttpMessage.Builder.IGcmDownStreamHttpMessagePayLoadBuilderNotificationOptions.Badge(System.String)">
             <summary>
             Sets the badge of <see cref="T:PayLoadion.Gcm.PayLoad.GcmNotification.IGcmNotification"/>
             </summary>
@@ -485,7 +485,7 @@
             <param name="soundFileName">The sound</param>
             <returns>The payload builder</returns>
         </member>
-        <member name="M:PayLoadion.Gcm.PayLoadBuilder.IGcmPayLoadBuilderNotificationOptions.BadgeCount(System.String)">
+        <member name="M:PayLoadion.Gcm.PayLoadBuilder.IGcmPayLoadBuilderNotificationOptions.Badge(System.String)">
             <summary>
             Sets the badge of <see cref="T:PayLoadion.Gcm.PayLoad.GcmNotification.IGcmNotification"/>
             </summary>

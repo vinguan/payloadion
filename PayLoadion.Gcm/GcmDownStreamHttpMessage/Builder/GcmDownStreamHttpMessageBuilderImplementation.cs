@@ -237,7 +237,7 @@ namespace PayLoadion.Gcm.GcmDownStreamHttpMessage.Builder
             return this;
         }
 
-        IGcmDownStreamHttpMessagePayLoadBuilderNotificationOptions IGcmDownStreamHttpMessagePayLoadBuilderNotificationOptions.BadgeCount(string badgeCount)
+        IGcmDownStreamHttpMessagePayLoadBuilderNotificationOptions IGcmDownStreamHttpMessagePayLoadBuilderNotificationOptions.Badge(string badgeCount)
         {
             _gcmDownStreamHttpMessageImplementation.GcmPayLoadImplementation.GcmNotificationImplementation.Badge = badgeCount;
             return this;

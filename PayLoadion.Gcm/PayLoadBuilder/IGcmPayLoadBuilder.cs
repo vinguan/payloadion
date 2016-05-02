@@ -10,7 +10,6 @@ namespace PayLoadion.Gcm.PayLoadBuilder
     /// </summary>
     public interface IGcmPayLoadBuilder : IPayLoadBuilder<IGcmPayLoad>
     {
-
         /// <summary>
         /// Add custom data to payload
         /// </summary>
@@ -83,7 +82,7 @@ namespace PayLoadion.Gcm.PayLoadBuilder
         /// </summary>
         /// <param name="badgeCount">The badge</param>
         /// <returns>The payload builder</returns>
-        IGcmPayLoadBuilderNotificationOptions BadgeCount(string badgeCount);
+        IGcmPayLoadBuilderNotificationOptions Badge(string badgeCount);
 
         /// <summary>
         /// Sets the tag of <see cref="IGcmNotification"/>

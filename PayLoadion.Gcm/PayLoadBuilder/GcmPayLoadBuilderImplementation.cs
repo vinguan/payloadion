@@ -140,7 +140,7 @@ namespace PayLoadion.Gcm.PayLoadBuilder
             return this;
         }
 
-        IGcmPayLoadBuilderNotificationOptions IGcmPayLoadBuilderNotificationOptions.BadgeCount(string badgeCount)
+        IGcmPayLoadBuilderNotificationOptions IGcmPayLoadBuilderNotificationOptions.Badge(string badgeCount)
         {
             _gcmPayLoadImplementation.GcmNotificationImplementation.Badge = badgeCount;
 

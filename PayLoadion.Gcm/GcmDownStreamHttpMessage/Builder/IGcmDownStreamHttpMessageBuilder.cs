@@ -211,7 +211,7 @@ namespace PayLoadion.Gcm.GcmDownStreamHttpMessage.Builder
         /// </summary>
         /// <param name="badgeCount">The badge</param>
         /// <returns>The payload builder</returns>
-        IGcmDownStreamHttpMessagePayLoadBuilderNotificationOptions BadgeCount(string badgeCount);
+        IGcmDownStreamHttpMessagePayLoadBuilderNotificationOptions Badge(string badgeCount);
 
         /// <summary>
         /// Sets the tag of <see cref="IGcmNotification"/>

@@ -2,7 +2,7 @@
 <package >
   <metadata>
     <id>PayLoadion.Gcm</id>
-    <version>1.0.0</version>
+    <version>1.0.1</version>
     <title>PayLoadion.Gcm</title>
     <authors>Vinicius Gualberto - @vinguan</authors>
     <owners>Vinicius Gualberto - @vinguan</owners>
@@ -10,8 +10,11 @@
       The implementation of PayLoadion for GCM - Google Cloud Messaging
     </description>
     <releaseNotes>
+      [1.0.1]
+        [Bug-Fixes]
+          ---Renamed Badge to BadgeCount
       [1.0.0]
-      ---Initial Release
+          ---Initial Release
     </releaseNotes>
     <summary>
       The implementation of PayLoadion for GCM - Google Cloud Messaging
