@@ -13,38 +13,68 @@ var apnsPayloadBuilder = ApnsPayLoadBuilderFactory.CreateApnsPayLoadBuilder()
 ```
 ##Building a simple Apns's Payload
 
-* PayLoad built to object
+### PayLoad built to object
 ```csharp
 var apnsPayload = ApnsPayLoadBuilderFactory.CreateApnsPayLoadBuilder()
                                            .Alert("Simple Message")
                                            .BuildPayLoad();
 ```
-* PayLoad built and serialized to string
+### PayLoad built and serialized to string
 ```csharp
 var apnsPayloadString = ApnsPayLoadBuilderFactory.CreateApnsPayLoadBuilder()
                                                  .Alert("Simple Message")
-                                                 .BuildPayLoadToString();
+                                                 .BuildPayLoadToString(true);
 ```
+It should produce this Payload : 
+```
+{
+  "aps": {
+    "alert": "Simple Message"
+  }
+}
+```
+
 # More complex cenarios
 ## Custom Alert 
 ```csharp
-var apnsPayLoad = ApnsPayLoadBuilderFactory.CreateApnsPayLoadBuilder()
-                                            .Alert()
-                                            .Title("Hello Payloadion.Apns Title")
-                                            .Body("Hello Payloadion.Apns Body");
-
-var apnsPayLoadString = apnsPayLoad.BuildPayLoadToString(true);
+var apnsPayLoadString = ApnsPayLoadBuilderFactory.CreateApnsPayLoadBuilder()
+                                                 .Alert()
+                                                 .Title("Hello Payloadion.Apns Title")
+                                                 .Body("Hello Payloadion.Apns Body")
+                                                 .BuildPayLoadToString(true);
+```
+It should produce this Payload : 
+```
+{
+  "aps": {
+    "alert": {
+      "title": "Hello Payloadion.Apns Title",
+      "body": "Hello Payloadion.Apns Body"
+    }
+  }
+}
 ```
 
 ## With Custom data  
 ```csharp
-var apnsPayLoad = ApnsPayLoadBuilderFactory.CreateApnsPayLoadBuilder()
-                                            .Alert("Hello Payloadion.Apns")
-                                            .Title("Simple Custom Alert Message")
-                                            .Body("Hello Payloadion.Apns Body")
-                                            .AddCustomData("NewsId", "123");
-
-var apnsPayLoadString = apnsPayLoad.BuildPayLoadToString(true);
+var apnsPayLoadString = ApnsPayLoadBuilderFactory.CreateApnsPayLoadBuilder()
+                                                 .Alert()
+                                                 .Title("Hello Payloadion.Apns")
+                                                 .Body("Hello Payloadion.Apns Body")
+                                                 .AddCustomData("NewsId", 11)
+                                                 .BuildPayLoadToString(true);
+```
+It should produce this Payload : 
+```
+{
+  "aps": {
+    "alert": {
+      "title": "Hello Payloadion.Apns",
+      "body": "Hello Payloadion.Apns Body"
+    }
+  },
+  "NewsId": 11
+}
 ```
 
 # Author
