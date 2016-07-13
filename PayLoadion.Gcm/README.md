@@ -15,7 +15,7 @@ var gcmPayLoadBuilder = GcmPayLoadBuilderFactory.CreateGcmPayLoadBuilder();
 ```
 ##Building a simple Apns's Payload
 
-* PayLoad built to object
+###PayLoad built to object
 ```csharp
 var gcmPayLoad = GcmPayLoadBuilderFactory.CreateGcmPayLoadBuilder()
                                          .Notification()
@@ -24,7 +24,7 @@ var gcmPayLoad = GcmPayLoadBuilderFactory.CreateGcmPayLoadBuilder()
                                          .AddCustomData("NewsId", 11)
                                          .BuildPayLoad();
 ```
-* PayLoad built and serialized to string
+###PayLoad built and serialized to string
 ```csharp
 var gcmPayLoadString = GcmPayLoadBuilderFactory.CreateGcmPayLoadBuilder()
                                                .Notification()
@@ -33,14 +33,36 @@ var gcmPayLoadString = GcmPayLoadBuilderFactory.CreateGcmPayLoadBuilder()
                                                .AddCustomData("NewsId", 11)
                                                .BuildPayLoadToString();
 ```
+It should produce this Payload : 
+```
+  {
+  "notification": {
+    "title": "Hello Payloadion.GCM",
+    "icon": "DefaultIcon"
+  },
+  "data": {
+    "NewsId": 11
+  }
+}
+```
+
 # More cenarios
 ## Only with custom data 
 ```csharp
 var gcmPayLoadString = GcmPayLoadBuilderFactory.CreateGcmPayLoadBuilder()
                                                .AddCustomData("NewsId", 11)
                                                .BuildPayLoadToString();
-```
 
+```
+It should produce this Payload : 
+```
+{
+  "notification": {},
+  "data": {
+    "NewsId": 11
+  }
+}
+```
 ## With Notification, Custom Data and others arguments
 ```csharp
 var gcmPayLoadString = GcmPayLoadBuilderFactory.CreateGcmPayLoadBuilder()
@@ -55,6 +77,28 @@ var gcmPayLoadString = GcmPayLoadBuilderFactory.CreateGcmPayLoadBuilder()
                                                .AddCustomData("NewsId", 11)
                                                .BuildPayLoadToString();
 ```
+It should produce this Payload : 
+```
+{
+  "notification": {
+    "title": "Hello Payloadion.GCM",
+    "body": "Hello Payloadion.GCM Body",
+    "icon": "DefaultIcon",
+    "body_loc_key": "BodyLocKey",
+    "body_loc_args": [
+      "2"
+    ],
+    "title_loc_key": "TitleLocKey",
+    "title_loc_args": [
+      "1"
+    ]
+  },
+  "data": {
+    "NewsId": 11
+  }
+}
+```
+
 #Downstream HTTP messages
 # Getting Started
 ## Creating the DownStream HttpMessage Builder
@@ -75,6 +119,23 @@ var gcmDownStreamHttpMessage = GcmDownStreamHttpMessageBuilderFactory.CreateGcmD
                                                                      .AddCustomData("NewsId", 11)
                                                                      .BuildGcmDownStreamHttpMessageToJson(true);
 ```
+It should produce this message :
+```
+{
+  "to": "123",
+  "priority": "normal",
+  "time_to_live": 2678400,
+  "dry_run": true,
+  "notification": {
+    "title": "Hello Payloadion.GCM",
+    "icon": "DefaultIcon"
+  },
+  "data": {
+    "NewsId": 11
+  }
+}
+```
+
 ##Sending to multiple targets the same message
 ```csharp
 var gcmDownStreamHttpMessage = GcmDownStreamHttpMessageBuilderFactory.CreateGcmDownStreamHttpMessageBuilder()
@@ -90,6 +151,26 @@ var gcmDownStreamHttpMessage = GcmDownStreamHttpMessageBuilderFactory.CreateGcmD
                                                                      .Icon("DefaultIcon")
                                                                      .AddCustomData("NewsId", 11)
                                                                      .BuildGcmDownStreamHttpMessageToJson(true);
+ ```
+It should produce this message :
+```
+{
+  "registration_ids": [
+    "GcmDeviceUniqueId1",
+    "GcmDeviceUniqueId2",
+    "GcmDeviceUniqueId3"
+  ],
+  "priority": "normal",
+  "time_to_live": 2678400,
+  "dry_run": true,
+  "notification": {
+    "title": "Hello Payloadion.GCM",
+    "icon": "DefaultIcon"
+  },
+  "data": {
+    "NewsId": 11
+  }
+}
 ```
 
 # Author
