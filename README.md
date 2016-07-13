@@ -4,7 +4,7 @@
 Fluent Class Library(FCL) to easily build PayLoad for Push Notification Services such as APNS or WNS
 
 ##Compability
-Compiled to Profile 259 of PCL which includes the plataforms .NET 4.5, Windows Phone 8.x, Windows 8.x, Windows 10 UWP. It can be used also on iOS and Android with [Xamarin](http://xamarin.com).
+Compiled to Profile 259 and compatible with Asp.Net Core. 
 
 ##Nuget
 ##Apns - Apple Push Notification Service
