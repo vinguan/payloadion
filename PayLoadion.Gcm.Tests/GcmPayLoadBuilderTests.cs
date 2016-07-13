@@ -9,6 +9,36 @@ namespace PayLoadion.Gcm.Tests
     public class GcmPayLoadBuilderTests
     {
         [TestMethod]
+        public void ShouldTestsforGitHub()
+        {
+            try
+            {
+                var gcmDownStreamHttpMessage = GcmDownStreamHttpMessageBuilderFactory.CreateGcmDownStreamHttpMessageBuilder()
+                                                                                     .AddDeviceId("GcmDeviceUniqueId1")
+                                                                                     .AddDeviceId("GcmDeviceUniqueId2")
+                                                                                     .AddDeviceId("GcmDeviceUniqueId3")
+                                                                                     .Priority(GcmPriorityEnum.Normal)
+                                                                                     .TimeToLiveUntil(DateTimeOffset.Now.AddMonths(1))
+                                                                                     .IsDryRun(true)
+                                                                                     .PayLoad()
+                                                                                     .Notification()
+                                                                                     .Title("Hello Payloadion.GCM")
+                                                                                     .Icon("DefaultIcon")
+                                                                                     .AddCustomData("NewsId", 11)
+                                                                                     .BuildGcmDownStreamHttpMessageToJson(true);
+                Console.WriteLine(gcmDownStreamHttpMessage);
+
+                Assert.IsNotNull(gcmDownStreamHttpMessage);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+
+                Assert.Fail(ex.Message);
+            }
+        }
+
+        [TestMethod]
         public void ShouldBuildSimpleGcmPayLoad()
         {
             try

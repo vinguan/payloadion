@@ -15,6 +15,30 @@ namespace PayLoadion.Apple.Tests
     public class ApnsPayLoadBuilderTests
     {
         [TestMethod]
+        public void ShouldTestsforGitHub()
+        {
+            try
+            {
+                var apnsPayLoadString = ApnsPayLoadBuilderFactory.CreateApnsPayLoadBuilder()
+                                                            .Alert()
+                                                            .Title("Hello Payloadion.Apns")
+                                                            .Body("Hello Payloadion.Apns Body")
+                                                            .AddCustomData("NewsId", "123")
+                                                            .BuildPayLoadToString(true);
+
+                Console.WriteLine(apnsPayLoadString);
+
+                Assert.IsNotNull(apnsPayLoadString);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+
+                Assert.Fail(ex.Message);
+            }
+        }
+
+        [TestMethod]
         public void ShouldBuildSimpleApnsPayLoad()
         {
             try
