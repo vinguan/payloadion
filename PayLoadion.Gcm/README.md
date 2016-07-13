@@ -1,5 +1,5 @@
 
-#PayLoadion.Apns 
+#PayLoadion.Gcm 
 <img src="https://raw.githubusercontent.com/vinguan/payloadion/master/Project%20Icons/PayLoadion.Gcm/payloadion_google.png" width="200">
 
 Implementation of PayLoadion for Google Cloud Messaging(GCM), following [Notification payload Support](https://developers.google.com/cloud-messaging/http-server-ref#table2). PayLoadion.Gcm comes with a plus that is a 
