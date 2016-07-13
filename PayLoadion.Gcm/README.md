@@ -31,7 +31,7 @@ var gcmPayLoadString = GcmPayLoadBuilderFactory.CreateGcmPayLoadBuilder()
                                                .Title("Hello Payloadion.GCM")
                                                .Icon("DefaultIcon")
                                                .AddCustomData("NewsId", 11)
-                                               .BuildPayLoadToString();
+                                               .BuildPayLoadToString(true);
 ```
 It should produce this Payload : 
 ```
@@ -51,7 +51,7 @@ It should produce this Payload :
 ```csharp
 var gcmPayLoadString = GcmPayLoadBuilderFactory.CreateGcmPayLoadBuilder()
                                                .AddCustomData("NewsId", 11)
-                                               .BuildPayLoadToString();
+                                               .BuildPayLoadToString(true);
 
 ```
 It should produce this Payload : 
@@ -75,7 +75,7 @@ var gcmPayLoadString = GcmPayLoadBuilderFactory.CreateGcmPayLoadBuilder()
                                                .TitleLocalizableKey("TitleLocKey")
                                                .AddTitleLocalizableArgument("1")
                                                .AddCustomData("NewsId", 11)
-                                               .BuildPayLoadToString();
+                                               .BuildPayLoadToString(true);
 ```
 It should produce this Payload : 
 ```
