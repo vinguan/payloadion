@@ -3,22 +3,22 @@
 
 Fluent Class Library(FCL) to easily build PayLoad for Push Notification Services such as APNS or WNS
 
-##Compability
+## Compability
 Compiled to PCL Profile 259 and compatible with Asp.Net Core. 
 
-##Nuget
+## Nuget
 ##Apns - Apple Push Notification Service
 ```
 Install-Package PayLoadion.Apns
 ```
-###Getting Started & Docs
+### Getting Started & Docs
 [Go for it](https://github.com/vinguan/payloadion/blob/master/PayLoadion.Apns)
 
-##Gcm - Google Cloud Messaging
+## Gcm - Google Cloud Messaging
 ```
 Install-Package PayLoadion.Gcm
 ```
-###Getting Started & Docs
+### Getting Started & Docs
 [Go for it](https://github.com/vinguan/payloadion/tree/master/PayLoadion.Gcm)
 
 # Author
