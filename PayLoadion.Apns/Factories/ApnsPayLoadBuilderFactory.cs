@@ -8,8 +8,6 @@ namespace PayLoadion.Apns.Factories
     /// </summary>
     public class ApnsPayLoadBuilderFactory
     {
-        #region Methods
-        #region Public Methods
         /// <summary>
         /// Creates the <see cref="IApnsPayLoadBuilder"/>
         /// </summary>
@@ -28,7 +26,5 @@ namespace PayLoadion.Apns.Factories
         {
             return new ApnsPayLoadBuilderImplementation(apnsPayLoad);
         }
-        #endregion Public Methods
-        #endregion Methods
     }
 }

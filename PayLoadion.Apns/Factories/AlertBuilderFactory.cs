@@ -1,7 +1,7 @@
-using PayLoadion.Apple.PayLoad.Alert;
-using PayLoadion.Apple.PayLoadBuilder.Alert;
+using PayLoadion.Apns.PayLoad.Alert;
+using PayLoadion.Apns.PayLoadBuilder.Alert;
 
-namespace PayLoadion.Apple.Factories
+namespace PayLoadion.Apns.Factories
 {
     public class AlertBuilderFactory
     {

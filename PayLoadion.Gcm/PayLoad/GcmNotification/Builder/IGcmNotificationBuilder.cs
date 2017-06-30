@@ -12,7 +12,7 @@ namespace PayLoadion.Google.PayLoad.GcmNotification.Builder
 
         string BuildGcmNotificationToString();
 
-        Task<string> BuildGcmNotificationToStringAsync(CancellationToken cancellationToken = default(CancellationToken))
+        Task<string> BuildGcmNotificationToStringAsync(CancellationToken cancellationToken = default(CancellationToken));
     }
 
     public interface IGcmNotificationBuilderTitle : IGcmNotificationBuilder

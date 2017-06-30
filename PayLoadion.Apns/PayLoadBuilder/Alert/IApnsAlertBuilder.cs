@@ -1,9 +1,10 @@
 ﻿using System;
-using PayLoadion.Apple.PayLoad.Alert;
+using PayLoadion.PayLoadBuilder;
+using PayLoadion.Apns.PayLoad.Alert;
 
-namespace PayLoadion.Apple.PayLoadBuilder.Alert
+namespace PayLoadion.Apns.PayLoadBuilder.Alert
 {
-    public interface IApnsAlertBuilder : IBuilder<IApnsAlert>, IDisposable
+    public interface IApnsAlertBuilder : IDisposable
     {
         IApnsAlertBuilder Title(string title);
         IApnsAlertBuilder Body(string body);

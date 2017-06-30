@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Threading.Tasks;
-using PayLoadion.Apple.Exceptions.Alert;
-using PayLoadion.Apple.PayLoad.Alert;
+using PayLoadion.Apns.PayLoad.Alert;
+using PayLoadion.Apns.Exceptions;
 
-namespace PayLoadion.Apple.PayLoadBuilder.Alert
+namespace PayLoadion.Apns.PayLoadBuilder.Alert
 {
     internal class ApnsAlertBuilderImplementation : IApnsAlertBuilder
     {
@@ -104,13 +104,13 @@ namespace PayLoadion.Apple.PayLoadBuilder.Alert
             if (_apnsAlertImplementation.TitleLocKey == null &&
                (_apnsAlertImplementation.TitleLocArgs != null && _apnsAlertImplementation.TitleLocArgs.Count > 0))
             {
-                throw new ApnsAlertBuilderException("TitleLocKey is null but it has TitleLocKey") { ApnsAlertWithErrors = _apnsAlertImplementation }; ;
+                throw new ApnsPayloadBuilderException("TitleLocKey is null but it has TitleLocKey on Custom Alert");
             }
 
             if (_apnsAlertImplementation.LocKey == null &&
                (_apnsAlertImplementation.LocArgs != null && _apnsAlertImplementation.LocArgs.Count > 0))
             {
-                throw new ApnsAlertBuilderException("LocKey is null but it has LocArgs") { ApnsAlertWithErrors = _apnsAlertImplementation };
+                throw new ApnsPayloadBuilderException("LocKey is null but it has LocArgs on Custom Alert");
             }
 
             return _apnsAlertImplementation;

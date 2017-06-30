@@ -2,7 +2,7 @@
 <package >
   <metadata>
     <id>PayLoadion.Apns</id>
-    <version>1.0.2</version>
+    <version>1.1.0</version>
     <title>PayLoadion.Apns</title>
     <authors>Vinicius Gualberto - @vinguan</authors>
     <owners>Vinicius Gualberto - @vinguan</owners>
@@ -10,6 +10,8 @@
       The implementation of PayLoadion for APNS - Apple Push Notification Service.
     </description>
     <releaseNotes>
+      [1.1.0]
+      --Added support for .NET Standard
       [1.0.2]
         [Bug-Fixes]
         ---Added Badge, Sound, IsContentAvailable and Category options if you are using custom Alert
