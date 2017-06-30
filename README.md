@@ -1,5 +1,5 @@
 # PayLoadion
-<img src="https://raw.githubusercontent.com/vinguan/payloadion/master/Project%20Icons/PayLoadion/payloadion_core.png" width="200">
+<img src="https://raw.githubusercontent.com/vinguan/payloadion/master/ProjectsIcons/PayLoadion/payloadion_core.png" width="200">
 
 Fluent Class Library(FCL) to easily build PayLoad for Push Notification Services such as APNS or WNS
 
