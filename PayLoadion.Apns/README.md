@@ -1,5 +1,5 @@
 # PayLoadion.Apns 
-<img src="https://raw.githubusercontent.com/vinguan/payloadion/master/Project%20Icons/PayLoadion.Apns/payloadion_apple.png" width="200">
+<img src="https://raw.githubusercontent.com/vinguan/payloadion/master/ProjectsIcons/PayLoadion.Gcm/payloadion_google.png" width="200">
 
 Implementation of PayLoadion for Apple Push Notification Service(APNS), following [Remote Notification Programming Guide](https://developer.apple.com/library/ios/documentation/NetworkingInternet/Conceptual/RemoteNotificationsPG/Chapters/TheNotificationPayload.html) of APNS.
 
