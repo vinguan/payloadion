@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Reflection;
 using System.Threading;
 using System.Threading.Tasks;
@@ -12,438 +13,442 @@ using PayLoadion.PayLoadBuilder;
 
 namespace PayLoadion.Apns.PayLoadBuilder
 {
-    internal class ApnsPayLoadBuilderImplementation : IPayLoadBuilder<IApnsPayLoad>,
-                                                      IApnsPayLoadBuilder,
-                                                      IApnsPayLoadBuilderWithCustomData,
-                                                      IApnsPayLoadBuilderAlert,
-                                                      IApnsPayLoadBuilderAlertTitleLocalizableArgs,
-                                                      IApnsPayLoadBuilderAlertLocalizableArgs,
-                                                      IApnsPayLoadBuilderAlertLaunchImage,
-                                                      IApnsPayLoadBuilderWithBadge,
-                                                      IApnsPayLoadBuilderWithSound,
-                                                      IApnsPayLoadBuilderWithContentAvailable,
-                                                      IApnsPayLoadBuilderWithCategoryIdentifier
-    {
-        #region Fields
-        private ApnsPayLoadImplementation _apnsPayLoadImplementation;
-        #endregion Fields
+	internal class ApnsPayLoadBuilderImplementation : IPayLoadBuilder<IApnsPayLoad>,
+													  IApnsPayLoadBuilder,
+													  IApnsPayLoadBuilderWithCustomData,
+													  IApnsPayLoadBuilderAlert,
+													  IApnsPayLoadBuilderAlertTitleLocalizableArgs,
+													  IApnsPayLoadBuilderAlertLocalizableArgs,
+													  IApnsPayLoadBuilderAlertLaunchImage,
+													  IApnsPayLoadBuilderWithBadge,
+													  IApnsPayLoadBuilderWithSound,
+													  IApnsPayLoadBuilderWithContentAvailable,
+													  IApnsPayLoadBuilderWithCategoryIdentifier
+	{
+		#region Fields
+		private ApnsPayLoadImplementation _apnsPayLoadImplementation;
+		#endregion Fields
 
-        #region Properties
+		#region Properties
 
-        #region Private Properties
+		#region Private Properties
 
-        #endregion Private Properties
+		#endregion Private Properties
 
-        #region Public Properties
-        public IApnsPayLoad PayLoad
-        {
-            get { return _apnsPayLoadImplementation; }
-        }
-        #endregion Public Properties
+		#region Public Properties
+		public IApnsPayLoad PayLoad
+		{
+			get { return _apnsPayLoadImplementation; }
+		}
+		#endregion Public Properties
 
-        #region Protected Properties
+		#region Protected Properties
 
-        #endregion Protected Properties
+		#endregion Protected Properties
 
-        #region Internal Properties
+		#region Internal Properties
 
-        #endregion Internal Properties
+		#endregion Internal Properties
 
-        #endregion Properties
+		#endregion Properties
 
-        #region Constructors
+		#region Constructors
 
-        #region Private Constructors
+		#region Private Constructors
 
-        #endregion Private Constructors
+		#endregion Private Constructors
 
-        #region Public Constructors
+		#region Public Constructors
 
-        #endregion Public Constructors
+		#endregion Public Constructors
 
-        #region Protected Constructors
+		#region Protected Constructors
 
-        #endregion Protected Constructors
+		#endregion Protected Constructors
 
-        #region Internal Constructors
-        internal ApnsPayLoadBuilderImplementation()
-        {
-            _apnsPayLoadImplementation = new ApnsPayLoadImplementation();
-        }
+		#region Internal Constructors
+		internal ApnsPayLoadBuilderImplementation()
+		{
+			_apnsPayLoadImplementation = new ApnsPayLoadImplementation();
+		}
 
-        internal ApnsPayLoadBuilderImplementation(IApnsPayLoad apnsPayLoad)
-        {
-            _apnsPayLoadImplementation = new ApnsPayLoadImplementation(apnsPayLoad);
-        }
-        #endregion Internal Constructors
+		internal ApnsPayLoadBuilderImplementation(IApnsPayLoad apnsPayLoad)
+		{
+			_apnsPayLoadImplementation = new ApnsPayLoadImplementation(apnsPayLoad);
+		}
+		#endregion Internal Constructors
 
-        #endregion Constructors
+		#endregion Constructors
 
-        #region Methods
+		#region Methods
 
-        #region Private Methods
+		#region Private Methods
 
-        #endregion Private Methods
+		#endregion Private Methods
 
-        #region Public Methods
+		#region Public Methods
 
-        #region IApnsPayLoadBuilder
+		#region IApnsPayLoadBuilder
 
-        IApnsPayLoadBuilderAlert IApnsPayLoadBuilder.Alert()
-        {
-            _apnsPayLoadImplementation.AlertImplementation = new ApnsAlertImplementation();
+		IApnsPayLoadBuilderAlert IApnsPayLoadBuilder.Alert()
+		{
+			_apnsPayLoadImplementation.AlertImplementation = new ApnsAlertImplementation();
 
-            return this;
-        }
+			return this;
+		}
 
-        IApnsPayLoadBuilderWithBadge IApnsPayLoadBuilder.Alert(string alertMessage)
-        {
-            _apnsPayLoadImplementation.AlertMessage = alertMessage;
+		IApnsPayLoadBuilderWithBadge IApnsPayLoadBuilder.Alert(string alertMessage)
+		{
+			_apnsPayLoadImplementation.AlertMessage = alertMessage;
 
-            return this;
-        }
+			return this;
+		}
 
-        #endregion
+		#endregion
 
-        #region IApnsPayLoadBuilderWithCustomData
+		#region IApnsPayLoadBuilderWithCustomData
 
-        IApnsPayLoadBuilderWithCustomData IApnsPayLoadBuilderWithCustomData.AddCustomData(IDictionary<string, object> customDataDictionary)
-        {
-            foreach (var customData in customDataDictionary)
-            {
-                _apnsPayLoadImplementation.InternalCustomData.Add(customData.Key, customData.Value);
-            }
+		IApnsPayLoadBuilderWithCustomData IApnsPayLoadBuilderWithCustomData.AddCustomData(IDictionary<string, object> customDataDictionary)
+		{
+			foreach (var customData in customDataDictionary)
+			{
+				_apnsPayLoadImplementation.InternalCustomData.Add(customData.Key, customData.Value);
+			}
 
-            return this;
-        }
+			return this;
+		}
 
-        IApnsPayLoadBuilderWithCustomData IApnsPayLoadBuilderWithCustomData.AddCustomData(string customDataKey, object customDataValue)
-        {
-            _apnsPayLoadImplementation.InternalCustomData.Add(customDataKey, customDataValue);
+		IApnsPayLoadBuilderWithCustomData IApnsPayLoadBuilderWithCustomData.AddCustomData(string customDataKey, object customDataValue)
+		{
+			_apnsPayLoadImplementation.InternalCustomData.Add(customDataKey, customDataValue);
 
-            return this;
-        }
+			return this;
+		}
 
-        #endregion
+		#endregion
 
-        #region IApnsPayLoadBuilderAlert
+		#region IApnsPayLoadBuilderAlert
 
-        IApnsPayLoadBuilderAlert IApnsPayLoadBuilderAlert.Title(string title)
-        {
-            _apnsPayLoadImplementation.AlertImplementation.Title = title;
+		IApnsPayLoadBuilderAlert IApnsPayLoadBuilderAlert.Title(string title)
+		{
+			_apnsPayLoadImplementation.AlertImplementation.Title = title;
 
-            return this;
-        }
+			return this;
+		}
 
-        IApnsPayLoadBuilderAlert IApnsPayLoadBuilderAlert.Body(string body)
-        {
-            _apnsPayLoadImplementation.AlertImplementation.Body = body;
+		IApnsPayLoadBuilderAlert IApnsPayLoadBuilderAlert.Body(string body)
+		{
+			_apnsPayLoadImplementation.AlertImplementation.Body = body;
 
-            return this;
-        }
+			return this;
+		}
 
-        IApnsPayLoadBuilderAlertTitleLocalizableArgs IApnsPayLoadBuilderAlert.TitleLocalizableKey(string titleLocKey)
-        {
-            _apnsPayLoadImplementation.AlertImplementation.TitleLocKey = titleLocKey;
+		IApnsPayLoadBuilderAlertTitleLocalizableArgs IApnsPayLoadBuilderAlert.TitleLocalizableKey(string titleLocKey)
+		{
+			_apnsPayLoadImplementation.AlertImplementation.TitleLocKey = titleLocKey;
 
-            return this;
-        }
+			return this;
+		}
 
-        IApnsPayLoadBuilderAlertLocalizableArgs IApnsPayLoadBuilderAlert.LocalizableKey(string localizableKey)
-        {
-            _apnsPayLoadImplementation.AlertImplementation.LocKey = localizableKey;
+		IApnsPayLoadBuilderAlertLocalizableArgs IApnsPayLoadBuilderAlert.LocalizableKey(string localizableKey)
+		{
+			_apnsPayLoadImplementation.AlertImplementation.LocKey = localizableKey;
 
-            return this;
-        }
+			return this;
+		}
 
-        IApnsPayLoadBuilderAlertLaunchImage IApnsPayLoadBuilderAlert.ActionLocalizableKey(string actionLocalizableKey)
-        {
-            _apnsPayLoadImplementation.AlertImplementation.ActionLocKey = actionLocalizableKey;
+		IApnsPayLoadBuilderAlertLaunchImage IApnsPayLoadBuilderAlert.ActionLocalizableKey(string actionLocalizableKey)
+		{
+			_apnsPayLoadImplementation.AlertImplementation.ActionLocKey = actionLocalizableKey;
 
-            return this;
-        }
+			return this;
+		}
 
-        IApnsPayLoadBuilderWithBadge IApnsPayLoadBuilderAlert.LaunchImageFileName(string launchImageFileName)
-        {
-            _apnsPayLoadImplementation.AlertImplementation.LaunchImage = launchImageFileName;
+		IApnsPayLoadBuilderWithBadge IApnsPayLoadBuilderAlert.LaunchImageFileName(string launchImageFileName)
+		{
+			_apnsPayLoadImplementation.AlertImplementation.LaunchImage = launchImageFileName;
 
-            return this;
-        }
+			return this;
+		}
 
-        IApnsPayLoadBuilderWithSound IApnsPayLoadBuilderAlert.Badge(int badgeCount)
-        {
-            _apnsPayLoadImplementation.Badge = badgeCount;
+		IApnsPayLoadBuilderWithSound IApnsPayLoadBuilderAlert.Badge(int badgeCount)
+		{
+			_apnsPayLoadImplementation.Badge = badgeCount;
 
-            return this;
-        }
+			return this;
+		}
 
-        IApnsPayLoadBuilderWithContentAvailable IApnsPayLoadBuilderAlert.Sound(string soundName)
-        {
-            _apnsPayLoadImplementation.Sound = soundName;
+		IApnsPayLoadBuilderWithContentAvailable IApnsPayLoadBuilderAlert.Sound(string soundName)
+		{
+			_apnsPayLoadImplementation.Sound = soundName;
 
-            return this;
-        }
+			return this;
+		}
 
-        IApnsPayLoadBuilderWithCategoryIdentifier IApnsPayLoadBuilderAlert.IsContentAvailable(bool isContentAvailable)
-        {
-            _apnsPayLoadImplementation.ContentAvailable = isContentAvailable ? 1 : (int?)null;
+		IApnsPayLoadBuilderWithCategoryIdentifier IApnsPayLoadBuilderAlert.IsContentAvailable(bool isContentAvailable)
+		{
+			_apnsPayLoadImplementation.ContentAvailable = isContentAvailable ? 1 : (int?)null;
 
-            return this;
-        }
+			return this;
+		}
 
-        IApnsPayLoadBuilderWithCustomData IApnsPayLoadBuilderAlert.Category(string categoryIdentifier)
-        {
-            _apnsPayLoadImplementation.Category = categoryIdentifier;
+		IApnsPayLoadBuilderWithCustomData IApnsPayLoadBuilderAlert.Category(string categoryIdentifier)
+		{
+			_apnsPayLoadImplementation.Category = categoryIdentifier;
 
-            return this;
-        }
+			return this;
+		}
 
-        #endregion IApnsPayLoadBuilderAlert
+		#endregion IApnsPayLoadBuilderAlert
 
-        #region IApnsPayLoadBuilderAlertTitleLocalizableArgs
-        IApnsPayLoadBuilderAlertTitleLocalizableArgs IApnsPayLoadBuilderAlertTitleLocalizableArgs.AddTitleLocalizableArgument(string titleLocArgument)
-        {
-            _apnsPayLoadImplementation.AlertImplementation.InternalTitleLocArgs.Add(titleLocArgument);
+		#region IApnsPayLoadBuilderAlertTitleLocalizableArgs
+		IApnsPayLoadBuilderAlertTitleLocalizableArgs IApnsPayLoadBuilderAlertTitleLocalizableArgs.AddTitleLocalizableArgument(string titleLocArgument)
+		{
+			_apnsPayLoadImplementation.AlertImplementation.InternalTitleLocArgs.Add(titleLocArgument);
 
-            return this;
-        }
+			return this;
+		}
 
-        IApnsPayLoadBuilderAlertLocalizableArgs IApnsPayLoadBuilderAlertTitleLocalizableArgs.LocalizableKey(string localizableKey)
-        {
-            _apnsPayLoadImplementation.AlertImplementation.LocKey = localizableKey;
+		IApnsPayLoadBuilderAlertLocalizableArgs IApnsPayLoadBuilderAlertTitleLocalizableArgs.LocalizableKey(string localizableKey)
+		{
+			_apnsPayLoadImplementation.AlertImplementation.LocKey = localizableKey;
 
-            return this;
-        }
+			return this;
+		}
 
-        IApnsPayLoadBuilderAlertLaunchImage IApnsPayLoadBuilderAlertTitleLocalizableArgs.ActionLocalizableKey(string actionLocalizableKey)
-        {
-            _apnsPayLoadImplementation.AlertImplementation.ActionLocKey = actionLocalizableKey;
+		IApnsPayLoadBuilderAlertLaunchImage IApnsPayLoadBuilderAlertTitleLocalizableArgs.ActionLocalizableKey(string actionLocalizableKey)
+		{
+			_apnsPayLoadImplementation.AlertImplementation.ActionLocKey = actionLocalizableKey;
 
-            return this;
-        }
+			return this;
+		}
 
-        IApnsPayLoadBuilderWithBadge IApnsPayLoadBuilderAlertTitleLocalizableArgs.LaunchImageFileName(string launchImageFileName)
-        {
-            _apnsPayLoadImplementation.AlertImplementation.LaunchImage = launchImageFileName;
+		IApnsPayLoadBuilderWithBadge IApnsPayLoadBuilderAlertTitleLocalizableArgs.LaunchImageFileName(string launchImageFileName)
+		{
+			_apnsPayLoadImplementation.AlertImplementation.LaunchImage = launchImageFileName;
 
-            return this;
-        }
-        #endregion IApnsPayLoadBuilderAlertTitleLocalizableArgs
+			return this;
+		}
+		#endregion IApnsPayLoadBuilderAlertTitleLocalizableArgs
 
-        #region IApnsPayLoadBuilderAlertLocalizableArgs 
-        IApnsPayLoadBuilderAlertLocalizableArgs IApnsPayLoadBuilderAlertLocalizableArgs.AddLocalizableArgument(string localizableArgument)
-        {
-            _apnsPayLoadImplementation.AlertImplementation.InternalLocArgs.Add(localizableArgument);
+		#region IApnsPayLoadBuilderAlertLocalizableArgs 
+		IApnsPayLoadBuilderAlertLocalizableArgs IApnsPayLoadBuilderAlertLocalizableArgs.AddLocalizableArgument(string localizableArgument)
+		{
+			_apnsPayLoadImplementation.AlertImplementation.InternalLocArgs.Add(localizableArgument);
 
-            return this;
-        }
+			return this;
+		}
 
-        IApnsPayLoadBuilderAlertLaunchImage IApnsPayLoadBuilderAlertLocalizableArgs.ActionLocalizableKey(string actionLocalizableKey)
-        {
-            _apnsPayLoadImplementation.AlertImplementation.ActionLocKey = actionLocalizableKey;
+		IApnsPayLoadBuilderAlertLaunchImage IApnsPayLoadBuilderAlertLocalizableArgs.ActionLocalizableKey(string actionLocalizableKey)
+		{
+			_apnsPayLoadImplementation.AlertImplementation.ActionLocKey = actionLocalizableKey;
 
-            return this;
-        }
+			return this;
+		}
 
-        IApnsPayLoadBuilderWithBadge IApnsPayLoadBuilderAlertLocalizableArgs.LaunchImageFileName(string launchImageFileName)
-        {
-            _apnsPayLoadImplementation.AlertImplementation.LaunchImage = launchImageFileName;
+		IApnsPayLoadBuilderWithBadge IApnsPayLoadBuilderAlertLocalizableArgs.LaunchImageFileName(string launchImageFileName)
+		{
+			_apnsPayLoadImplementation.AlertImplementation.LaunchImage = launchImageFileName;
 
-            return this;
-        }
-        #endregion IApnsPayLoadBuilderAlertLocalizableArgs
+			return this;
+		}
+		#endregion IApnsPayLoadBuilderAlertLocalizableArgs
 
-        #region IApnsPayLoadBuilderAlertLaunchImage
-        IApnsPayLoadBuilderWithBadge IApnsPayLoadBuilderAlertLaunchImage.LaunchImageFileName(string launchImageFileName)
-        {
-            _apnsPayLoadImplementation.AlertImplementation.LaunchImage = launchImageFileName;
+		#region IApnsPayLoadBuilderAlertLaunchImage
+		IApnsPayLoadBuilderWithBadge IApnsPayLoadBuilderAlertLaunchImage.LaunchImageFileName(string launchImageFileName)
+		{
+			_apnsPayLoadImplementation.AlertImplementation.LaunchImage = launchImageFileName;
 
-            return this;
-        }
+			return this;
+		}
 
-        IApnsPayLoadBuilderWithSound IApnsPayLoadBuilderAlertLaunchImage.Badge(int badgeCount)
-        {
-            _apnsPayLoadImplementation.Badge = badgeCount;
+		IApnsPayLoadBuilderWithSound IApnsPayLoadBuilderAlertLaunchImage.Badge(int badgeCount)
+		{
+			_apnsPayLoadImplementation.Badge = badgeCount;
 
-            return this;
-        }
-        #endregion IApnsPayLoadBuilderAlertLaunchImage
+			return this;
+		}
+		#endregion IApnsPayLoadBuilderAlertLaunchImage
 
-        #region IApnsPayLoadBuilderWithBadge
+		#region IApnsPayLoadBuilderWithBadge
 
-        IApnsPayLoadBuilderWithSound IApnsPayLoadBuilderWithBadge.Badge(int badgeCount)
-        {
-            _apnsPayLoadImplementation.Badge = badgeCount;
+		IApnsPayLoadBuilderWithSound IApnsPayLoadBuilderWithBadge.Badge(int badgeCount)
+		{
+			_apnsPayLoadImplementation.Badge = badgeCount;
 
-            return this;
-        }
+			return this;
+		}
 
-        IApnsPayLoadBuilderWithContentAvailable IApnsPayLoadBuilderWithBadge.Sound(string soundName)
-        {
-            _apnsPayLoadImplementation.Sound = soundName;
+		IApnsPayLoadBuilderWithContentAvailable IApnsPayLoadBuilderWithBadge.Sound(string soundName)
+		{
+			_apnsPayLoadImplementation.Sound = soundName;
 
-            return this;
-        }
+			return this;
+		}
 
-        IApnsPayLoadBuilderWithCategoryIdentifier IApnsPayLoadBuilderWithBadge.IsContentAvailable(bool isContentAvailable)
-        {
-            _apnsPayLoadImplementation.ContentAvailable = isContentAvailable ? 1 : (int?)null;
+		IApnsPayLoadBuilderWithCategoryIdentifier IApnsPayLoadBuilderWithBadge.IsContentAvailable(bool isContentAvailable)
+		{
+			_apnsPayLoadImplementation.ContentAvailable = isContentAvailable ? 1 : (int?)null;
 
-            return this;
-        }
+			return this;
+		}
 
-        IApnsPayLoadBuilderWithCustomData IApnsPayLoadBuilderWithBadge.Category(string categoryIdentifier)
-        {
-            _apnsPayLoadImplementation.Category = categoryIdentifier;
+		IApnsPayLoadBuilderWithCustomData IApnsPayLoadBuilderWithBadge.Category(string categoryIdentifier)
+		{
+			_apnsPayLoadImplementation.Category = categoryIdentifier;
 
-            return this;
-        }
-        #endregion IApnsPayLoadBuilderWithBadge
+			return this;
+		}
+		#endregion IApnsPayLoadBuilderWithBadge
 
-        #region IApnsPayLoadBuilderWithSound
-        IApnsPayLoadBuilderWithContentAvailable IApnsPayLoadBuilderWithSound.Sound(string soundName)
-        {
-            _apnsPayLoadImplementation.Sound = soundName;
+		#region IApnsPayLoadBuilderWithSound
+		IApnsPayLoadBuilderWithContentAvailable IApnsPayLoadBuilderWithSound.Sound(string soundName)
+		{
+			_apnsPayLoadImplementation.Sound = soundName;
 
-            return this;
-        }
+			return this;
+		}
 
-        IApnsPayLoadBuilderWithCategoryIdentifier IApnsPayLoadBuilderWithSound.IsContentAvailable(bool isContentAvailable)
-        {
-            _apnsPayLoadImplementation.ContentAvailable = isContentAvailable ? 1 : (int?)null;
+		IApnsPayLoadBuilderWithCategoryIdentifier IApnsPayLoadBuilderWithSound.IsContentAvailable(bool isContentAvailable)
+		{
+			_apnsPayLoadImplementation.ContentAvailable = isContentAvailable ? 1 : (int?)null;
+
+			return this;
+		}
+
+		IApnsPayLoadBuilderWithCustomData IApnsPayLoadBuilderWithSound.Category(string categoryIdentifier)
+		{
+			_apnsPayLoadImplementation.Category = categoryIdentifier;
+
+			return this;
+		}
+		#endregion IApnsPayLoadBuilderWithSound
+
+		#region IApnsPayLoadBuilderWithContentAvailable
+		IApnsPayLoadBuilderWithCategoryIdentifier IApnsPayLoadBuilderWithContentAvailable.IsContentAvailable(bool isContentAvailable)
+		{
+			_apnsPayLoadImplementation.ContentAvailable = isContentAvailable ? 1 : (int?)null;
+
+			return this;
+		}
+
+		IApnsPayLoadBuilderWithCustomData IApnsPayLoadBuilderWithContentAvailable.Category(string categoryIdentifier)
+		{
+			_apnsPayLoadImplementation.Category = categoryIdentifier;
+
+			return this;
+		}
+		#endregion IApnsPayLoadBuilderWithContentAvailable
+
+		#region IApnsPayLoadBuilderWithCategoryIdentifier
+		IApnsPayLoadBuilderWithCustomData IApnsPayLoadBuilderWithCategoryIdentifier.Category(string categoryIdentifier)
+		{
+			_apnsPayLoadImplementation.Category = categoryIdentifier;
+
+			return this;
+		}
+		#endregion IApnsPayLoadBuilderWithCategoryIdentifier
 
-            return this;
-        }
+		#region IPayLoadBuilder<IApnsPayLoad>
 
-        IApnsPayLoadBuilderWithCustomData IApnsPayLoadBuilderWithSound.Category(string categoryIdentifier)
-        {
-            _apnsPayLoadImplementation.Category = categoryIdentifier;
+		public IApnsPayLoad BuildPayLoad()
+		{
+			return _apnsPayLoadImplementation;
+		}
 
-            return this;
-        }
-        #endregion IApnsPayLoadBuilderWithSound
-
-        #region IApnsPayLoadBuilderWithContentAvailable
-        IApnsPayLoadBuilderWithCategoryIdentifier IApnsPayLoadBuilderWithContentAvailable.IsContentAvailable(bool isContentAvailable)
-        {
-            _apnsPayLoadImplementation.ContentAvailable = isContentAvailable ? 1 : (int?)null;
-
-            return this;
-        }
+		public async Task<IApnsPayLoad> BuildPayLoadAsync(CancellationToken cancellationToken = default(CancellationToken))
+		{
+			try
+			{
+				cancellationToken.ThrowIfCancellationRequested();
 
-        IApnsPayLoadBuilderWithCustomData IApnsPayLoadBuilderWithContentAvailable.Category(string categoryIdentifier)
-        {
-            _apnsPayLoadImplementation.Category = categoryIdentifier;
+				return await Task.Run(() => BuildPayLoad(), cancellationToken);
+			}
+			catch (Exception ex)
+			{
+				throw new ApnsPayloadBuilderException("An unexpected error ocurred while building ApnsPayLoad, please check inner exception", ex);
+			}
+		}
 
-            return this;
-        }
-        #endregion IApnsPayLoadBuilderWithContentAvailable
+		public string BuildPayLoadToString(bool indent = false)
+		{
+			if (_apnsPayLoadImplementation.AlertMessage != null && _apnsPayLoadImplementation.Alert != null)
+			{
+				throw new ApnsPayloadBuilderException("AlertMessage and IApnsAlert are not null, choose to use one of them");
+			}
 
-        #region IApnsPayLoadBuilderWithCategoryIdentifier
-        IApnsPayLoadBuilderWithCustomData IApnsPayLoadBuilderWithCategoryIdentifier.Category(string categoryIdentifier)
-        {
-            _apnsPayLoadImplementation.Category = categoryIdentifier;
+			try
+			{
+				var apsJObject = JObject.FromObject(new
+				{
+					aps = _apnsPayLoadImplementation,
+				});
 
-            return this;
-        }
-        #endregion IApnsPayLoadBuilderWithCategoryIdentifier
+				if (_apnsPayLoadImplementation.CustomData != null && _apnsPayLoadImplementation.CustomData.Any())
+				{
+					foreach (var customData in _apnsPayLoadImplementation.CustomData)
+					{
+						var valueType = customData.Value.GetType();
 
-        #region IPayLoadBuilder<IApnsPayLoad>
+						if (customData.Value is string || valueType.GetTypeInfo().IsValueType)
+						{
+							apsJObject.Add(new JProperty(customData.Key, customData.Value));
+						}
+						else if (valueType.IsArray)
+						{
+							apsJObject.Add(new JProperty(customData.Key, JArray.FromObject(customData.Value)));
+						}
+						else
+						{
+							apsJObject.Add(new JProperty(customData.Key, JObject.FromObject(customData.Value)));
+						}
+					}
+				}
 
-        public IApnsPayLoad BuildPayLoad()
-        {
-            return _apnsPayLoadImplementation;
-        }
+				return apsJObject.ToString(indent ? Formatting.Indented : Formatting.None);
+			}
+			catch (Exception ex)
+			{
+				throw new ApnsPayloadBuilderException("An unexpected error ocurred while building ApnsPayLoad, please check inner exception", ex);
+			}
+		}
 
-        public async Task<IApnsPayLoad> BuildPayLoadAsync(CancellationToken cancellationToken = default(CancellationToken))
-        {
-            try
-            {
-                cancellationToken.ThrowIfCancellationRequested();
+		public async Task<string> BuildPayLoadToStringAsync(bool indent = false, CancellationToken cancellationToken = default(CancellationToken))
+		{
+			try
+			{
+				cancellationToken.ThrowIfCancellationRequested();
 
-                return await Task.Run(() => BuildPayLoad(), cancellationToken);
-            }
-            catch (Exception ex)
-            {
-                throw new ApnsPayloadBuilderException("An unexpected error ocurred while building ApnsPayLoad, please check inner exception", ex);
-            }
-        }
+				return await Task.Run(() => BuildPayLoadToString(indent), cancellationToken);
+			}
+			catch (Exception ex)
+			{
+				throw new ApnsPayloadBuilderException("An unexpected error ocurred while building ApnsPayLoad, please check inner exception", ex);
+			}
+		}
+		#endregion IPayLoadBuilder<IApnsPayLoad>
 
-        public string BuildPayLoadToString(bool indent = false)
-        {
-            if (_apnsPayLoadImplementation.AlertMessage != null && _apnsPayLoadImplementation.Alert != null)
-            {
-                throw new ApnsPayloadBuilderException("AlertMessage and IApnsAlert are not null, choose to use one of them");
-            }
+		#region IDisposable
+		public void Dispose()
+		{
+			_apnsPayLoadImplementation.Dispose();
 
-            try
-            {
-                var apsJObject = JObject.FromObject(new
-                {
-                    aps = _apnsPayLoadImplementation,
-                });
+			_apnsPayLoadImplementation = null;
 
-                if (_apnsPayLoadImplementation.CustomData == null || _apnsPayLoadImplementation.CustomData.Count <= 0)
-                    return apsJObject.ToString();
+			GC.SuppressFinalize(this);
+		}
+		#endregion IDisposable
 
-                foreach (var customData in _apnsPayLoadImplementation.CustomData)
-                {
-                    var valueType = customData.Value.GetType();
+		#endregion Public Methods
 
-                    if (customData.Value is string || valueType.GetTypeInfo().IsValueType)
-                    {
-                        apsJObject.Add(new JProperty(customData.Key, customData.Value));
-                    }
-                    else
-                    {
-                        apsJObject.Add(new JProperty(customData.Key, JObject.FromObject(customData.Value)));
-                    }
-                }
+		#region Protected Methods
 
-                return apsJObject.ToString(indent ? Formatting.Indented : Formatting.None);
-            }
-            catch (Exception ex)
-            {
-                throw new ApnsPayloadBuilderException("An unexpected error ocurred while building ApnsPayLoad, please check inner exception", ex);
-            }
-        }
+		#endregion Protected Methods
 
-        public async Task<string> BuildPayLoadToStringAsync(bool indent = false, CancellationToken cancellationToken = default(CancellationToken))
-        {
-            try
-            {
-                cancellationToken.ThrowIfCancellationRequested();
+		#region Internal Methods
 
-                return await Task.Run(() => BuildPayLoadToString(indent), cancellationToken);
-            }
-            catch (Exception ex)
-            {
-                throw new ApnsPayloadBuilderException("An unexpected error ocurred while building ApnsPayLoad, please check inner exception", ex);
-            }
-        }
-        #endregion IPayLoadBuilder<IApnsPayLoad>
+		#endregion Internal Methods
 
-        #region IDisposable
-        public void Dispose()
-        {
-            _apnsPayLoadImplementation.Dispose();
-
-            _apnsPayLoadImplementation = null;
-
-            GC.SuppressFinalize(this);
-        }
-        #endregion IDisposable
-
-        #endregion Public Methods
-
-        #region Protected Methods
-
-        #endregion Protected Methods
-
-        #region Internal Methods
-
-        #endregion Internal Methods
-
-        #endregion Methods
-    }
+		#endregion Methods
+	}
 }

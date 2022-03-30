@@ -83,8 +83,11 @@ namespace PayLoadion.Gcm.Tests
                                 .Icon("defaulticon")
                                 .AddCustomData("123", "123");
 
+                var gcmPayLoadString = gcmmessage.BuildGcmDownStreamHttpMessageToJson(true);
 
-                Console.WriteLine(gcmmessage.BuildGcmDownStreamHttpMessageToJson(true));
+                Console.WriteLine(gcmPayLoadString);
+
+                Assert.IsNotNull(gcmPayLoadString);
             }
             catch (Exception ex)
             {
@@ -111,8 +114,41 @@ namespace PayLoadion.Gcm.Tests
                                 .Icon("defaulticon")
                                 .AddCustomData("123", "123");
 
+                var gcmPayLoadString = gcmmessage.BuildGcmDownStreamHttpMessageToJson(true);
 
-                Console.WriteLine(gcmmessage.BuildGcmDownStreamHttpMessageToJson(true));
+                Console.WriteLine(gcmPayLoadString);
+
+                Assert.IsNotNull(gcmPayLoadString);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+
+                Assert.Fail(ex.Message);
+            }
+        }
+
+        [TestMethod]
+        public void ShouldBuildSimpleGcmDownStreamMessageWithCustomDataArrayInteger()
+        {
+            try
+            {
+                var gcmmessage = GcmDownStreamHttpMessageBuilderFactory.CreateGcmDownStreamHttpMessageBuilder()
+                    .AddDeviceId("125")
+                    .Priority(GcmPriorityEnum.Normal)
+                    .TimeToLiveUntil(DateTimeOffset.Now.AddMonths(1))
+                    .IsDryRun(true)
+                    .PayLoad()
+                    .Notification()
+                    .Title("Message")
+                    .Icon("defaulticon")
+                    .AddCustomData("ids", new int[] { 123, 456 });
+
+                var gcmPayLoadString = gcmmessage.BuildGcmDownStreamHttpMessageToJson(true);
+
+                Console.WriteLine(gcmPayLoadString);
+
+                Assert.IsNotNull(gcmPayLoadString);
             }
             catch (Exception ex)
             {
@@ -123,5 +159,69 @@ namespace PayLoadion.Gcm.Tests
         }
 
 
+        [TestMethod]
+        public void ShouldBuildSimpleGcmDownStreamMessageWithCustomDataArrayString()
+        {
+            try
+            {
+                var gcmmessage = GcmDownStreamHttpMessageBuilderFactory.CreateGcmDownStreamHttpMessageBuilder()
+                    .AddDeviceId("125")
+                    .Priority(GcmPriorityEnum.Normal)
+                    .TimeToLiveUntil(DateTimeOffset.Now.AddMonths(1))
+                    .IsDryRun(true)
+                    .PayLoad()
+                    .Notification()
+                    .Title("Message")
+                    .Icon("defaulticon")
+                    .AddCustomData("ids", new string[] { "123", "456" });
+
+                var gcmPayLoadString = gcmmessage.BuildGcmDownStreamHttpMessageToJson(true);
+
+                Console.WriteLine(gcmPayLoadString);
+
+                Assert.IsNotNull(gcmPayLoadString);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+
+                Assert.Fail(ex.Message);
+            }
+        }
+
+        [TestMethod]
+        public void ShouldBuildSimpleGcmDownStreamMessageWithCustomDataArrayAnonymous()
+        {
+            try
+            {
+                var gcmmessage = GcmDownStreamHttpMessageBuilderFactory.CreateGcmDownStreamHttpMessageBuilder()
+                    .AddDeviceId("125")
+                    .Priority(GcmPriorityEnum.Normal)
+                    .TimeToLiveUntil(DateTimeOffset.Now.AddMonths(1))
+                    .IsDryRun(true)
+                    .PayLoad()
+                    .Notification()
+                    .Title("Message")
+                    .Icon("defaulticon")
+                    .AddCustomData("ids", new []
+                    {
+                        new { Id = "123" },
+                        new { Id = "456" }
+                    });
+
+
+                var gcmPayLoadString = gcmmessage.BuildGcmDownStreamHttpMessageToJson(true);
+
+                Console.WriteLine(gcmPayLoadString);
+
+                Assert.IsNotNull(gcmPayLoadString);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+
+                Assert.Fail(ex.Message);
+            }
+        }
     }
 }

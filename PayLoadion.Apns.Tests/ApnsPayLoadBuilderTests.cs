@@ -4,10 +4,7 @@ using System.Threading.Tasks;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using PayLoadion.Apns.Factories;
 using PayLoadion.Apns.PayLoad;
-using PayLoadion.Apns.PayLoadBuilder;
-using PayLoadion.Apple.Tests.Models;
 using PayLoadion.PayLoadBuilder;
-using PayLoadion.Apple.Tests;
 
 namespace PayLoadion.Apple.Tests
 {
@@ -91,7 +88,7 @@ namespace PayLoadion.Apple.Tests
                     .Badge(1)
                     .AddCustomData("id", "123")
                     .AddCustomData("id2", 12)
-                    .AddCustomData("customDataObject", new CustomDataObject() {Id = "12"})
+                    .AddCustomData("customDataObject", new {Id = "12"})
                     .AddCustomData("load", new {valuex = 1});
 
                 var apnsPayLoadString = apnsPayLoad.BuildPayLoadToString(true);
@@ -145,7 +142,7 @@ namespace PayLoadion.Apple.Tests
                                                   .Badge(1)
                                                   .AddCustomData("id", "123")
                                                   .AddCustomData("id2", 12)
-                                                  .AddCustomData("customDataObject", new CustomDataObject() { Id = "12" })
+                                                  .AddCustomData("customDataObject", new { Id = "12" })
                                                   .AddCustomData("load", new { valuex = 1 });
 
                 var apnsPayLoadString = await apnsPayLoad.BuildPayLoadToStringAsync(true);
@@ -175,7 +172,7 @@ namespace PayLoadion.Apple.Tests
                                                   .Category("Test")
                                                   .AddCustomData("Id", "123")
                                                   .AddCustomData("Id2", 12)
-                                                  .AddCustomData("CustomDataObject", new CustomDataObject() { Id = "12" })
+                                                  .AddCustomData("CustomDataObject", new { Id = "12" })
                                                   .AddCustomData("Load", new { valuex = 1 });
 
                 var apnsPayLoadString = apnsPayLoad.BuildPayLoadToString(true);
@@ -207,7 +204,7 @@ namespace PayLoadion.Apple.Tests
                                                   .Category("Test")
                                                   .AddCustomData("Id", "123")
                                                   .AddCustomData("Id2", 12)
-                                                  .AddCustomData("CustomDataObject", new CustomDataObject() { Id = "12" })
+                                                  .AddCustomData("CustomDataObject", new { Id = "12" })
                                                   .AddCustomData("Load", new { valuex = 1 });
 
                 var apnsPayLoadString = await apnsPayLoad.BuildPayLoadToStringAsync(true);
@@ -247,7 +244,7 @@ namespace PayLoadion.Apple.Tests
                                                           .Category("Test")
                                                           .AddCustomData("Id", "123")
                                                           .AddCustomData("Id2", 12)
-                                                          .AddCustomData("CustomDataObject", new CustomDataObject() { Id = "12" })
+                                                          .AddCustomData("CustomDataObject", new { Id = "12" })
                                                           .AddCustomData("Load", new { valuex = 1 });
 
                 var apnsPayLoadString = apnsPayLoad.BuildPayLoadToString(true);
@@ -263,5 +260,74 @@ namespace PayLoadion.Apple.Tests
 
         }
 
+         [TestMethod]
+        public void ShouldBuildApnsPayLoadWithCustomDataArrayString()
+        {
+            try
+            {
+                var apnsPayLoad = ApnsPayLoadBuilderFactory.CreateApnsPayLoadBuilder()
+                    .Alert("Hello Payloadion")
+                    .Badge(1)
+                    .AddCustomData("ids", new string[] { "123", "456" });
+
+                var apnsPayLoadString = apnsPayLoad.BuildPayLoadToString(true);
+
+                Console.WriteLine(apnsPayLoadString);
+
+                Assert.IsNotNull(apnsPayLoadString);
+            }
+            catch (Exception ex)
+            {
+                Assert.Fail(ex.Message);
+            }
+        }
+
+        [TestMethod]
+        public void ShouldBuildApnsPayLoadWithCustomDataArrayInteger()
+        {
+            try
+            {
+                var apnsPayLoad = ApnsPayLoadBuilderFactory.CreateApnsPayLoadBuilder()
+                    .Alert("Hello Payloadion")
+                    .Badge(1)
+                    .AddCustomData("ids", new int[] { 123, 456 });
+
+                var apnsPayLoadString = apnsPayLoad.BuildPayLoadToString(true);
+
+                Console.WriteLine(apnsPayLoadString);
+
+                Assert.IsNotNull(apnsPayLoadString);
+            }
+            catch (Exception ex)
+            {
+                Assert.Fail(ex.Message);
+            }
+        }
+
+        [TestMethod]
+        public void ShouldBuildApnsPayLoadWithCustomDataArrayAnonymous()
+        {
+            try
+            {
+                var apnsPayLoad = ApnsPayLoadBuilderFactory.CreateApnsPayLoadBuilder()
+                    .Alert("Hello Payloadion")
+                    .Badge(1)
+                    .AddCustomData("ids", new []
+                    {
+                        new { Id = "123" },
+                        new { Id = "456" }
+                    });
+
+                var apnsPayLoadString = apnsPayLoad.BuildPayLoadToString(true);
+
+                Console.WriteLine(apnsPayLoadString);
+
+                Assert.IsNotNull(apnsPayLoadString);
+            }
+            catch (Exception ex)
+            {
+                Assert.Fail(ex.Message);
+            }
+        }
     }
 }

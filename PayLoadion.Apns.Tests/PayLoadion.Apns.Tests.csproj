@@ -54,7 +54,6 @@
   </Choose>
   <ItemGroup>
     <Compile Include="ApnsPayLoadBuilderTests.cs" />
-    <Compile Include="Models\CustomDataObject.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
